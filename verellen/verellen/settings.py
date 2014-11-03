@@ -36,6 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'south',
+    'verellen_web',
 )
 
 MIDDLEWARE_CLASSES = (

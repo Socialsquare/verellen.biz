@@ -1,5 +1,5 @@
 from django.contrib import admin
-from verellen_web.models import Product
+from products.models import Product
 
 class ProductAdmin(admin.ModelAdmin):
     field = ['name', 'price']

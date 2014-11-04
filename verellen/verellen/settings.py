@@ -13,6 +13,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_ID = 1
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -29,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+TEMPLATE_DIRS = (
+     os.path.join(os.path.dirname(__file__), 'templates'),
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django.contrib.sites',
-    'django.contrib.flatpages', # ADDED FOR FLATPAGES
+    'django.contrib.flatpages',
 
     'south',
     'products',

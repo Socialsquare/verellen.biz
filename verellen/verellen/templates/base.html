@@ -6,8 +6,9 @@
     <body>
         <h1>Verellen</h1>
         <ul>
-            <li><a href="{% url 'product.index' %}">Products</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="{% url 'product.index' %}">PRODUCTS</a></li>
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="{% url 'retailer.index' %}">RETAILERS</a></li>
         </ul>
         <hr>
         {% block content %}{% endblock %}

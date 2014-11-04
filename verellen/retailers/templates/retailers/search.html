@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Retailers{% endblock %}
+
+{% block content %}
+    <h2>Retailers</h2>
+    <p>Search for retailers</p>
+
+    <h3>Search results</h3>
+    <p>You searched for {{ search_query }}. Matches:</p>
+    <ul>
+        {% for retailer in matches %}
+            <li>
+                <h5>{{ retailer.name }}</h5>
+                <p>{{ retailer.address }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

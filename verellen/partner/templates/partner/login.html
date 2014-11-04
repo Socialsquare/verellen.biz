@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Retailers{% endblock %}
+
+{% block content %}
+    <form action="{% url 'partner.login_form' %}" method="post">
+        {% csrf_token %}
+        Customer number: <input type="text" name="customer_number">
+        <br>
+        Password: <input type="password" name="password">
+        <br>
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}

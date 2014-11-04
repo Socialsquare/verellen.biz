@@ -2,15 +2,29 @@
 <html lang="en">
     <head>
         <title>Verellen - {% block title %}{% endblock %}</title>
+        <style>
+            .nav li { display: inline }
+        </style>
     </head>
     <body>
         <h1>Verellen</h1>
-        <ul>
+
+        <ul class="nav">
             <li><a href="{% url 'product.index' %}">PRODUCTS</a></li>
             <li><a href="/about">ABOUT</a></li>
             <li><a href="{% url 'retailer.index' %}">RETAILERS</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'partner.logout' %}">LOG OUT</a></li>
+            {% else %}
+                <li><a href="{% url 'partner.login' %}">LOG IN</a></li>
+            {% endif %}
         </ul>
+
         <hr>
         {% block content %}{% endblock %}
+
+        <hr>
+
+        Footer
     </body>
 </html>

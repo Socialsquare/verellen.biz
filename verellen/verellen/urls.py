@@ -8,9 +8,10 @@ admin.autodiscover()
 from products import views as product_views
 from retailers import views as retailer_views
 from partner import views as partner_views
+from content import views as content_views
 
 urlpatterns = patterns('',
-    #url(r'^$', home.index, name='home.index'),
+    url(r'^$', content_views.home, name='content.home'),
 
     url(r'^retailers/$', retailer_views.index, name='retailer.index'),
     url(r'^retailers/(?P<address>.+)$', retailer_views.search, name='retailer.search'),
@@ -22,6 +23,8 @@ urlpatterns = patterns('',
 
     url(r'^products/$', product_views.index, name='product.index'),
     url(r'^product/(?P<product_id>\d+)$', product_views.detail, name='product.detail'),
+
+    url(r'^about/$', content_views.about, name='content.about'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,4 +1,6 @@
-from content.models import FooterContent
+import models
+
+from utils import get_content_model
 
 def content(request):
-    return { 'footer_content': FooterContent.objects.all()[0] }
+    return { 'footer_content': get_content_model(models.FooterContent) }

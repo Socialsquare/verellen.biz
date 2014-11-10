@@ -1,7 +1,11 @@
 @import "bootstrap-3.3.0/less/bootstrap.less";
 
+@verellen-dark: #2E2E2E;
 
 @navbar-item-spacing: 50px;
+
+@footer-top-height: 200px;
+@footer-bottom-height: 50px;
 
 .navbar-verellen {
     .navbar-default();
@@ -11,21 +15,53 @@
     ul.nav li a {
         padding-left: @navbar-item-spacing;
         padding-right: @navbar-item-spacing;
+
+        font-weight: bold;
     }
 }
 
 /* Main content */
 .content {
     background-color: #F2F2F2;
+
+    padding-bottom: 30px;
 }
 
 /* Footer */
 .footer-top {
-    background-color: #CCC;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    min-height: @footer-top-height;
+
+    background-color: #E1E1E2;
+
+    .col-header {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .col-header-sep {
+        width: 20px;
+        height: 10px;
+
+        border-bottom: 2px solid @verellen-dark;
+
+        margin-bottom: 10px;
+    }
+
+    .newsletter {
+        form input {
+            margin-right: 0px;
+        }
+    }
+
+    .logo img {
+        float: right;
+    }
 }
 
-
-@footer-bottom-height: 50px;
 .footer-bottom {
 
     height: @footer-bottom-height;

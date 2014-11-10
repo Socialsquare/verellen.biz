@@ -6411,14 +6411,36 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .navbar-verellen ul.nav li a {
   padding-left: 50px;
   padding-right: 50px;
+  font-weight: bold;
 }
 /* Main content */
 .content {
   background-color: #F2F2F2;
+  padding-bottom: 30px;
 }
 /* Footer */
 .footer-top {
-  background-color: #CCC;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  min-height: 200px;
+  background-color: #E1E1E2;
+}
+.footer-top .col-header {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.footer-top .col-header-sep {
+  width: 20px;
+  height: 10px;
+  border-bottom: 2px solid #2e2e2e;
+  margin-bottom: 10px;
+}
+.footer-top .newsletter form input {
+  margin-right: 0px;
+}
+.footer-top .logo img {
+  float: right;
 }
 .footer-bottom {
   height: 50px;

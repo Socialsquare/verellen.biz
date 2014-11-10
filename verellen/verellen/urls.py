@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
@@ -20,8 +22,6 @@ urlpatterns = patterns('',
 
     url(r'^products/$', product_views.index, name='product.index'),
     url(r'^product/(?P<product_id>\d+)$', product_views.detail, name='product.detail'),
-
-    # flatpages
 
     url(r'^admin/', include(admin.site.urls)),
 )

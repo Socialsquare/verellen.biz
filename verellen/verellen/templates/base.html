@@ -1,32 +1,75 @@
+{% load staticfiles  %}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
     <head>
         <title>Verellen - {% block title %}{% endblock %}</title>
-        <style>
-            .nav li { display: inline }
-        </style>
+
+        <link href="{% static 'verellen/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'verellen/css/global.css' %}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1>Verellen</h1>
+        <div class="container-fluid">
+            <div class="row-fluid header">
+                <div class="container">
+                    <div class="row inner">
+                        <div class="col-xs-2">
+                            <img src="{% static 'verellen/images/logo.png' %}">
+                        </div>
+                        <div class="col-xs-10">
+                            <ul class="menu">
+                                <li><a href="{% url 'product.index' %}">PRODUCTS</a></li>
+                                <li><a href="/about">ABOUT</a></li>
+                                <li><a href="{% url 'retailer.index' %}">RETAILERS</a></li>
+                                {% if user.is_authenticated %}
+                                    <li><a href="{% url 'partner.index' %}">PARTNER</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'partner.login' %}">LOG IN</a></li>
+                                {% endif %}
 
-        <ul class="nav">
-            <li><a href="{% url 'product.index' %}">PRODUCTS</a></li>
-            <li><a href="/about">ABOUT</a></li>
-            <li><a href="{% url 'retailer.index' %}">RETAILERS</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'partner.logout' %}">LOG OUT</a></li>
-            {% else %}
-                <li><a href="{% url 'partner.login' %}">LOG IN</a></li>
-            {% endif %}
-        </ul>
+                                <!-- {% if user.is_authenticated %} -->
+                                <!--     <li class="logout"> -->
+                                <!--         <a href="{% url 'partner.logout' %}">LOG OUT</a> -->
+                                <!--     </li> -->
+                                <!-- {% endif %} -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <hr>
-        {% block content %}{% endblock %}
 
-        <hr>
+            <div class="row-fluid content {% block namespace %}{% endblock %}">
+                <div class="container">
+                    <div class="row inner">
+                        <div class="col-xs-12">
+                            {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        {{ footer_content.contact_header }}
-        <br>
-        {{ footer_content.contact_body }}
+            <div class="row-fluid footer-top">
+                <div class="container">
+                    <div class="row inner">
+                        <div class="col-xs-12">
+                            {{ footer_content.contact_header }}
+                            <br>
+                            {{ footer_content.contact_body }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid footer-bottom">
+                <div class="container">
+                    <div class="row inner">
+                        <div class="col-xs-12">
+                            &copy; 2014 Verellen, Inc. All rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

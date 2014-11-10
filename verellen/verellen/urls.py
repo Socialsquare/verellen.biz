@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^partner/login_form$', partner_views.login_form, name='partner.login_form'),
     url(r'^partner/index/$', partner_views.index, name='partner.index'),
 
-    url(r'^products/$', product_views.index, name='product.index'),
+    url(r'^products/$', product_views.list, name='product.list'),
     url(r'^product/(?P<product_id>\d+)$', product_views.detail, name='product.detail'),
 
     url(r'^about/$', content_views.about, name='content.about'),

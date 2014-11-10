@@ -3,9 +3,9 @@ from django.shortcuts import render
 
 from products.models import Product
 
-def index(request):
+def list(request):
     products = Product.objects.all().order_by('price')
-    return render(request, 'products/index.html', { 'products': products })
+    return render(request, 'products/list.html', { 'products': products })
 
 def detail(request, product_id):
     try:

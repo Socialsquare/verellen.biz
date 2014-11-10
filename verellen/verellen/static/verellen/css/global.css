@@ -6451,7 +6451,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .footer-bottom .inner {
   text-align: center;
 }
-.products .product-grid li {
-  float: left;
-  bullet-style: none;
+.products .row {
+  padding-top: 30px;
+}
+.products .product-thumbnail {
+  margin-bottom: 30px;
 }

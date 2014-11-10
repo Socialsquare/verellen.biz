@@ -29,7 +29,7 @@
 
                 <div class="collapse navbar-collapse" id="verellen-main-nav">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'product.index' %}">PRODUCTS</a></li>
+                        <li><a href="{% url 'product.list' %}">PRODUCTS</a></li>
                         <li><a href="/about">ABOUT</a></li>
                         <li><a href="{% url 'retailer.index' %}">RETAILERS</a></li>
                         {% if user.is_authenticated %}
@@ -44,11 +44,7 @@
 
         <div class="row-fluid content {% block namespace %}{% endblock %}">
             <div class="container">
-                <div class="row inner">
-                    <div class="col-xs-12">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
+                {% block content %}{% endblock %}
             </div>
         </div>
 

@@ -1,3 +1,8 @@
+# bootstrap things
+docs/
+*/bootstrap-3.3.0
+*/bootstrap-3.3.0/grunt/
+
 # dev db
 verellen/db.sqlite3
 
@@ -55,3 +60,23 @@ docs/_build/
 
 # PyBuilder
 target/
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/test-infra/
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/grunt/
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/js/tests/
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/less/.csscomb.json
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/less/.csslintrc
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/package.json
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/.editorconfig
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/.gitattributes
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/.gitignore
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/.travis.yml
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/CNAME
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/CONTRIBUTING.md
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/Gruntfile.js
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/LICENSE
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/README.md
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/_config.yml
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/bower.json
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/composer.json
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/js/.jscsrc
+/verellen/verellen/static/verellen/css/bootstrap-3.3.0/js/.jshintrc

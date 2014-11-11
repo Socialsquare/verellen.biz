@@ -4,7 +4,7 @@ from django.shortcuts import render
 from products.models import Product
 
 def list(request):
-    products = Product.objects.all().order_by('price')
+    products = Product.objects.all()
     return render(request, 'products/list.html', { 'products': products })
 
 def detail(request, product_id):

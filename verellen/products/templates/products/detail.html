@@ -4,5 +4,17 @@
 
 {% block content %}
     <h2>{{ product.name }}</h2>
-    <p>Cost: <strong>{{ product.price }}</strong></p>
+    <p>{{ product.description | safe }}</p>
+
+    <h3>Dimensions</h3>
+    <p>{{ product.dimensions | safe }}</p>
+    <ul>
+        {% for image in product.images.all %}
+        <li>
+            <a href="{{ image.image_file.url }}">
+                <img src="{{ image.image_file.url }}">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock content %}

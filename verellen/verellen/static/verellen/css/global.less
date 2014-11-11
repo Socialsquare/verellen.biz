@@ -12,11 +12,26 @@
 
     border: none;
 
-    ul.nav li a {
-        padding-left: @navbar-item-spacing;
-        padding-right: @navbar-item-spacing;
+    ul.nav li {
+        &.current .marker {
+            position: absolute;
 
-        font-weight: bold;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -10px;
+
+            width: 20px;
+            height: 10px;
+
+            border-bottom: 2px solid @verellen-dark;
+        }
+
+        a {
+            padding-left: @navbar-item-spacing;
+            padding-right: @navbar-item-spacing;
+
+            font-weight: bold;
+        }
     }
 }
 

@@ -1,4 +1,5 @@
 {% load staticfiles  %}
+{% load navigation %}
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
@@ -29,13 +30,28 @@
 
                 <div class="collapse navbar-collapse" id="verellen-main-nav">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'product.list' %}">PRODUCTS</a></li>
-                        <li><a href="/about">ABOUT</a></li>
-                        <li><a href="{% url 'retailer.index' %}">RETAILERS</a></li>
+                        <li class="{% current 'product.list' %}">
+                            <a href="{% url 'product.list' %}">PRODUCTS</a>
+                            <div class="marker"></div>
+                        </li>
+                        <li class="{% current 'content.about' %}">
+                            <a href="{% url 'content.about' %}">ABOUT</a>
+                            <div class="marker"></div>
+                        </li>
+                        <li class="{% current 'retailer.index' %}">
+                            <a href="{% url 'retailer.index' %}">RETAILERS</a>
+                            <div class="marker"></div>
+                        </li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'partner.index' %}">PARTNER</a></li>
+                        <li class="{% current 'partner.index' %}">
+                            <a href="{% url 'partner.index' %}">PARTNER</a>
+                            <div class="marker"></div>
+                        </li>
                         {% else %}
-                        <li><a href="{% url 'partner.login' %}">LOG IN</a></li>
+                        <li class="{% current 'partner.login' %}">
+                            <a href="{% url 'partner.login' %}">LOG IN</a>
+                            <div class="marker"></div>
+                        </li>
                         {% endif %}
                     </ul>
                 </div>

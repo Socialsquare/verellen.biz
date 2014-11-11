@@ -6408,6 +6408,15 @@ fieldset[disabled] .navbar-verellen .btn-link:hover,
 fieldset[disabled] .navbar-verellen .btn-link:focus {
   color: #cccccc;
 }
+.navbar-verellen ul.nav li.current .marker {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -10px;
+  width: 20px;
+  height: 10px;
+  border-bottom: 2px solid #2e2e2e;
+}
 .navbar-verellen ul.nav li a {
   padding-left: 50px;
   padding-right: 50px;

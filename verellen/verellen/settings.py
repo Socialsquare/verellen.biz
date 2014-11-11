@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'south',
+    'tinymce',
 
     'verellen',
     'products',
@@ -115,3 +116,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "media"),
     '/home/simon/dev/bitb/verellen/app/verellen/verellen/static',
 )
+
+# TinyMCE config
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "paste,searchreplace",
+    'width': 700,
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}

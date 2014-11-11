@@ -27,4 +27,5 @@ urlpatterns = patterns('',
     url(r'^about/$', content_views.about, name='content.about'),
 
     url(r'^admin/', include(admin.site.urls)),
+    (r'^tinymce/', include('tinymce.urls')),
 )

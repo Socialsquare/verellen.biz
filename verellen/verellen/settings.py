@@ -44,6 +44,7 @@ INSTALLED_APPS = (
 
     'south',
     'tinymce',
+    'storages',
 
     'verellen',
     'products',
@@ -113,7 +114,6 @@ MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "media"),
     '/home/simon/dev/bitb/verellen/app/verellen/verellen/static',
 )
 
@@ -124,3 +124,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

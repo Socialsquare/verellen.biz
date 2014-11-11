@@ -1,3 +1,6 @@
+# django settings
+local_settings.py
+
 # bootstrap things
 docs/
 */bootstrap-3.3.0

@@ -1,7 +1,7 @@
 from django.db import models
 
 class Image(models.Model):
-    image_file = models.ImageField(upload_to='media/')
+    image_file = models.ImageField(upload_to='products')
     description = models.TextField(null=True)
 
     def __unicode__(self):

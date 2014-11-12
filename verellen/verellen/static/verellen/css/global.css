@@ -6434,6 +6434,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   min-height: 200px;
   background-color: #E1E1E2;
 }
+.footer-top .left-col {
+  min-height: 200px;
+}
 .footer-top .col-header {
   font-size: 14px;
   font-weight: bold;

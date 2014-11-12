@@ -119,10 +119,12 @@ STATICFILES_DIRS = (
 
 # TinyMCE config
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "paste,searchreplace",
-    'width': 700,
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
+    'theme_advanced_buttons1' : 'bold, italic, underline, fontsizeselect, justifyleft, justifycenter, justifyright, bullist, link, unlink, undo, redo, code',
+    'theme_advanced_buttons2' : '',
+    'theme_advanced_buttons3' : '',
+
+    'theme': 'advanced',
+    'width': 700
 }
 
 try:

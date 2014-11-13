@@ -1,11 +1,11 @@
 from django.contrib import admin
 from products.models import Product, Image
 
-class ProductAdmin(admin.ModelAdmin):
-    fields = ['name', 'description', 'dimensions', 'images']
+class ImageInline(admin.TabularInline):
+    model = Image
 
-class ImageAdmin(admin.ModelAdmin):
-    fields = ['image_file', 'description']
+class ProductAdmin(admin.ModelAdmin):
+    fields = [ 'name', 'description', 'dimensions' ]
+    inlines = (ImageInline,)
 
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Image, ImageAdmin)

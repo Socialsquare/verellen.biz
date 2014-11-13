@@ -8,16 +8,14 @@
 <div class="row">
     {% for image in product.image_set.all %}
     <div class="col-lg-3 col-sm-4 col-xs-6 product-thumbnail">
-        <a href="{% url 'product.detail' product.id %}" >
-            <img src="{{ image.image_file.url }}" class="img-responsive">
-        </a>
+        <img src="{{ image.image_file.url }}" class="img-responsive">
     </div>
     {% endfor %}
 </div>
 
 
 <div class="row">
-    <div class="col-xs-6">
+    <div class="col-sm-6 col-xs-12">
         <h2>{{ product.name }}</h2>
 
         <div class="col-header-sep"></div>
@@ -25,7 +23,7 @@
         <p>{{ product.description | safe }}</p>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-sm-6 col-xs-12">
         <h2>Dimensions</h2>
 
         <div class="col-header-sep"></div>

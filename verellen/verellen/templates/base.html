@@ -27,12 +27,22 @@
 
                 <div class="collapse navbar-collapse" id="verellen-main-nav">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{% current 'product.*' %}">
-                            <a href="{% url 'product.list' %}">
+                        <li class="dropdown {% current 'product.*' %}">
+                            <a href="{% url 'product.list' %}" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ menu_content.products_label }}
                             </a>
+
                             <div class="marker"></div>
+
+                            <ul class="dropdown-menu">
+                                {% for category in product_categories %}
+                                    <li>
+                                        <a href="{% url 'product.list' category.slug %}">{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </li>
+
                         <li class="{% current 'content.about' %}">
                             <a href="{% url 'content.about' %}">
                                 {{ menu_content.about_label }}

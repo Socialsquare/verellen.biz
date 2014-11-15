@@ -25,3 +25,13 @@ class HomeContent(models.Model):
 
     def __unicode__(self):
         return 'Home content'
+
+class MenuContent(models.Model):
+    products_label = models.CharField(max_length=200)
+    about_label = models.CharField(max_length=200)
+    retailers_label = models.CharField(max_length=200)
+    partner_label = models.CharField(max_length=200)
+    login_label = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return 'Menu content'

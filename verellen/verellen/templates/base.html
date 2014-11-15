@@ -28,25 +28,35 @@
                 <div class="collapse navbar-collapse" id="verellen-main-nav">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="{% current 'product.*' %}">
-                            <a href="{% url 'product.list' %}">PRODUCTS</a>
+                            <a href="{% url 'product.list' %}">
+                                {{ menu_content.products_label }}
+                            </a>
                             <div class="marker"></div>
                         </li>
                         <li class="{% current 'content.about' %}">
-                            <a href="{% url 'content.about' %}">ABOUT</a>
+                            <a href="{% url 'content.about' %}">
+                                {{ menu_content.about_label }}
+                            </a>
                             <div class="marker"></div>
                         </li>
                         <li class="{% current 'retailer.index' %}">
-                            <a href="{% url 'retailer.index' %}">RETAILERS</a>
+                            <a href="{% url 'retailer.index' %}">
+                                {{ menu_content.retailers_label }}
+                            </a>
                             <div class="marker"></div>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="{% current 'partner.index' %}">
-                            <a href="{% url 'partner.index' %}">PARTNER</a>
+                            <a href="{% url 'partner.index' %}">
+                                {{ menu_content.partner_label }}
+                            </a>
                             <div class="marker"></div>
                         </li>
                         {% else %}
                         <li class="{% current 'partner.login' %}">
-                            <a href="{% url 'partner.login' %}">LOG IN</a>
+                            <a href="{% url 'partner.login' %}">
+                                {{ menu_content.login_label }}
+                            </a>
                             <div class="marker"></div>
                         </li>
                         {% endif %}

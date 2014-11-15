@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^partner/index/$', partner_views.index, name='partner.index'),
 
     url(r'^products/$', product_views.list, name='product.list'),
+    url(r'^products/(?P<category_slug>.*)$', product_views.list, name='product.list'),
     url(r'^product/(?P<product_id>\d+)$', product_views.detail, name='product.detail'),
 
     url(r'^about/$', content_views.about, name='content.about'),

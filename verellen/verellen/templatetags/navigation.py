@@ -1,6 +1,7 @@
 from django import template
 from django.core import urlresolvers
 
+import re
 
 register = template.Library()
 
@@ -17,7 +18,8 @@ def current_url_equals(context, url_name, **kwargs):
         resolved = urlresolvers.resolve(context.get('request').path)
     except:
         pass
-    matches = resolved and resolved.url_name == url_name
+    pattern = re.compile(url_name)
+    matches = resolved and pattern.match(resolved.url_name)
     if matches and kwargs:
         for key in kwargs:
             kwarg = kwargs.get(key)

@@ -24,7 +24,6 @@ SECRET_KEY = '&pb13g0lcs(i$=&6928+ey_z#v4#@dz@4i8l2#5kx%gf@dt*#u'
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 TEMPLATE_DIRS = (
@@ -32,6 +31,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'grappelli.dashboard',
     'grappelli',
 
     'django.contrib.admin',
@@ -102,6 +102,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# Grappelli
+GRAPPELLI_ADMIN_TITLE = "Verellen administration"
+GRAPPELLI_SWITCH_USER = True
+GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/

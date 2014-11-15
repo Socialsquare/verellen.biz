@@ -26,6 +26,9 @@ urlpatterns = patterns('',
 
     url(r'^about/$', content_views.about, name='content.about'),
 
+    url(r'^tinymce/', include('tinymce.urls')),
+
+    # administration
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    (r'^tinymce/', include('tinymce.urls')),
 )

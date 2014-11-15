@@ -8,8 +8,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import logging
 import os
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_ID = 1
@@ -19,11 +21,6 @@ SITE_ID = 1
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&pb13g0lcs(i$=&6928+ey_z#v4#@dz@4i8l2#5kx%gf@dt*#u'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -35,6 +32,8 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'grappelli',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +44,7 @@ INSTALLED_APPS = (
     'south',
     'tinymce',
     'storages',
+    'thumbnail',
 
     'verellen',
     'products',
@@ -126,6 +126,30 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme': 'advanced',
     'width': 700
 }
+
+# sorl thumnail config
+THUMBNAIL_OPTIONS_DICT = {
+    'small': {
+        'geometry': '350x300',
+        'crop': 'center'
+    }
+}
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     # 'filters': {
+#     #     'require_debug_false': {
+#     #         '()': 'django.utils.log.RequireDebugFalse'
+#     #         }
+#     #     },
+#     'loggers': {
+#         'django.request': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#     }
+# }
 
 try:
     from local_settings import *

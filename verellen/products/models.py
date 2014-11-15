@@ -5,10 +5,18 @@ from sorl import thumbnail
 from thumbnail.models import AsyncThumbnailMixin
 #AsyncThumbnailMixin,
 
+class Category(models.Model):
+    name = models.CharField(max_length = 200);
+
+    def __unicode__(self):
+        return self.name
+
 class Product(models.Model):
     name = models.CharField(max_length = 200)
     description = HTMLField()
     dimensions = HTMLField()
+
+    category = models.ForeignKey(Category)
 
     # TODO: mark this from the admin
     @property

@@ -15,6 +15,7 @@
     border: none;
 
     ul.navbar-nav li {
+
         &.current .marker {
             position: absolute;
 
@@ -26,6 +27,13 @@
             height: 10px;
 
             border-bottom: 2px solid @verellen-dark;
+
+            // For the collapsed mode
+            @media (max-width: @screen-md) {
+                left: @navbar-item-spacing;
+                margin-left: 0;
+                top: 25px;
+            }
         }
 
         a {

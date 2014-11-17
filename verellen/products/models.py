@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelChoiceField
 from tinymce.models import HTMLField
 
 from sorl import thumbnail
@@ -20,12 +21,8 @@ class Product(models.Model):
     name = models.CharField(max_length = 200)
     description = HTMLField()
     dimensions = HTMLField()
-
+    main_image = models.ForeignKey('Image', related_name='+', null=True)
     category = models.ForeignKey(Category)
-
-    # TODO: mark this from the admin
-    def main_image(self):
-        return self.image_set.first()
 
     def number_of_images(self):
         return self.image_set.all().count()

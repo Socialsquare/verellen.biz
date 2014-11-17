@@ -6,12 +6,13 @@ class CategoryInline(admin.TabularInline):
 
 class ImageInline(admin.TabularInline):
     model = Image
+    readonly_fields = [ 'image_tag' ]
 
 class ProductAdmin(admin.ModelAdmin):
     fields = [ 'name', 'category', 'description', 'dimensions' ]
     inlines = [ImageInline]
 
-    list_display = [ 'name', 'category' ]
+    list_display = [ 'name', 'category', 'number_of_images' ]
     list_editable = [ 'category' ]
 
 class CategoryAdmin(admin.ModelAdmin):

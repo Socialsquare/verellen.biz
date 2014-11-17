@@ -27,9 +27,11 @@ class Product(models.Model):
     category = models.ForeignKey(Category)
 
     # TODO: mark this from the admin
-    @property
     def main_image(self):
         return self.image_set.first()
+
+    def number_of_images(self):
+        return self.image_set.all().count()
 
     def __unicode__(self):
         return self.name
@@ -39,6 +41,11 @@ class Image(models.Model):
     image_file = models.ImageField(upload_to='products')
     product = models.ForeignKey(Product)
     description = models.TextField(null=True)
+
+    def image_tag(self):
+        return u'<img width="110" height="110" src="%s" />' % self.image_file.url
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
     def __unicode__(self):
         if self.description:

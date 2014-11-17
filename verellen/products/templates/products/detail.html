@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block title %} {{product.name}} {% endblock %}
 {% block namespace %} product-detail {% endblock %}
@@ -7,9 +8,13 @@
 
 <div class="row">
     {% for image in product.image_set.all %}
-    <div class="col-lg-3 col-sm-4 col-xs-6 product-thumbnail">
-        <img src="{{ image.image_file.url }}" class="img-responsive">
-    </div>
+        {% thumbnail image.image_file "350x300" crop="center" as thumb %}
+            <div class="col-lg-3 col-sm-4 col-xs-6 product-thumbnail">
+                <a href="{{ image.image_file.url }}">
+                    <img src="{{ thumb.url }}" class="img-responsive">
+                </a>
+            </div>
+        {% endthumbnail %}
     {% endfor %}
 </div>
 

@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'south',
     'tinymce',
     'storages',
-    'thumbnail',
+    'sorl.thumbnail',
 
     'verellen',
     'products',
@@ -133,12 +133,7 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 # sorl thumnail config
-THUMBNAIL_OPTIONS_DICT = {
-    'small': {
-        'geometry': '350x300',
-        'crop': 'center'
-    }
-}
+THUMBNAIL_PREFIX = 'thumbnail_cache/'
 
 # LOGGING = {
 #     'version': 1,

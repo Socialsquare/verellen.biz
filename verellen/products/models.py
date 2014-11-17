@@ -4,9 +4,6 @@ from tinymce.models import HTMLField
 from sorl import thumbnail
 from django.template.defaultfilters import slugify
 
-from thumbnail.models import AsyncThumbnailMixin
-#AsyncThumbnailMixin,
-
 class Category(models.Model):
     name = models.CharField(max_length = 200)
     slug = models.SlugField(unique = True)
@@ -37,8 +34,7 @@ class Product(models.Model):
         return self.name
 
 class Image(models.Model):
-    #image_field_name = 'image_file'
-    image_file = models.ImageField(upload_to='products')
+    image_file = thumbnail.ImageField(upload_to='products')
     product = models.ForeignKey(Product)
     description = models.TextField(null=True)
 

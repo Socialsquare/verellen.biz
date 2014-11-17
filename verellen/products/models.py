@@ -21,8 +21,14 @@ class Product(models.Model):
     name = models.CharField(max_length = 200)
     description = HTMLField()
     dimensions = HTMLField()
-    main_image = models.ForeignKey('Image', related_name='+', null=True)
+    main_image = models.ForeignKey('Image', related_name='+', blank=True, null=True)
     category = models.ForeignKey(Category)
+
+    def get_main_image(self):
+        if not self.main_image is None:
+            return self.main_image
+        else:
+            return self.image_set.first()
 
     def number_of_images(self):
         return self.image_set.all().count()

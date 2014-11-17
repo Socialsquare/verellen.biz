@@ -2,7 +2,7 @@ from django import forms
 from products.models import Product, Image
 
 class ProductAdminForm(forms.ModelForm):
-    main_image = forms.ModelChoiceField(queryset=None)
+    main_image = forms.ModelChoiceField(queryset=None, required=False)
 
     def __init__(self, *args, **kwargs):
         super(ProductAdminForm, self).__init__(*args, **kwargs)

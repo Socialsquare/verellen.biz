@@ -4,12 +4,13 @@ from django.shortcuts import render
 from products.models import Product, Category
 
 def list(request, category_slug=None):
-    if not category_slug is None:
-        products = Product.objects.filter(category__slug=category_slug)
+    category = Category.objects.filter(slug = category_slug).first()
+    if category:
+        products = Product.objects.filter(category = category)
     else:
         products = Product.objects.all()
 
-    return render(request, 'products/list.html', { 'products': products })
+    return render(request, 'products/list.html', { 'products': products, 'category': category })
 
 def detail(request, product_id):
     try:

@@ -1,5 +1,8 @@
 from django.db import models
+
 from tinymce.models import HTMLField
+
+from products.models import Product
 
 class FooterContent(models.Model):
     contact_header = models.CharField(max_length=200)
@@ -22,6 +25,8 @@ class AboutContent(models.Model):
 
 class HomeContent(models.Model):
     title = models.CharField(max_length=200)
+
+    products = models.ManyToManyField(Product)
 
     def __unicode__(self):
         return 'Home content'

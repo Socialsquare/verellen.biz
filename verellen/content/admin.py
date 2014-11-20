@@ -23,7 +23,8 @@ class AboutContentAdmin(admin.ModelAdmin):
     fields = [ 'header', 'body' ]
 
 class HomeContentAdmin(admin.ModelAdmin):
-    fields = [ 'title' ]
+    fields = [ 'title', 'products' ]
+    filter_horizontal = ['products' ]
 
 admin.site.register(FooterContent, FooterContentAdmin)
 admin.site.register(AboutContent, AboutContentAdmin)

@@ -9,6 +9,9 @@ class CategoryInline(admin.TabularInline):
 class ImageInline(AdminImageMixin, admin.TabularInline):
     model = Image
 
+class ProductInline(admin.TabularInline):
+    model = Product
+
 class ProductAdmin(admin.ModelAdmin):
     fields = [ 'name', 'category', 'description', 'dimensions', 'main_image' ]
     inlines = [ ImageInline ]

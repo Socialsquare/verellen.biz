@@ -1,9 +1,9 @@
 from django.db import models
 from django.forms import ModelChoiceField
-from tinymce.models import HTMLField
-
-from sorl import thumbnail
 from django.template.defaultfilters import slugify
+
+from tinymce.models import HTMLField
+from sorl import thumbnail
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)

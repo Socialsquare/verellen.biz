@@ -1,0 +1,42 @@
+@navbar-item-spacing: 50px;
+
+.navbar-verellen {
+    .navbar-default();
+
+    border: none;
+
+    ul.navbar-nav li {
+
+        &.current .marker {
+            position: absolute;
+
+            bottom: 30px;
+            left: 50%;
+            margin-left: -10px;
+
+            width: 20px;
+            height: 10px;
+
+            border-bottom: 2px solid @verellen-dark;
+
+            // For the collapsed mode
+            @media (max-width: @screen-md) {
+                left: @navbar-item-spacing;
+                margin-left: 0;
+                top: 25px;
+            }
+        }
+
+        a {
+            padding-left: @navbar-item-spacing;
+            padding-right: @navbar-item-spacing;
+
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}

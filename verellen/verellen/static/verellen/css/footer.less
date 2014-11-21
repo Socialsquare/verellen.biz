@@ -1,0 +1,63 @@
+@footer-top-height: 220px;
+@footer-bottom-height: 50px;
+@footer-full-height: (@footer-top-height + @footer-bottom-height);
+
+.footer-top {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    min-height: @footer-top-height;
+
+    background-color: #E1E1E2;
+    border-top: 10px solid #B7E3F0;
+
+    .left-col {
+        min-height: 200px;
+    }
+
+    .col-header {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .col-header-sep {
+        width: 20px;
+        height: 10px;
+
+        border-bottom: 2px solid @verellen-dark;
+
+        margin-bottom: 10px;
+    }
+
+    .newsletter {
+        form input {
+            margin-right: 0px;
+        }
+    }
+
+    .logo img {
+        float: right;
+    }
+}
+
+.footer-bottom {
+
+    height: @footer-bottom-height;
+
+    padding-top: ((@footer-bottom-height - @line-height-computed) / 2);
+
+    color: white;
+    background-color: #2E2E2E;
+
+    .inner {
+        text-align: center;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    clear: both;
+}

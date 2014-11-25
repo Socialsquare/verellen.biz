@@ -12,6 +12,11 @@ class Download(models.Model):
     name = models.CharField(max_length=255)
     file = models.FileField(upload_to='downloads')
     partner_group = models.ForeignKey(PartnerGroup, blank=True, null=True)
+
+    def __unicode__(self):
+        return '{0} ({1})'.format(self.name, self.partner_group)
+
+class Tearsheet(Download):
     category = models.ForeignKey(Category, blank=True, null=True)
 
     def __unicode__(self):

@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^$', content_views.home, name='content.home'),
 
     url(r'^retailers/$', retailer_views.index, name='retailer.index'),
-    url(r'^retailers/(?P<address>.+)$', retailer_views.search, name='retailer.search'),
+    url(r'^retailers/(?P<query>.+)$', retailer_views.search, name='retailer.search'),
 
     url(r'^partner/login/$', partner_views.do_login, name='partner.login'),
     url(r'^partner/logout/$', partner_views.do_logout, name='partner.logout'),

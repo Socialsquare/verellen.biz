@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load navigation %}
+
+{% block title %}Partner{% endblock %}
+
+{% block content %}
+
+<h2>{% block partner_title %}Partner area{% endblock %}</h2>
+
+<div class="row">
+
+    <div class="col-xs-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="{% current 'partner.home' 'active' %}">
+                <a href="{% url 'partner.home' %}">Home</a>
+            </li>
+
+            <li role="presentation" class="{% current 'partner.downloads' 'active' section='sales_tools' %}">
+                <a href="{% url 'partner.downloads' 'sales_tools' %}">Sales tools</a>
+            </li>
+
+            <li role="presentation" class="{% current 'partner.downloads' 'active' section='price_lists'%}">
+                <a href="{% url 'partner.downloads' 'price_lists' %}">Price lists</a>
+            </li>
+
+            <li role="presentation" class="{% current 'partner.downloads' 'active' section='tear_sheets' %}">
+                <a href="{% url 'partner.downloads' 'tear_sheets' %}">Tear sheets</a>
+            </li>
+
+            <li role="presentation" class="{% current 'partner.account' 'active' %}">
+                <a href="{% url 'partner.account' %}">Account</a>
+            </li>
+
+            <li role="presentation" class="{% current 'partner.logout' %}">
+                <a href="{% url 'partner.logout' %}">Log out</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-10">
+        {% block partner_content %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

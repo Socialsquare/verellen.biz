@@ -1,0 +1,11 @@
+{% extends 'partner_base.html' %}
+
+{% block title %}Partners - downloads{% endblock %}
+
+{% block partner_content %}
+<ul>
+    {% for download in downloads %}
+        <li><a href="{{ download.file.url }}">{{ download.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

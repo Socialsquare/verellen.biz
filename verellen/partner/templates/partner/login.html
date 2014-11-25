@@ -3,12 +3,37 @@
 {% block title %}Retailers{% endblock %}
 
 {% block content %}
-    <form action="{% url 'partner.login_form' %}" method="post">
-        {% csrf_token %}
-        Customer number: <input type="text" name="customer_number">
-        <br>
-        Password: <input type="password" name="password">
-        <br>
-        <input type="submit" value="Login">
-    </form>
+
+{% if messages %}
+    <div class="row">
+        <div class="col-xs-12">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+<div class="row">
+    <div class="col-xs-4">
+        <h2>Partner log in</h2>
+        <form class="form" role="form" action="{% url 'partner.login_form' %}" method="post">
+            {% csrf_token %}
+
+            <label for="customerNumber" class="sr-only">Customer number</label>
+            <input type="text" id="customerNumber" class="form-control" placeholder="Customer number" required="" autofocus="" name="customer_number">
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

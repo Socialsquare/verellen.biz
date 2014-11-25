@@ -7,7 +7,6 @@ def index(request):
     return render(request, 'retailers/index.html')
 
 def search(request, query):
-    # TODO: safe address
     matches = Retailer.objects.filter(Q(name__contains=query)
                                       | Q(address__contains=query)
                                       | Q(zip_code__contains=query))

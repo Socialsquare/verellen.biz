@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 import logging
 import os
+from django.contrib import messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -150,6 +151,11 @@ THUMBNAIL_PREFIX = 'thumbnail_cache/'
 #         },
 #     }
 # }
+
+# make message tag play along with bootstrap
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 try:
     from local_settings import *

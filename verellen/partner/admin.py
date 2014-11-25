@@ -27,7 +27,7 @@ class UserAdmin(UserAdmin):
     list_display_partner.short_description = "Partner group"
 
 class DownloadAdmin(admin.ModelAdmin):
-    fields = [ 'name', 'file', 'partner_group', 'category' ]
+    fields = [ 'name', 'file', 'partner_group' ]
     list_display = [ 'name', 'partner_group' ]
 
 

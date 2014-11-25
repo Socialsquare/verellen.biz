@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from products.models import Category
 
 class PartnerGroup(models.Model):
     name = models.CharField(max_length=255)
@@ -11,11 +11,15 @@ class PartnerGroup(models.Model):
 class Download(models.Model):
     name = models.CharField(max_length=255)
     file = models.FileField(upload_to='downloads')
-    partner_group = models.ForeignKey(PartnerGroup, blank=False, null=False)
+    partner_group = models.ForeignKey(PartnerGroup, blank=True, null=True)
+    category = models.ForeignKey(Category, blank=True, null=True)
+
+    def __unicode__(self):
+        return '{0} ({1})'.format(self.name, self.partner_group)
 
 class Partner(models.Model):
     user = models.OneToOneField(User)
     group = models.ForeignKey(PartnerGroup, blank=False, null=False)
 
     def __unicode__(self):
-        return "{0} ({1})".format(self.user.username, self.group)
+        return '{0} ({1})'.format(self.user.username, self.group)

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from partner.models import Partner, PartnerGroup
+from partner.models import Partner, PartnerGroup, Download
 
 class UserInline(admin.TabularInline):
     model = User
@@ -26,7 +26,13 @@ class UserAdmin(UserAdmin):
 
     list_display_partner.short_description = "Partner group"
 
+class DownloadAdmin(admin.ModelAdmin):
+    fields = [ 'name', 'file', 'partner_group', 'category' ]
+    list_display = [ 'name', 'partner_group' ]
+
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
 admin.site.register(PartnerGroup, PartnerGroupAdmin)
+admin.site.register(Download, DownloadAdmin)

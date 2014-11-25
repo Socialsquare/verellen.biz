@@ -23,7 +23,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     fields = [ 'name' ]
-
     list_display = [ 'name', 'slug' ]
 
 admin.site.register(Product, ProductAdmin)

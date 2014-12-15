@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from partner.models import Partner, PartnerGroup, Download
+from partner.models import Partner, PartnerGroup, TearSheet, PriceList, SalesTool
 
 class UserInline(admin.TabularInline):
     model = User
@@ -26,13 +26,23 @@ class UserAdmin(UserAdmin):
 
     list_display_partner.short_description = "Partner group"
 
-class DownloadAdmin(admin.ModelAdmin):
+class PriceListAdmin(admin.ModelAdmin):
     fields = [ 'name', 'file', 'partner_group' ]
     list_display = [ 'name', 'partner_group' ]
 
+class TearSheetAdmin(admin.ModelAdmin):
+    fields = [ 'category', 'name', 'file', 'image_file' ]
+    list_display = [ 'name', 'category' ]
+
+class SalesToolAdmin(admin.ModelAdmin):
+    fields = [ 'name', 'file' ]
+    list_display = [ 'name' ]
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
 admin.site.register(PartnerGroup, PartnerGroupAdmin)
-admin.site.register(Download, DownloadAdmin)
+
+admin.site.register(TearSheet, TearSheetAdmin)
+admin.site.register(PriceList, PriceListAdmin)
+admin.site.register(SalesTool, SalesToolAdmin)

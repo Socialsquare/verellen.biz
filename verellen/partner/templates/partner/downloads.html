@@ -15,15 +15,15 @@
         <!--     </tr> -->
         <!-- </thead> -->
         <tbody>
-            {% for download in downloads %}
+            {% for file in files %}
                 <tr>
                     <td>
-                        {{ download.name }}
+                        {{ file.name }}
                     </td>
 
                     <td>
                         <div class="btn-group pull-right">
-                            <a href="{{ download.file.url }}" class="btn btn-default"><span class="glyphicon glyphicon-download"></span> Download</a>
+                            <a href="{{ file.file.url }}" class="btn btn-default"><span class="glyphicon glyphicon-download"></span> Download</a>
                             <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> View</a>
                         </div>
                     </td>

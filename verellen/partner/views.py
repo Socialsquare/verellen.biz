@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from partner.models import Download
+from partner.models import TearSheet, PriceList, SalesTool
 
 def do_login(request):
     return render(request, 'partner/login.html')
@@ -34,10 +34,24 @@ def home(request):
     return render(request, 'partner/home.html')
 
 @login_required(login_url='/partner/login/')
-def downloads(request, section):
-    downloads = Download.objects.all()
+def sales_tools(request):
+    files = SalesTool.objects.all()
     return render(request, 'partner/downloads.html', {
-        'downloads': downloads
+        'files': files
+    })
+
+@login_required(login_url='/partner/login/')
+def price_lists(request):
+    files = PriceList.objects.all()
+    return render(request, 'partner/downloads.html', {
+        'files': files
+    })
+
+@login_required(login_url='/partner/login/')
+def tear_sheets(request):
+    files = TearSheet.objects.all()
+    return render(request, 'partner/downloads.html', {
+        'files': files
     })
 
 @login_required(login_url='/partner/login/')

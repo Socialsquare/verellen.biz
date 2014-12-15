@@ -1,0 +1,38 @@
+{% extends 'partner_base.html' %}
+{% load thumbnail %}
+
+{% block title %}Partners - downloads{% endblock %}
+
+{% block partner_content %}
+<p>Tear sheets for every product by Verellen</p>
+<div class="panel panel-default">
+    <div class="panel-heading">Files</div>
+
+    <table class="table table-hover">
+        <tbody>
+            {% for file in files %}
+                <tr>
+                    <td>
+                        {% thumbnail file.image_file "50x50" crop="center" as thumb %}
+                            <img src="{{ thumb.url }}" />
+                        {% endthumbnail %}
+                    </td>
+
+                    <td>
+                        <h4>{{ file.name }}</h4>
+                    </td>
+
+                    <td>
+                        <div class="btn-group pull-right">
+                            <a href="{{ file.file.url }}" class="btn btn-default"><span class="glyphicon glyphicon-download"></span> Download</a>
+                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> View</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

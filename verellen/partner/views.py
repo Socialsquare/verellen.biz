@@ -50,7 +50,7 @@ def price_lists(request):
 @login_required(login_url='/partner/login/')
 def tear_sheets(request):
     files = TearSheet.objects.all()
-    return render(request, 'partner/downloads.html', {
+    return render(request, 'partner/tear_sheets.html', {
         'files': files
     })
 

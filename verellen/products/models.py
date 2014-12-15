@@ -17,6 +17,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "categories"
+
 class Product(models.Model):
     name = models.CharField(max_length = 200)
     description = HTMLField()

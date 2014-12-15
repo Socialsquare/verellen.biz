@@ -1,12 +1,14 @@
 from django.db import models
 
 from tinymce.models import HTMLField
+from sorl import thumbnail
 
 from products.models import Product
 
 class FooterContent(models.Model):
     contact_header = models.CharField(max_length=200)
-    contact_body = HTMLField()
+    contact_body_left = HTMLField()
+    contact_body_right = HTMLField()
 
     social_header = models.CharField(max_length=200)
     social_body = HTMLField()
@@ -26,10 +28,13 @@ class AboutContent(models.Model):
 class HomeContent(models.Model):
     title = models.CharField(max_length=200)
 
-    products = models.ManyToManyField(Product)
-
     def __unicode__(self):
         return 'Home content'
+
+class CarouselImage(models.Model):
+    image_file = thumbnail.ImageField(upload_to='carousel')
+    title = models.CharField(max_length=200, blank=True, null=True)
+    home_content = models.ForeignKey(HomeContent)
 
 class MenuContent(models.Model):
     products_label = models.CharField(max_length=200)

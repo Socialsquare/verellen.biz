@@ -56,27 +56,13 @@
                             </a>
                             <div class="marker"></div>
                         </li>
+
                         <li class="{% current 'retailer.index' %}">
                             <a href="{% url 'retailer.index' %}">
                                 {{ menu_content.retailers_label }}
                             </a>
                             <div class="marker"></div>
                         </li>
-                        {% if user.is_authenticated %}
-                        <li class="{% current 'partner.home' %}">
-                            <a href="{% url 'partner.home' %}">
-                                {{ menu_content.partner_label }}
-                            </a>
-                            <div class="marker"></div>
-                        </li>
-                        {% else %}
-                        <li class="{% current 'partner.login' %}">
-                            <a href="{% url 'partner.login' %}">
-                                {{ menu_content.login_label }}
-                            </a>
-                            <div class="marker"></div>
-                        </li>
-                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -92,14 +78,17 @@
             <div class="row-fluid footer-top">
                 <div class="container">
                     <div class="row inner">
-                        <div class="col-sm-3 col-xs-6 left-col">
+                        <div class="col-sm-3 col-xs-3 left-col">
                             <span class="col-header">{{ footer_content.contact_header }}</span>
 
                             <div class="col-header-sep"></div>
 
-                            {{ footer_content.contact_body | safe }}
+                            {{ footer_content.contact_body_left | safe }}
                         </div>
 
+                        <div class="col-sm-3 col-xs-3 left-col contact-right">
+                            {{ footer_content.contact_body_right | safe }}
+                        </div>
 
                         <div class="col-sm-3 col-xs-6 left-col">
                             <span class="col-header">{{ footer_content.social_header }}</span>
@@ -109,19 +98,16 @@
                             {{ footer_content.social_body | safe }}
                         </div>
 
-                        <div class="col-sm-4 col-xs-6 newsletter">
-                            <span class="col-header">{{ footer_content.newsletter_header }}</span>
-
-                            <div class="col-header-sep"></div>
-
-                            <form>
-                                <input name="email" type="email"/>
-                                <button>Sign up</button>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-2 col-xs-6 logo">
-                            <img src="{% static 'verellen/images/logo.png' %}">
+                        <div class="col-sm-2 col-xs-6 login">
+                            {% if user.is_authenticated %}
+                                <a class="font-heading" href="{% url 'partner.home' %}">
+                                    {{ menu_content.partner_label }}
+                                </a>
+                            {% else %}
+                                <a class="font-heading" href="{% url 'partner.login' %}">
+                                    {{ menu_content.login_label }}
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -9,24 +9,24 @@
 <div id="product-carousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        {% for product in home_content.products.all %}
+        {% for img in home_content.carouselimage_set.all %}
         <li data-target="#product-carousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
         {% endfor %}
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        {% for product in home_content.products.all %}
-        {% thumbnail product.get_main_image.image_file "1140x600" crop="center" as slide_image %}
-        <div class="item {% if forloop.first %}active{% endif %}">
-            <a href="{% url 'product.detail' product.id %}">
-                <img src="{{ slide_image.url }}" alt="">
-            </a>
-            <div class="carousel-caption">
-                <h3>{{ product.name }}</h3>
-            </div>
-        </div>
-        {% endthumbnail %}
+        {% for img in home_content.carouselimage_set.all %}
+            {% thumbnail img.image_file "1140x600" crop="center" as slide_image %}
+                <div class="item {% if forloop.first %}active{% endif %}">
+                    <a href="{% url 'product.detail' img.id %}">
+                        <img src="{{ slide_image.url }}" alt="">
+                    </a>
+                    <div class="carousel-caption">
+                        <h3>{{ img.name }}</h3>
+                    </div>
+                </div>
+            {% endthumbnail %}
         {% endfor %}
     </div>
 

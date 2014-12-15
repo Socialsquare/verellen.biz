@@ -1,10 +1,11 @@
 from django.contrib import admin
-from content.models import FooterContent, AboutContent, HomeContent, MenuContent
+from content.models import FooterContent, AboutContent, HomeContent, MenuContent, CarouselImage
 
 class FooterContentAdmin(admin.ModelAdmin):
     fields = [
         'contact_header',
-        'contact_body',
+        'contact_body_left',
+        'contact_body_right',
         'social_header',
         'social_body',
         'newsletter_header',
@@ -22,9 +23,13 @@ class MenuContentAdmin(admin.ModelAdmin):
 class AboutContentAdmin(admin.ModelAdmin):
     fields = [ 'header', 'body' ]
 
+class CarouselImageInline(admin.TabularInline):
+    model = CarouselImage
+    fields = [ 'image_file', 'title' ]
+
 class HomeContentAdmin(admin.ModelAdmin):
-    fields = [ 'title', 'products' ]
-    filter_horizontal = ['products' ]
+    fields = [ 'title', ]
+    inlines = [ CarouselImageInline, ]
 
 admin.site.register(FooterContent, FooterContentAdmin)
 admin.site.register(AboutContent, AboutContentAdmin)

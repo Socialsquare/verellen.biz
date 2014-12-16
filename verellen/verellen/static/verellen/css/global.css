@@ -6463,6 +6463,9 @@ fieldset[disabled] .navbar-verellen .btn-link:hover,
 fieldset[disabled] .navbar-verellen .btn-link:focus {
   color: #cccccc;
 }
+.navbar-verellen .navbar-brand {
+  padding: 25px 15px;
+}
 .navbar-verellen ul.navbar-nav li.current .marker {
   position: absolute;
   bottom: 30px;
@@ -6479,7 +6482,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
     top: 25px;
   }
 }
-.navbar-verellen ul.navbar-nav li a {
+.navbar-verellen ul.navbar-nav li .menu-item {
   padding-left: 50px;
   padding-right: 50px;
   font-family: VerellenHeading;
@@ -6487,11 +6490,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   text-transform: uppercase;
 }
 .navbar-verellen .dropdown-menu.category-menu {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  right: initial;
-  left: initial;
-  width: 500px;
+  padding-left: 10px;
   border: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -6500,16 +6499,13 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   background-color: #000;
 }
 .navbar-verellen .dropdown-menu.category-menu .category-item {
-  float: left;
-  margin-bottom: 10px;
-  width: 150px;
+  padding: 5px;
 }
 .navbar-verellen .dropdown-menu.category-menu .category-item a {
-  padding-left: 30px;
-  color: #FFF;
-}
-.navbar-verellen .dropdown:hover .dropdown-menu {
-  display: block;
+  font-family: VerellenHeading;
+  letter-spacing: 1pt;
+  color: white;
+  text-transform: uppercase;
 }
 .footer-top {
   padding-top: 30px;

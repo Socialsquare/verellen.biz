@@ -28,14 +28,14 @@
                     </button>
 
                     <a class="navbar-brand" href="/">
-                        <img src="{% static 'verellen/images/logo.png' %}">
+                        <img src="{% static 'verellen/images/logo_large.png' %}">
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="verellen-main-nav">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown {% current 'product.*' %}">
-                            <a href="{% url 'product.list' %}" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="{% url 'product.list' %}" class="menu-item dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                 {{ menu_content.products_label }}
                             </a>
 
@@ -51,14 +51,14 @@
                         </li>
 
                         <li class="{% current 'content.about' %}">
-                            <a href="{% url 'content.about' %}">
+                            <a href="{% url 'content.about' %}" class="menu-item">
                                 {{ menu_content.about_label }}
                             </a>
                             <div class="marker"></div>
                         </li>
 
                         <li class="{% current 'retailer.index' %}">
-                            <a href="{% url 'retailer.index' %}">
+                            <a href="{% url 'retailer.index' %}" class="menu-item">
                                 {{ menu_content.retailers_label }}
                             </a>
                             <div class="marker"></div>
@@ -98,7 +98,7 @@
                             {{ footer_content.social_body | safe }}
                         </div>
 
-                        <div class="col-sm-2 col-xs-6 login">
+                        <div class="col-sm-2 col-xs-6 pull-right login">
                             {% if user.is_authenticated %}
                                 <a class="font-heading" href="{% url 'partner.home' %}">
                                     {{ menu_content.partner_label }}
@@ -126,6 +126,7 @@
 
         <script src="{% static 'verellen/js/jquery-1.11.1.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'verellen/js/bootstrap-3.3.0.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'verellen/js/bootstrap-hover-dropdown.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'verellen/js/global.js' %}" type="text/javascript"></script>
     </body>
 </html>

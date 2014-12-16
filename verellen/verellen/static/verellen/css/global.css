@@ -6530,8 +6530,29 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   border-bottom: 2px solid #2e2e2e;
   margin-bottom: 10px;
 }
-.footer-top .newsletter form input {
-  margin-right: 0px;
+.footer-top .media-links {
+  padding: 0;
+}
+.footer-top .media-links li {
+  list-style: none;
+  display: inline;
+  margin-right: 5px;
+}
+.footer-top .media-links .social {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  background-image: url(../images/media.png);
+  display: inline-block;
+}
+.footer-top .media-links .social.social-instagram {
+  background-position-x: 0px;
+}
+.footer-top .media-links .social.social-facebook {
+  background-position-x: 18px;
+}
+.footer-top .media-links .social.social-pinterest {
+  background-position-x: 36px;
 }
 .footer-top .contact-right {
   padding-top: 38px;

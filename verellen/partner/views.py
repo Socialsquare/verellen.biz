@@ -36,14 +36,14 @@ def home(request):
 @login_required(login_url='/partner/login/')
 def sales_tools(request):
     files = SalesTool.objects.all()
-    return render(request, 'partner/downloads.html', {
+    return render(request, 'partner/sales_tools.html', {
         'files': files
     })
 
 @login_required(login_url='/partner/login/')
 def price_lists(request):
     files = PriceList.objects.all()
-    return render(request, 'partner/downloads.html', {
+    return render(request, 'partner/price_lists.html', {
         'files': files
     })
 
@@ -56,4 +56,4 @@ def tear_sheets(request):
 
 @login_required(login_url='/partner/login/')
 def account(request):
-    return render(request, 'partner/home.html')
+    return render(request, 'partner/account.html')

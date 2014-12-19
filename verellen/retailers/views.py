@@ -13,5 +13,6 @@ def search(request, query):
 
     return render(request, 'retailers/search.html', {
         'matches': matches,
+        'retailers': Retailer.objects.all(),
         'search_query': query
     })

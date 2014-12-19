@@ -57,3 +57,23 @@ def tear_sheets(request):
 @login_required(login_url='/partner/login/')
 def account(request):
     return render(request, 'partner/account.html')
+
+@login_required(login_url='/partner/login/')
+def account_update(request):
+    current_pass = request.POST['current_pass']
+    new_pass = request.POST['new_pass']
+    new_pass_confirm = request.POST['new_pass_confirm']
+
+    if new_pass != new_pass_confirm:
+        messages.add_message(request, messages.ERROR, 'New passwords do not match')
+        return redirect('/partner/account')
+
+    if authenticate(username=request.user.username, password=current_pass) is not None:
+        messages.add_message(request, messages.SUCCESS, 'Password changed successfully')
+        request.user.set_password(new_pass)
+        request.user.save()
+    else:
+        messages.add_message(request, messages.ERROR, 'Incorrect current password')
+        print("The username and password were incorrect.")
+
+    return redirect('/partner/account')

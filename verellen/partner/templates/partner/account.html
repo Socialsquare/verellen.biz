@@ -3,5 +3,42 @@
 {% block title %}Partners - Account management{% endblock %}
 
 {% block partner_content %}
+
+{% if messages %}
+    <div class="row">
+        <div class="col-xs-12">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
 Edit your account details
+
+<div class="row">
+    <div class="col-xs-4">
+        <form class="form" role="form" action="{% url 'partner.account_update' %}" method="post">
+            {% csrf_token %}
+
+            <label for="currentPassword" class="sr-only">Current password</label>
+            <input type="text" id="currentPassword" class="form-control" placeholder="Current password" required="" autofocus="" name="current_pass">
+
+            <label for="newPassword" class="sr-only">New password</label>
+            <input type="text" id="newPassword" class="form-control" placeholder="New password" required="" autofocus="" name="new_pass">
+
+            <label for="newPasswordConfirm" class="sr-only">Confirm new password</label>
+            <input type="password" id="newPasswordConfirm" class="form-control" placeholder="Confirm new password" required="" name="new_pass_confirm">
+
+            <button class="btn btn-primary btn-block" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

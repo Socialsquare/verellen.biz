@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-sm-4 col-xs-12">
         <h3>Find retailers</h3>
         <form class="form" role="form" action="{% url 'retailer.home' %}" method="get">
             {% csrf_token %}
@@ -34,8 +34,8 @@
         </ul>
     </div>
 
-    <div class="col-sm-6 col-xs-12">
-        <div class="pull-right" id="map" style="height: 400px; width: 500px;"></div>
+    <div class="col-sm-8 col-xs-12">
+        <div class="pull-right" id="map" style="height: 400px; width: 600px;"></div>
     </div>
 </div>
 {% endblock %}
@@ -45,7 +45,7 @@
 <script type="text/javascript">
     var locations = [
       {% for retailer in retailers %}
-         ['{{ retailer.name }}', '{{ retailer.lat }}', '{{ retailer.lng }}'],
+         ['{% spaceless %}{% include "retailers/infobox.html" with retailer=retailer %}{% endspaceless %}', '{{ retailer.lat }}', '{{ retailer.lng }}'],
       {% endfor %}
     ];
 

@@ -8,6 +8,7 @@ class Retailer(models.Model):
     city = models.CharField(max_length = 200)
     state = models.CharField(max_length = 200, blank=True, null=True)
     zip_code = models.CharField(max_length = 200)
+    country = models.CharField(max_length = 200)
     website = models.CharField(max_length = 200)
     phone = models.CharField(max_length = 200)
 

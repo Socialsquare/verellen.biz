@@ -7,6 +7,16 @@
 {% block content %}
 
 <div class="row">
+    {% with product.image_set.all|first as image %}
+        {% thumbnail image.image_file "600x600" crop="center" as thumb %}
+            <div class="col-lg-6 col-xs-12 product-thumbnail">
+                <a href="{{ image.image_file.url }}">
+                    <img src="{{ thumb.url }}" class="img-responsive">
+                </a>
+            </div>
+        {% endthumbnail %}
+    {% endwith %}
+
     {% for image in product.image_set.all %}
         {% thumbnail image.image_file "350x300" crop="center" as thumb %}
             <div class="col-lg-3 col-sm-4 col-xs-6 product-thumbnail">
@@ -27,17 +37,6 @@
 
         <p>{{ product.description | safe }}</p>
     </div>
-
-    <div class="col-sm-6 col-xs-12">
-        <h2>Dimensions</h2>
-
-        <div class="col-header-sep"></div>
-
-        <p>{{ product.dimensions | safe }}</p>
-    </div>
 </div>
 
 {% endblock content %}
-<!-- {-% thumbnail product.main_image.image_file small as im %} -->
-<!-- <img src="{{ im.url }}" class="img-responsive"> -->
-<!-- {-% endthumbnail %} -->

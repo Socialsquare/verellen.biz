@@ -42,7 +42,7 @@ class Product(models.Model):
 class Image(models.Model):
     image_file = thumbnail.ImageField(upload_to='products')
     product = models.ForeignKey(Product)
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
 
     def image_tag(self):
         return u'<img width="110" height="110" src="%s" />' % self.image_file.url

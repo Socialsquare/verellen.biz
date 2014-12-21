@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from utils import get_content_model
+from django.http import HttpResponse
 
 import models
+def robots(request):
+    txt = """User-agent: *
+Disallow: /"""
+    return HttpResponse(txt, content_type='text/plain')
 
 def home(request):
     home_content = get_content_model(models.HomeContent)

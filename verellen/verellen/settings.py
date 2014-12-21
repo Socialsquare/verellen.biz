@@ -105,6 +105,7 @@ USE_TZ = True
 
 
 # Grappelli
+ADMIN_MEDIA_PREFIX = "admin/"
 GRAPPELLI_ADMIN_TITLE = "Verellen administration"
 GRAPPELLI_SWITCH_USER = True
 GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'

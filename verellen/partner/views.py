@@ -57,7 +57,7 @@ def tear_sheets(request):
     matches = files
     showing_all = True
     query = ""
-
+    cat_id = -1
 
     if 'query' in request.GET.keys():
         showing_all = False

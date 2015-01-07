@@ -6,7 +6,31 @@
 {% block partner_content %}
 <p>Tear sheets for every product by Verellen</p>
 <div class="panel panel-default">
-    <div class="panel-heading">Files</div>
+    <div class="panel-heading">
+        Files
+    </div>
+<div class="panel-heading">
+    <form class="form-inline" role="form" action="{% url 'partner.tear_sheets' %}" method="get">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" name="query" id="query"
+                   placeholder="Search query" value="{{ search_query }}">
+        </div>
+
+        <div class="input-group">
+            <select class="form-control" name="category">
+                <option value="-1">Any category</option>
+                {% for cat in categories %}
+                    <option {% if cat.id == search_category %} selected="selected"  {% endif %} value="{{cat.id}}">{{cat.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-filter"></i> Filter
+        </button>
+    </form>
+</div>
 
     <table class="table table-hover">
         <tbody>

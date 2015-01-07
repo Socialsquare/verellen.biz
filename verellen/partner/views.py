@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.db.models import Q
 
 from partner.models import TearSheet, PriceList, SalesTool
+from products.models import Category
 
 def do_login(request):
     return render(request, 'partner/login.html')
@@ -50,8 +52,33 @@ def price_lists(request):
 @login_required(login_url='/partner/login/')
 def tear_sheets(request):
     files = TearSheet.objects.all()
+    #categories = TearSheet.objects.values('category').distinct()
+    categories = Category.objects.all()
+    matches = files
+    showing_all = True
+    query = ""
+
+
+    if 'query' in request.GET.keys():
+        showing_all = False
+        query = request.GET['query']
+        matches = matches.filter(
+            Q(name__contains=query)
+            | Q(category__name__contains=query))
+
+    if 'category' in request.GET.keys():
+        showing_all = False
+        cat_id = request.GET['category']
+        if cat_id != "-1":
+            matches = matches.filter(Q(category__id=cat_id))
+
     return render(request, 'partner/tear_sheets.html', {
-        'files': files
+        'files': matches,
+        'matches': matches,
+        'categories': categories,
+        'search_query': query,
+        'search_category': int(cat_id),
+        'showing_all': showing_all
     })
 
 @login_required(login_url='/partner/login/')

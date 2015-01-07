@@ -6582,6 +6582,24 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .products .product-thumbnail {
   margin-bottom: 30px;
 }
+.products .product-thumbnail .hover {
+  display: none;
+  position: absolute;
+  padding-right: 30px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-clip: content-box;
+  color: white;
+  text-align: center;
+}
+.products .product-thumbnail .hover .name {
+  font-size: 20px;
+  margin-top: 20px;
+}
+.products .product-thumbnail:hover .hover {
+  display: block;
+}
 .product-detail {
   padding-top: 30px;
 }

@@ -4,6 +4,8 @@ from django.template.defaultfilters import slugify
 
 from tinymce.models import HTMLField
 from sorl import thumbnail
+from sorl.thumbnail import get_thumbnail
+
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)
@@ -35,6 +37,16 @@ class Product(models.Model):
 
     def number_of_images(self):
         return self.image_set.all().count()
+
+    def admin_thumbnail(self):
+        img = self.get_main_image()
+        if img:
+            t = get_thumbnail(img.image_file, '70x70', crop='center', quality=99)
+            return u'<img src="%s"/>' % (t.url)
+        else:
+            return u'<img src=""/>'
+    admin_thumbnail.short_description = 'Thumbnail'
+    admin_thumbnail.allow_tags = True
 
     def __unicode__(self):
         return self.name

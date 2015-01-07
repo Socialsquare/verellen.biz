@@ -16,7 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
     fields = [ 'name', 'category', 'description', 'dimensions', 'main_image' ]
     inlines = [ ImageInline ]
 
-    list_display = [ 'name', 'category', 'number_of_images', 'main_image' ]
+    list_display = [ 'admin_thumbnail', 'name', 'category', 'number_of_images', 'main_image' ]
     list_editable = [ 'category' ]
 
     form = ProductAdminForm

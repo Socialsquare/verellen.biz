@@ -20,11 +20,13 @@ def detail(request, product_id):
 
     images = product.image_set.all()
 
-    col1_images = images[:2]
-    col2_images = images[2:4]
+    main_image = images[0]
+    col1_images = images[1:3]
+    col2_images = images[3:5]
 
     return render(request, 'products/detail.html', {
         'product': product,
         'col1_images': col1_images,
-        'col2_images': col2_images
+        'col2_images': col2_images,
+        'main_image': main_image
     })

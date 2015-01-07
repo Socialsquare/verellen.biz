@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="row">
-    {% with product.image_set.all|first as image %}
+    {% with main_image as image %}
         {% thumbnail image.image_file "600x440" crop="center" as thumb %}
             <div class="col-lg-6 col-xs-12 product-thumbnail">
                 <a href="{{ image.image_file.url }}">

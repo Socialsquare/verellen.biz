@@ -22,7 +22,7 @@
                         <div class="name">{{ product.name }}</div>
                     </div>
 
-                    {% thumbnail product.get_main_image.image_file "350x300" crop="center" as thumb %}
+                    {% thumbnail product.get_main_image.image_file "360x300" crop="center" as thumb %}
                         <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-responsive">
                     {% endthumbnail %}
                 </a>

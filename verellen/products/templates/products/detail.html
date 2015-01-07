@@ -8,7 +8,7 @@
 
 <div class="row">
     {% with product.image_set.all|first as image %}
-        {% thumbnail image.image_file "600x600" crop="center" as thumb %}
+        {% thumbnail image.image_file "600x440" crop="center" as thumb %}
             <div class="col-lg-6 col-xs-12 product-thumbnail">
                 <a href="{{ image.image_file.url }}">
                     <img src="{{ thumb.url }}" class="img-responsive">
@@ -17,15 +17,26 @@
         {% endthumbnail %}
     {% endwith %}
 
-    {% for image in product.image_set.all %}
-        {% thumbnail image.image_file "350x300" crop="center" as thumb %}
-            <div class="col-lg-3 col-sm-4 col-xs-6 product-thumbnail">
-                <a href="{{ image.image_file.url }}">
-                    <img src="{{ thumb.url }}" class="img-responsive">
-                </a>
-            </div>
-        {% endthumbnail %}
-    {% endfor %}
+    <div class="col-lg-3 col-sm-4 col-xs-6">
+        {% for image in col1_images %}
+            {% thumbnail image.image_file "300x215" crop="center" as thumb %}
+            <a class="product-thumbnail" href="{{ image.image_file.url }}">
+                <img src="{{ thumb.url }}" class="img-responsive">
+            </a>
+            {% endthumbnail %}
+        {% endfor %}
+    </div>
+
+
+    <div class="col-lg-3 col-sm-4 col-xs-6">
+        {% for image in col2_images %}
+            {% thumbnail image.image_file "300x215" crop="center" as thumb %}
+            <a class="product-thumbnail" href="{{ image.image_file.url }}">
+                <img src="{{ thumb.url }}" class="img-responsive">
+            </a>
+            {% endthumbnail %}
+        {% endfor %}
+    </div>
 </div>
 
 

@@ -18,4 +18,13 @@ def detail(request, product_id):
     except Product.DoesNotExist:
         raise Http404
 
-    return render(request, 'products/detail.html', { 'product': product })
+    images = product.image_set.all()
+
+    col1_images = images[:2]
+    col2_images = images[2:4]
+
+    return render(request, 'products/detail.html', {
+        'product': product,
+        'col1_images': col1_images,
+        'col2_images': col2_images
+    })

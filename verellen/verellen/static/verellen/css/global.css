@@ -6609,6 +6609,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   border-bottom: 2px solid #2e2e2e;
   margin-bottom: 20px;
 }
+.product-detail .product-thumbnail img {
+  margin-bottom: 30px;
+}
 .home {
   padding-bottom: 0px;
 }

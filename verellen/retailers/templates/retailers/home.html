@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}Retailers{% endblock %}
+{% block namespace %} retailers {% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-sm-4 col-xs-12">
-        <h3>Find retailers</h3>
-        <form class="form" role="form" action="{% url 'retailer.home' %}" method="get">
+        <form class="form search-bar" role="form" action="{% url 'retailer.home' %}" method="get">
             {% csrf_token %}
             <div class="input-group">
                 <input type="text" class="form-control" name="query" id="query"
@@ -15,16 +15,9 @@
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
-
-            <!-- <label for="query" class="sr-only">Password</label> -->
-            <!-- <input type="text" id="query" class="form-control" placeholder="Address, city, name, etc." required="" name="query"> -->
-
-            <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button> -->
         </form>
 
-        <!-- <p>Results for '{{ search_query }}'</p> -->
-
-        <ul>
+        <ul class="results">
             {% for retailer in matches %}
             <li>
                 <h5>{{ retailer.name }}</h5>
@@ -35,7 +28,7 @@
     </div>
 
     <div class="col-sm-8 col-xs-12">
-        <div class="pull-right" id="map" style="height: 400px; width: 600px;"></div>
+        <div class="pull-right" id="map" style="height: 400px; width: 753px;"></div>
     </div>
 </div>
 {% endblock %}

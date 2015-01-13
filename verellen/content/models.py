@@ -6,7 +6,8 @@ from sorl import thumbnail
 from products.models import Product
 
 class FooterContent(models.Model):
-    contact_header = models.CharField(max_length=200)
+    contact_header_left = models.CharField(max_length=200)
+    contact_header_right = models.CharField(max_length=200)
     contact_body_left = HTMLField()
     contact_body_right = HTMLField()
 

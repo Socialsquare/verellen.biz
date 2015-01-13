@@ -10,7 +10,7 @@
             display: none;
             position: absolute;
 
-            padding-right: 30px;
+            padding-right: 20px;
             width: 100%;
             height: 100%;
 
@@ -20,8 +20,8 @@
             text-align: center;
 
             .name {
-                font-size: 20px;
-                margin-top: 130px;
+                .font-heading(14px);
+                margin-top: 100px;
             }
         }
 
@@ -44,6 +44,27 @@
     }
 
     .product-thumbnail {
-        img { margin-bottom: 30px; }
+        img { margin-bottom: 20px; }
+    }
+
+    .product-name-tile {
+        position: relative;
+        width: 100%;
+        padding-bottom: 83%; // 300:250 aspect ratio
+
+        margin-bottom: 20px;
+
+        background-color: black;
+        color: white;
+        text-align: center;
+
+        .name {
+            position: absolute;
+            top: 55px;
+            width:100%;
+            text-align:center;
+
+            .font-heading(14px);
+        }
     }
 }

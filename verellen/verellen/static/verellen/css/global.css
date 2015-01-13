@@ -6,11 +6,6 @@
   font-family: VerellenBody;
   src: url(../fonts/ProximaNova-Light.otf);
 }
-.font-heading {
-  font-family: VerellenHeading;
-  letter-spacing: 1pt;
-  text-transform: uppercase;
-}
 .font-body {
   font-family: VerellenBody;
 }
@@ -1390,39 +1385,39 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 740px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 960px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1160px;
   }
 }
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .row {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -2756,8 +2751,8 @@ select[multiple].form-group-lg .form-control {
   min-height: 27px;
 }
 .form-horizontal .form-group {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
@@ -2767,7 +2762,7 @@ select[multiple].form-group-lg .form-control {
   }
 }
 .form-horizontal .has-feedback .form-control-feedback {
-  right: 15px;
+  right: 10px;
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
@@ -3879,8 +3874,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-collapse {
   overflow-x: visible;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   -webkit-overflow-scrolling: touch;
@@ -3925,8 +3920,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -10px;
+  margin-left: -10px;
 }
 @media (min-width: 992px) {
   .container > .navbar-header,
@@ -3970,7 +3965,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 40px 15px;
+  padding: 40px 10px;
   font-size: 18px;
   line-height: 20px;
   height: 100px;
@@ -3985,13 +3980,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 992px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
+    margin-left: -10px;
   }
 }
 .navbar-toggle {
   position: relative;
   float: right;
-  margin-right: 15px;
+  margin-right: 10px;
   padding: 9px 10px;
   margin-top: 33px;
   margin-bottom: 33px;
@@ -4018,7 +4013,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 20px -15px;
+  margin: 20px -10px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -4061,9 +4056,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-form {
-  margin-left: -15px;
-  margin-right: -15px;
-  padding: 10px 15px;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 10px 10px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -4169,8 +4164,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 992px) {
   .navbar-text {
     float: left;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 @media (min-width: 992px) {
@@ -4179,14 +4174,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
-    margin-right: -15px;
+    margin-right: -10px;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
   }
 }
 .navbar-default {
-  background-color: #fffef9;
+  background-color: #ffffff;
   border-color: transparent;
 }
 .navbar-default .navbar-brand {
@@ -6332,26 +6327,8 @@ html {
   min-height: 100%;
 }
 body {
-  background-color: #f2f2f2;
-  filter: none;
-  background: #e3e3e3;
-  /* Old browsers */
-  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UzZTNlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM5JSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2Q0ZDRkNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-  background: -moz-linear-gradient(top, #e3e3e3 0%, #f7f7f7 39%, #d4d4d4 75%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e3e3e3), color-stop(39%, #f7f7f7), color-stop(75%, #d4d4d4));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #e3e3e3 0%, #f7f7f7 39%, #d4d4d4 75%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #e3e3e3 0%, #f7f7f7 39%, #d4d4d4 75%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #e3e3e3 0%, #f7f7f7 39%, #d4d4d4 75%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #e3e3e3 0%, #f7f7f7 39%, #d4d4d4 75%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3e3e3', endColorstr='#d4d4d4', GradientType=0);
-  /* IE6-8 */
+  background-color: #FFF;
+  font-family: VerellenBody;
 }
 h1,
 h2,
@@ -6362,12 +6339,13 @@ h6 {
   font-family: VerellenHeading;
   letter-spacing: 1pt;
   text-transform: uppercase;
+  font-size: 16px;
 }
 .content {
   padding-bottom: 30px;
 }
 .navbar-verellen {
-  background-color: #fffef9;
+  background-color: #ffffff;
   border-color: transparent;
   border: none;
 }
@@ -6470,33 +6448,38 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   position: absolute;
   bottom: 30px;
   left: 50%;
-  margin-left: -10px;
+  margin-left: 30px;
   width: 20px;
   height: 10px;
   border-bottom: 2px solid #2e2e2e;
 }
 @media (max-width: 992px) {
   .navbar-verellen ul.navbar-nav li.current .marker {
-    left: 50px;
+    left: 80px;
     margin-left: 0;
     top: 25px;
   }
 }
 .navbar-verellen ul.navbar-nav li .menu-item {
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 80px;
+  padding-right: 0;
   font-family: VerellenHeading;
   letter-spacing: 1pt;
   text-transform: uppercase;
+  font-size: 16px;
 }
 .navbar-verellen .dropdown-menu.category-menu {
+  right: -15px;
   padding-left: 10px;
-  border: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  background-color: #000;
+  border-top: none;
+  border-left: 1px solid #38474d;
+  border-right: 1px solid #38474d;
+  border-bottom: 1px solid #38474d;
+  background-color: #FFF;
 }
 .navbar-verellen .dropdown-menu.category-menu .category-item {
   padding: 5px;
@@ -6504,15 +6487,14 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .navbar-verellen .dropdown-menu.category-menu .category-item a {
   font-family: VerellenHeading;
   letter-spacing: 1pt;
-  color: white;
+  font-size: 14px;
+  color: #38474d;
   text-transform: uppercase;
 }
 .footer-top {
   padding-top: 30px;
   padding-bottom: 30px;
   min-height: 220px;
-  background-color: #E1E1E2;
-  border-top: 10px solid #B7E3F0;
 }
 .footer-top .left-col {
   min-height: 200px;
@@ -6520,9 +6502,8 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .footer-top .col-header {
   font-family: VerellenHeading;
   letter-spacing: 1pt;
-  font-size: 14px;
-  font-weight: bold;
   text-transform: uppercase;
+  font-size: 14px;
 }
 .footer-top .col-header-sep {
   width: 20px;
@@ -6554,12 +6535,15 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .footer-top .media-links .social.social-pinterest {
   background-position-x: 36px;
 }
-.footer-top .contact-right {
-  padding-top: 38px;
-}
 .footer-top .login a {
   float: right;
-  font-size: 20px;
+  font-family: VerellenHeading;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  font-size: 14px;
+  border-bottom: 2px solid #2e2e2e;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 .footer-bottom {
   height: 50px;
@@ -6585,7 +6569,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .products .product-thumbnail .hover {
   display: none;
   position: absolute;
-  padding-right: 30px;
+  padding-right: 20px;
   width: 100%;
   height: 100%;
   background-color: black;
@@ -6594,8 +6578,11 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   text-align: center;
 }
 .products .product-thumbnail .hover .name {
-  font-size: 20px;
-  margin-top: 130px;
+  font-family: VerellenHeading;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-top: 100px;
 }
 .products .product-thumbnail:hover .hover {
   display: block;
@@ -6610,8 +6597,37 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   margin-bottom: 20px;
 }
 .product-detail .product-thumbnail img {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+.product-detail .product-name-tile {
+  position: relative;
+  width: 100%;
+  padding-bottom: 83%;
+  margin-bottom: 20px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.product-detail .product-name-tile .name {
+  position: absolute;
+  top: 55px;
+  width: 100%;
+  text-align: center;
+  font-family: VerellenHeading;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 .home {
   padding-bottom: 0px;
+}
+.retailers .search-bar {
+  margin-bottom: 40px;
+}
+.retailers .results {
+  padding: 0;
+}
+.retailers .results li {
+  list-style: none;
+  margin-bottom: 30px;
 }

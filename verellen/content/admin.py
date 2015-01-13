@@ -3,7 +3,8 @@ from content.models import FooterContent, AboutContent, HomeContent, MenuContent
 
 class FooterContentAdmin(admin.ModelAdmin):
     fields = [
-        'contact_header',
+        'contact_header_left',
+        'contact_header_right',
         'contact_body_left',
         'contact_body_right',
         'social_header',

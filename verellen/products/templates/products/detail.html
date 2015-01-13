@@ -7,33 +7,39 @@
 {% block content %}
 
 <div class="row">
-    {% with main_image as image %}
-        {% thumbnail image.image_file "600x440" crop="center" as thumb %}
-            <div class="col-lg-6 col-xs-12 product-thumbnail">
-                <a href="{{ image.image_file.url }}">
-                    <img src="{{ thumb.url }}" class="img-responsive">
-                </a>
-            </div>
-        {% endthumbnail %}
-    {% endwith %}
-
-    <div class="col-lg-3 col-sm-4 col-xs-6">
-        {% for image in col1_images %}
-            {% thumbnail image.image_file "300x215" crop="center" as thumb %}
-            <a class="product-thumbnail" href="{{ image.image_file.url }}">
+    {% thumbnail main_image.image_file "800x502" crop="center" as thumb %}
+        <div class="col-lg-8 col-xs-12 product-thumbnail">
+            <a href="{{ image.image_file.url }}">
                 <img src="{{ thumb.url }}" class="img-responsive">
             </a>
+        </div>
+    {% endthumbnail %}
+
+    <div class="col-lg-2 col-xs-6">
+        {% for image in col1_images %}
+            {% if forloop.counter == 2 %}
+                <div class="product-name-tile">
+                    <div class="name">
+                        {{ product.name }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% thumbnail image.image_file "300x250" crop="center" as thumb %}
+                <a class="product-thumbnail" href="{{ image.image_file.url }}">
+                    <img src="{{ thumb.url }}" class="img-responsive">
+                </a>
             {% endthumbnail %}
         {% endfor %}
     </div>
 
 
-    <div class="col-lg-3 col-sm-4 col-xs-6">
+    <div class="col-lg-2 col-xs-6">
         {% for image in col2_images %}
-            {% thumbnail image.image_file "300x215" crop="center" as thumb %}
-            <a class="product-thumbnail" href="{{ image.image_file.url }}">
-                <img src="{{ thumb.url }}" class="img-responsive">
-            </a>
+            {% thumbnail image.image_file "300x250" crop="center" as thumb %}
+                <a class="product-thumbnail" href="{{ image.image_file.url }}">
+                    <img src="{{ thumb.url }}" class="img-responsive">
+                </a>
             {% endthumbnail %}
         {% endfor %}
     </div>

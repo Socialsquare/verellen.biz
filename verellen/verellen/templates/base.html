@@ -78,14 +78,16 @@
                 <div class="container">
                     <div class="row inner">
                         <div class="col-sm-3 col-xs-3 left-col">
-                            <span class="col-header">{{ footer_content.contact_header }}</span>
+                            <span class="col-header">{{ footer_content.contact_header_left }}</span>
 
                             <div class="col-header-sep"></div>
 
                             {{ footer_content.contact_body_left | safe }}
                         </div>
 
-                        <div class="col-sm-3 col-xs-3 left-col contact-right">
+                        <div class="col-sm-3 col-xs-3 left-col">
+                            <span class="col-header">{{ footer_content.contact_header_right }}</span>
+                            <div class="col-header-sep"></div>
                             {{ footer_content.contact_body_right | safe }}
                         </div>
 
@@ -111,7 +113,6 @@
                                     </a>
                                 </li>
                             </ul>
-                            <!-- {{ footer_content.social_body | safe }} -->
                         </div>
 
                         <div class="col-sm-2 col-xs-6 pull-right login">

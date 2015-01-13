@@ -6472,14 +6472,24 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   background-color: #FFF;
 }
 .navbar-verellen .dropdown-menu.category-menu .category-item {
-  padding: 5px;
-}
-.navbar-verellen .dropdown-menu.category-menu .category-item a {
   font-family: VerellenHeading;
   letter-spacing: 1pt;
-  font-size: 14px;
-  color: #38474d;
   text-transform: uppercase;
+  font-size: 14px;
+  padding: 5px 5px 5px 10px;
+  margin-left: -10px;
+  color: #38474d;
+}
+.navbar-verellen .dropdown-menu.category-menu .category-item:hover {
+  background-color: #38474d;
+}
+.navbar-verellen .dropdown-menu.category-menu .category-item:hover a {
+  color: #ffffff;
+}
+.navbar-verellen .dropdown-menu.category-menu .sep {
+  border-bottom: 1px solid #999;
+  height: 1px;
+  width: 140px;
 }
 .footer-top {
   padding-top: 30px;

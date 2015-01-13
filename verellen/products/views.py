@@ -22,7 +22,7 @@ def detail(request, product_id):
 
     main_image = images[0]
     col1_images = images[1:3]
-    col2_images = images[3:5]
+    col2_images = images[3:6]
 
     return render(request, 'products/detail.html', {
         'product': product,

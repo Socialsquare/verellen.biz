@@ -22,7 +22,7 @@ class MenuContentAdmin(admin.ModelAdmin):
     ]
 
 class AboutContentAdmin(admin.ModelAdmin):
-    fields = [ 'header', 'body' ]
+    fields = [ 'body' ]
 
 class CarouselImageInline(admin.TabularInline):
     model = CarouselImage

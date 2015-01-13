@@ -5827,9 +5827,9 @@ button.close {
 .carousel-inner > .item {
   display: none;
   position: relative;
-  -webkit-transition: 0.6s ease-in-out left;
-  -o-transition: 0.6s ease-in-out left;
-  transition: 0.6s ease-in-out left;
+  -webkit-transition: 1.5s ease-in-out left;
+  -o-transition: 1.5s ease-in-out left;
+  transition: 1.5s ease-in-out left;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
@@ -5837,7 +5837,7 @@ button.close {
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
-    transition: transform 0.6s ease-in-out;
+    transition: transform 1.5s ease-in-out;
     backface-visibility: hidden;
     perspective: 1000;
   }
@@ -6549,10 +6549,10 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   text-decoration: none;
 }
 .footer-bottom {
-  height: 50px;
   padding-top: 15px;
+  height: 50px;
   color: white;
-  background-color: #2E2E2E;
+  background-color: #38474d;
 }
 .footer-bottom .inner {
   text-align: center;

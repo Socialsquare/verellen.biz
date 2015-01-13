@@ -6,6 +6,12 @@
 
 {% block content %}
 
+<div class="row back-nav">
+    <div class="col-xs-12">
+        <a href="{% url 'product.list' product.category.slug %}">Back to {{ product.category.name }}</a>
+    </div>
+</div>
+
 <div class="row">
     {% thumbnail main_image.image_file "800x502" crop="center" as thumb %}
         <div class="col-lg-8 col-xs-12 product-thumbnail">

@@ -5,6 +5,12 @@ from sorl import thumbnail
 
 from products.models import Product
 
+class ProductContent(models.Model):
+    product_body = HTMLField(default='')
+
+    def __unicode__(self):
+        return 'Product content'
+
 class FooterContent(models.Model):
     contact_header_left = models.CharField(max_length=200)
     contact_header_right = models.CharField(max_length=200)

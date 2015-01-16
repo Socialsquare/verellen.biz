@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}Products{% endblock %}
+{% block namespace %}products-home{% endblock %}
+
+{% block content %}
+<div class="row">
+  {% for category in categories %}
+    <div class="col-sm-3 col-xs-6 category-thumbnail">
+      <a href="{% url 'product.list' category.slug %}" >
+
+        {% thumbnail category.image "360x300" crop="center" as thumb %}
+          <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-responsive">
+        {% endthumbnail %}
+        <div class="name">{{ category.name }}</div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock content %}

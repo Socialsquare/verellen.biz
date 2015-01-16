@@ -1,5 +1,8 @@
 from django.contrib import admin
-from content.models import FooterContent, AboutContent, HomeContent, MenuContent, CarouselImage
+from content.models import ProductContent, FooterContent, AboutContent, HomeContent, MenuContent, CarouselImage
+
+class ProductContentAdmin(admin.ModelAdmin):
+    fields = [ 'product_body' ]
 
 class FooterContentAdmin(admin.ModelAdmin):
     fields = [
@@ -32,6 +35,7 @@ class HomeContentAdmin(admin.ModelAdmin):
     fields = [ 'title', ]
     inlines = [ CarouselImageInline, ]
 
+admin.site.register(ProductContent, ProductContentAdmin)
 admin.site.register(FooterContent, FooterContentAdmin)
 admin.site.register(AboutContent, AboutContentAdmin)
 admin.site.register(HomeContent, HomeContentAdmin)

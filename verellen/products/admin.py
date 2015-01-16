@@ -22,8 +22,9 @@ class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
 
 class CategoryAdmin(admin.ModelAdmin):
-    fields = [ 'name' ]
-    list_display = [ 'name', 'slug' ]
+    fields = [ 'name', 'image' ]
+    list_display = [ 'name', 'slug', 'order', 'image']
+    list_editable = ['order']
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)

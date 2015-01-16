@@ -3,6 +3,8 @@ from django.shortcuts import render
 
 from products.models import Product, Category
 
+from sorl.thumbnail import get_thumbnail
+
 def list(request, category_slug=None):
     category = Category.objects.filter(slug = category_slug).first()
     if category:
@@ -11,6 +13,11 @@ def list(request, category_slug=None):
         products = Product.objects.all()
 
     return render(request, 'products/list.html', { 'products': products, 'category': category })
+
+def home(request):
+    categories = Category.objects.all()
+
+    return render(request, 'products/home.html', { 'categories': categories })
 
 def detail(request, product_id):
     try:

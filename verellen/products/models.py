@@ -8,8 +8,10 @@ from sorl.thumbnail import get_thumbnail
 
 
 class Category(models.Model):
+    image = thumbnail.ImageField(upload_to='categories', default='default_image')
     name = models.CharField(max_length = 200)
     slug = models.SlugField(unique = True)
+    order = models.IntegerField('Position', default=0)
 
     def save(self, *args, **kwargs):
         if not self.id or not self.slug:

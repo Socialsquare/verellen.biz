@@ -912,7 +912,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #000000;
+  color: black;
   text-decoration: none;
 }
 a:hover,
@@ -3098,7 +3098,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: #000000;
+  color: black;
   font-weight: normal;
   border-radius: 0;
 }
@@ -3695,7 +3695,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #000000;
+  border-color: black;
 }
 .nav .nav-divider {
   height: 1px;
@@ -4412,7 +4412,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: #000000;
+  color: black;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   margin-left: -1px;
@@ -4627,7 +4627,7 @@ a.badge:focus {
 }
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #000000;
+  color: black;
   background-color: #ffffff;
 }
 .nav-pills > li > a > .badge {
@@ -4691,7 +4691,7 @@ a.list-group-item.active > .badge,
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #000000;
+  border-color: black;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -6484,7 +6484,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   background-color: #38474d;
 }
 .navbar-verellen .dropdown-menu.category-menu .category-item:hover a {
-  color: #ffffff;
+  color: white;
 }
 .navbar-verellen .dropdown-menu.category-menu .sep {
   border-bottom: 1px solid #999;
@@ -6562,6 +6562,19 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   bottom: 0;
   width: 100%;
   clear: both;
+}
+.products-home .category-thumbnail {
+  margin-bottom: 30px;
+}
+.products-home .category-thumbnail img {
+  margin-bottom: 10px;
+}
+.products-home .category-thumbnail .name {
+  font-family: VerellenHeading;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: center;
 }
 .products .row {
   padding-top: 30px;

@@ -13,7 +13,7 @@
                 filter: none;
                 }
             </style>
-        <![endif]-->
+            <![endif]-->
     </head>
     <body>
         <nav class="navbar navbar-verellen" role="navigation">
@@ -42,13 +42,13 @@
 
                             <div class="dropdown-menu category-menu">
                                 {% for category in product_categories %}
-                                    <div class="category-item">
-                                        <a href="{% url 'product.list' category.slug %}">{{ category.name }}</a>
-                                    </div>
+                                <div class="category-item">
+                                    <a href="{% url 'product.list' category.slug %}">{{ category.name }}</a>
+                                </div>
 
-                                    {% if not forloop.last %}
-                                        <div class="sep"></div>
-                                    {% endif %}
+                                {% if not forloop.last %}
+                                <div class="sep"></div>
+                                {% endif %}
 
                                 {% endfor %}
                             </div>
@@ -122,13 +122,13 @@
 
                         <div class="col-sm-2 col-xs-6 pull-right login">
                             {% if user.is_authenticated %}
-                                <a class="font-heading" href="{% url 'partner.home' %}">
-                                    {{ menu_content.partner_label }}
-                                </a>
+                            <a class="font-heading" href="{% url 'partner.home' %}">
+                                {{ menu_content.partner_label }}
+                            </a>
                             {% else %}
-                                <a class="font-heading" href="{% url 'partner.login' %}">
-                                    {{ menu_content.login_label }}
-                                </a>
+                            <a class="font-heading" href="{% url 'partner.login' %}">
+                                {{ menu_content.login_label }}
+                            </a>
                             {% endif %}
                         </div>
                     </div>

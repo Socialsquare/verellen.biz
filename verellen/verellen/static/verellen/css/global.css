@@ -6654,3 +6654,16 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   list-style: none;
   margin-bottom: 30px;
 }
+.partner-products .product-thumbnail {
+  margin-bottom: 30px;
+}
+.partner-products .product-thumbnail img {
+  margin-bottom: 10px;
+}
+.partner-products .product-thumbnail .name {
+  font-family: VerellenHeading;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+}

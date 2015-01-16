@@ -6334,6 +6334,13 @@ h6 {
 .content {
   padding-bottom: 30px;
 }
+.back-nav {
+  margin-bottom: 20px;
+}
+.back-nav a {
+  font-family: VerellenBody;
+  text-decoration: underline;
+}
 .navbar-verellen {
   background-color: #ffffff;
   border-color: transparent;
@@ -6605,13 +6612,6 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 }
 .product-detail {
   padding-top: 30px;
-}
-.product-detail .back-nav {
-  margin-bottom: 20px;
-}
-.product-detail .back-nav a {
-  font-family: VerellenBody;
-  text-decoration: underline;
 }
 .product-detail .col-header-sep {
   width: 30px;

@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="verellen-main-nav">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown {% current 'product.*' %}">
-                            <a href="{% url 'partner.tear_sheets' %}" class="menu-item dropdown-toggle disabled" data-toggle="dropdown" data-hover="dropdown">
+                            <a href="{% url 'partner.product_category_list' %}" class="menu-item dropdown-toggle disabled" data-toggle="dropdown" data-hover="dropdown">
                                 Products
                             </a>
 
@@ -43,7 +43,7 @@
                             <div class="dropdown-menu category-menu">
                                 {% for category in product_categories %}
                                 <div class="category-item">
-                                    <a href="{% url 'product.list' category.slug %}">{{ category.name }}</a>
+                                    <a href="{% url 'partner.product_category' category.slug %}">{{ category.name }}</a>
                                 </div>
 
                                 {% if not forloop.last %}

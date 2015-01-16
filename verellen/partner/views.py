@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q
+from django.http import Http404
 
 from partner.models import TearSheet, PriceList, SalesTool
 from products.models import Category
@@ -50,9 +51,27 @@ def price_lists(request):
     })
 
 @login_required(login_url='/partner/login/')
-def tear_sheets(request):
+def product_category(request, category_slug):
+    category = Category.objects.filter(slug = category_slug).first()
+    if not category:
+        raise Http404
+
+    products = TearSheet.objects.filter(category = category)
+
+    return render(request, 'partner/product_category.html', { 'products': products })
+
+@login_required(login_url='/partner/login/')
+def product_detail(request, product_id):
+    try:
+        product = TearSheet.objects.get(pk = product_id)
+    except Product.DoesNotExist:
+        raise Http404
+
+    return render(request, 'partner/product_detail.html', { 'product': product })
+
+@login_required(login_url='/partner/login/')
+def product_category_list(request):
     files = TearSheet.objects.all()
-    #categories = TearSheet.objects.values('category').distinct()
     categories = Category.objects.all()
     matches = files
     showing_all = True
@@ -72,7 +91,7 @@ def tear_sheets(request):
         if cat_id != "-1":
             matches = matches.filter(Q(category__id=cat_id))
 
-    return render(request, 'partner/tear_sheets.html', {
+    return render(request, 'partner/product_category_list.html', {
         'files': matches,
         'matches': matches,
         'categories': categories,

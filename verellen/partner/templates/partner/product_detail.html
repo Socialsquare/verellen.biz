@@ -1,0 +1,20 @@
+{% extends 'partner_base.html' %}
+{% load thumbnail %}
+{% load navigation %}
+
+{% block namespace %}partner-products{% endblock %}
+
+{% block title %}Partners - products{% endblock %}
+{% block partner_content %}
+<div class="row back-nav">
+    <div class="col-xs-12">
+        <a href="{% url 'partner.product_category' product.category.slug %}">Back to {{ product.category.name }}</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-10">
+        {{ product.name }}
+    </div>
+</div>
+{% endblock %}

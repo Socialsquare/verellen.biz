@@ -16,12 +16,16 @@ urlpatterns = patterns('',
 
     url(r'^retailers/$', retailer_views.home, name='retailer.home'),
 
+    url(r'^partner/$', partner_views.home, name='partner.home'),
+    url(r'^partner/home/$', partner_views.home, name='partner.home'),
     url(r'^partner/login/$', partner_views.do_login, name='partner.login'),
     url(r'^partner/logout/$', partner_views.do_logout, name='partner.logout'),
     url(r'^partner/login_form$', partner_views.login_form, name='partner.login_form'),
-    url(r'^partner/home/$', partner_views.home, name='partner.home'),
-    url(r'^partner/$', partner_views.home, name='partner.home'),
-    url(r'^partner/tear_sheets$', partner_views.tear_sheets, name='partner.tear_sheets'),
+
+    url(r'^partner/products$', partner_views.product_category_list, name='partner.product_category_list'),
+    url(r'^partner/products/(?P<category_slug>.*)$', partner_views.product_category, name='partner.product_category'),
+    url(r'^partner/product/(?P<product_id>.*)$', partner_views.product_detail, name='partner.product_detail'),
+
     url(r'^partner/price_lists$', partner_views.price_lists, name='partner.price_lists'),
     url(r'^partner/sales_tools$', partner_views.sales_tools, name='partner.sales_tools'),
     url(r'^partner/account/$', partner_views.account, name='partner.account'),

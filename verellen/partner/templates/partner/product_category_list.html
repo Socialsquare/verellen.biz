@@ -11,8 +11,9 @@
     <div class="col-xs-2">
         <ul class="nav nav-pills nav-stacked">
             {% for category in categories %}
-            <li role="presentation" class="{% current 'partner.tear_sheets' 'active' %}">
-                <a href="{% url 'partner.sales_tools' %}">{{ category.name }}</a>
+            <!-- class="{% current 'partner.tear_sheets' 'active' %}" -->
+            <li role="presentation" >
+                <a href="{% url 'partner.product_category' category.slug %}">{{ category.name }}</a>
             </li>
             {% endfor %}
         </ul>
@@ -20,15 +21,15 @@
 
     <div class="col-xs-10">
         <div class="row">
-            {% for file in files %}
+            {% for category in categories %}
             <div class="col-sm-3 col-xs-6 product-thumbnail">
-                <a href="{% url 'product.list' category.slug %}" >
+                <a href="{% url 'partner.product_category' category.slug %}" >
 
-                    {% thumbnail file.image_file "360x300" crop="center" as thumb %}
+                    {% thumbnail category.image "360x300" crop="center" as thumb %}
                     <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-responsive">
                     {% endthumbnail %}
 
-                    <div class="name">{{ file.name }}</div>
+                    <div class="name">{{ category.name }}</div>
                 </a>
             </div>
             {% endfor %}

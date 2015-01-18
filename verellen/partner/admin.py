@@ -36,7 +36,8 @@ class TearSheetAdmin(admin.ModelAdmin):
 
 class SalesToolAdmin(admin.ModelAdmin):
     fields = [ 'name', 'file' ]
-    list_display = [ 'name' ]
+    list_display = [ 'name', 'file' ]
+    list_editable = [ 'file' ]
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

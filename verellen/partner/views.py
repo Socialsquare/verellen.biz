@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
 
-from partner.models import TearSheet, PriceList, SalesTool
+from partner.models import TearSheet, PriceList, SalesTool, Partner
 from products.models import Category
 
 def do_login(request):
@@ -43,9 +43,25 @@ def sales_tools(request):
         'files': files
     })
 
+def get_partner(user):
+    p = Partner.objects.filter(user=user)
+
+    if p.exists():
+        return p.first()
+
+    return None
+
 @login_required(login_url='/partner/login/')
 def price_lists(request):
-    files = PriceList.objects.all()
+    partner = get_partner(request.user)
+    if partner:
+        files = PriceList.objects.filter(
+            Q(partner_group = partner.group)
+            | Q(partner_group = None))
+
+    else:
+        files = PriceList.objects.all()
+
     return render(request, 'partner/price_lists.html', {
         'files': files
     })

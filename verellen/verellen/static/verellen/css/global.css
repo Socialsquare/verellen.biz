@@ -9,6 +9,10 @@
 .font-body {
   font-family: VerellenBody;
 }
+.medium-body-type {
+  font-family: VerellenBody;
+  font-size: 18px;
+}
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6666,4 +6670,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   text-transform: uppercase;
   font-size: 14px;
   text-align: center;
+}
+.partner-downloads .download-caption {
+  font-size: 20px;
 }

@@ -1,24 +1,25 @@
 {% extends 'partner_base.html' %}
 
 {% block title %}Partners - downloads{% endblock %}
+{% block namespace %}partner-downloads{% endblock %}
 
 {% block partner_content %}
-<p>The documents provide tools for reselling Verellen furniture</p>
+<p class="download-caption">These documents provide tools for reselling Verellen furniture</p>
+
 <div class="panel panel-default">
     <div class="panel-heading">Files</div>
 
     <table class="table table-hover">
         <tbody>
             {% for file in files %}
-                <tr>
+                <tr class="download-item">
                     <td>
-                        {{ file.name }}
+                        <span class="name">{{ file.name }}</span>
                     </td>
 
                     <td>
                         <div class="btn-group pull-right">
                             <a href="{{ file.file.url }}" class="btn btn-default"><span class="glyphicon glyphicon-download"></span> Download</a>
-                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> View</a>
                         </div>
                     </td>
                 </tr>

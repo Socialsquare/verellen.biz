@@ -1,0 +1,34 @@
+{% extends 'partner_base.html' %}
+{% load thumbnail %}
+{% load navigation %}
+
+{% block namespace %}partner-products{% endblock %}
+
+{% block title %}Partners - products{% endblock %}
+{% block partner_content %}
+
+<div class="row">
+    <div class="col-xs-12">
+        {% if not matches %}
+        <h2>No results for '{{ search_query }}'</h2>
+        {% else %}
+        <h2>Search results for '{{ search_query }}'</h2>
+
+        <div class="row">
+            {% for product in matches %}
+            <div class="col-sm-3 col-xs-6 product-thumbnail">
+                <a href="{% url 'partner.product_detail' product.id %}" >
+
+                    {% thumbnail product.image_file "360x300" crop="center" as thumb %}
+                    <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-responsive">
+                    {% endthumbnail %}
+
+                    <div class="name">{{ product.name }}</div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

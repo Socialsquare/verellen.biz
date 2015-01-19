@@ -80,40 +80,30 @@ def product_category(request, category_slug):
 def product_detail(request, product_id):
     try:
         product = TearSheet.objects.get(pk = product_id)
-    except Product.DoesNotExist:
+    except TearSheet.DoesNotExist:
         raise Http404
 
     return render(request, 'partner/product_detail.html', { 'product': product })
 
 @login_required(login_url='/partner/login/')
-def product_category_list(request):
-    files = TearSheet.objects.all()
-    categories = Category.objects.all()
-    matches = files
-    showing_all = True
-    query = ""
-    cat_id = -1
+def search(request):
+    if not 'query' in request.GET.keys():
+        raise Http404()
 
-    if 'query' in request.GET.keys():
-        showing_all = False
-        query = request.GET['query']
-        matches = matches.filter(
-            Q(name__contains=query)
-            | Q(category__name__contains=query))
+    query = request.GET['query']
+    matches = TearSheet.objects.filter(
+        Q(name__contains=query)
+        | Q(category__name__contains=query))
 
-    if 'category' in request.GET.keys():
-        showing_all = False
-        cat_id = request.GET['category']
-        if cat_id != "-1":
-            matches = matches.filter(Q(category__id=cat_id))
-
-    return render(request, 'partner/product_category_list.html', {
-        'files': matches,
+    return render(request, 'partner/search.html', {
         'matches': matches,
-        'categories': categories,
-        'search_query': query,
-        'search_category': int(cat_id),
-        'showing_all': showing_all
+        'search_query': query
+    })
+
+@login_required(login_url='/partner/login/')
+def product_category_list(request):
+    return render(request, 'partner/product_category_list.html', {
+        'categories': Category.objects.all()
     })
 
 @login_required(login_url='/partner/login/')

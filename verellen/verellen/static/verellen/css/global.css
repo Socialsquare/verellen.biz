@@ -6559,6 +6559,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .footer-top .login a:hover {
   text-decoration: none;
 }
+.footer-search {
+  margin-bottom: 10px;
+}
 .footer-bottom {
   padding-top: 15px;
   height: 50px;

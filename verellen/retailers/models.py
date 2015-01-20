@@ -2,23 +2,28 @@ import urllib
 import json
 from django.db import models
 
+from partner.models import Partner
+
 class Retailer(models.Model):
-    name = models.CharField(max_length = 200)
+    partner = models.ForeignKey(Partner)
+
     address = models.CharField(max_length = 200)
+    address2 = models.CharField(max_length = 200, blank=True, default="")
     city = models.CharField(max_length = 200)
-    state = models.CharField(max_length = 200, blank=True, null=True)
-    zip_code = models.CharField(max_length = 200)
+    state = models.CharField(max_length = 200, blank=True, default="")
+    zip_code = models.CharField(max_length = 200, blank=True, default="")
     country = models.CharField(max_length = 200)
-    website = models.CharField(max_length = 200)
-    phone = models.CharField(max_length = 200)
+
+    website = models.CharField(max_length = 200, blank=True, default="")
+    phone = models.CharField(max_length = 200, blank=True, default="")
 
     lat = models.FloatField()
     lng = models.FloatField()
 
     def __unicode__(self):
-        return self.name
+        return self.partner.name
 
-    def save(self):
+    def save(self, *args, **kwargs):
         location = "%s, %s, %s, %s" % (self.address, self.city, self.state, self.zip_code)
 
         #if not self.lat or not self.lng:
@@ -26,7 +31,7 @@ class Retailer(models.Model):
         self.lat = latlng[0]
         self.lng = latlng[1]
 
-        super(Retailer, self).save()
+        super(Retailer, self).save(*args, **kwargs)
 
     def geocode(self, location):
         location = urllib.quote_plus(location)

@@ -16,15 +16,16 @@
                 </div>
             </div>
         </form>
-
-        <ul class="results">
-            {% for retailer in matches %}
-            <li>
-                <h5>{{ retailer.name }}</h5>
-                <p>{{ retailer.address }}</p>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="result-box">
+            <ul class="results">
+                {% for retailer in matches %}
+                <li>
+                    <h5>{{ retailer.partner.name }}</h5>
+                    <p>{{ retailer.address }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
     <div class="col-sm-8 col-xs-12">

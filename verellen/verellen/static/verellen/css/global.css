@@ -6560,7 +6560,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   text-decoration: none;
 }
 .footer-search {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .footer-bottom {
   padding-top: 15px;
@@ -6654,10 +6654,14 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .retailers .search-bar {
   margin-bottom: 40px;
 }
-.retailers .results {
+.retailers .result-box {
+  height: 325px;
+  overflow-y: auto;
+}
+.retailers .result-box ul {
   padding: 0;
 }
-.retailers .results li {
+.retailers .result-box ul li {
   list-style: none;
   margin-bottom: 30px;
 }

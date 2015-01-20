@@ -12,7 +12,7 @@ def home(request):
     if 'query' in request.GET.keys():
         showing_all = False
         query = request.GET['query']
-        matches = Retailer.objects.filter(Q(name__contains=query)
+        matches = Retailer.objects.filter(Q(partner__name__contains=query)
                                           | Q(address__contains=query)
                                           | Q(city__contains=query)
                                           | Q(phone__contains=query)
@@ -21,7 +21,7 @@ def home(request):
 
     return render(request, 'retailers/home.html', {
         'matches': matches,
-        'retailers': Retailer.objects.all(),
+        'retailers': matches,
         'search_query': query,
         'showing_all': showing_all
     })

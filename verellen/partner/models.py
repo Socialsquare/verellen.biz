@@ -36,6 +36,7 @@ class TearSheet(Download):
 
 class Partner(models.Model):
     user = models.OneToOneField(User)
+    name = models.CharField(max_length=255)
     group = models.ForeignKey(PartnerGroup, blank=False, null=False)
 
     def __unicode__(self):

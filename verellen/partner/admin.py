@@ -8,7 +8,7 @@ class UserInline(admin.TabularInline):
     model = User
 
 class PartnerGroupAdmin(admin.ModelAdmin):
-    fields = [ 'name' ]
+    fields = [ 'name', 'email' ]
 
 class PartnerInline(admin.TabularInline):
     model = Partner
@@ -29,10 +29,6 @@ class UserAdmin(UserAdmin):
 class PriceListAdmin(admin.ModelAdmin):
     fields = [ 'name', 'file', 'partner_group' ]
     list_display = [ 'name', 'partner_group' ]
-
-# class TearSheetAdmin(admin.ModelAdmin):
-#     fields = [ 'category', 'name', 'file', 'image_file' ]
-#     list_display = [ 'name', 'category' ]
 
 class SalesToolAdmin(admin.ModelAdmin):
     fields = [ 'name', 'file' ]

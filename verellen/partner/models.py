@@ -30,10 +30,6 @@ class PriceList(Download):
     def __unicode__(self):
         return '{0} ({1})'.format(self.name, self.partner_group)
 
-# class TearSheet(Download):
-#     image_file = thumbnail.ImageField(upload_to='tear_sheet_thumbs')
-#     category = models.ForeignKey(Category, blank=True, null=True)
-
 class Partner(models.Model):
     user = models.OneToOneField(User)
     name = models.CharField(max_length=255)

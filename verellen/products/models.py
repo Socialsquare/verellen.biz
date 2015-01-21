@@ -26,18 +26,18 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length = 200)
-    tearsheet = models.FileField(upload_to="product_tear_sheets", default="no_image.png")
-    featured = models.BooleanField(default=False)
-    description = HTMLField(blank=True, default="")
-    dimensions = HTMLField(blank=True, default="")
-    main_image = models.ForeignKey('Image', related_name='+', blank=True, null=True)
     category = models.ForeignKey(Category)
+    featured = models.BooleanField(default=False)
+    tearsheet = models.FileField(upload_to="product_tear_sheets", default="no_image.png")
+
+    dimensions = HTMLField(blank=True, default="")
+    description = HTMLField(blank=True, default="")
 
     def get_main_image(self):
-        if not self.main_image is None:
-            return self.main_image
-        else:
+        try:
             return self.image_set.first()
+        except:
+            return None
 
     def number_of_images(self):
         return self.image_set.all().count()
@@ -64,6 +64,11 @@ class Image(models.Model):
         return u'<img width="110" height="110" src="%s" />' % self.image_file.url
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
+
+    # for grapelli ordering
+    position = models.PositiveSmallIntegerField("Position", default=0)
+    class Meta:
+        ordering = ['position']
 
     def __unicode__(self):
         if self.description:

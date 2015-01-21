@@ -8,16 +8,19 @@ class CategoryInline(admin.TabularInline):
 
 class ImageInline(AdminImageMixin, admin.TabularInline):
     model = Image
+    fields = [ 'position', 'image_file', 'description' ]
+    sortable_field_name = 'position'
+    extra = 0
 
 class ProductInline(admin.TabularInline):
     model = Product
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = [ 'name', 'featured', 'tearsheet', 'category', 'description', 'dimensions', 'main_image' ]
+    fields = [ 'name', 'featured', 'tearsheet', 'category', 'description', 'dimensions' ]
     inlines = [ ImageInline ]
 
-    list_display = [ 'name', 'featured', 'category', 'tearsheet', 'number_of_images', 'main_image', 'admin_thumbnail' ]
-    list_editable = [ 'category', 'featured' ]
+    list_display = [ 'name', 'featured', 'category', 'number_of_images', 'admin_thumbnail' ]
+    list_editable = [ 'featured' ]
 
     form = ProductAdminForm
 

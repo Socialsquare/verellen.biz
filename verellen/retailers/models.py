@@ -5,7 +5,7 @@ from django.db import models
 from partner.models import Partner
 
 class Retailer(models.Model):
-    partner = models.ForeignKey(Partner)
+    partner = models.OneToOneField(Partner)
 
     address = models.CharField(max_length = 200)
     address2 = models.CharField(max_length = 200, blank=True, default="")

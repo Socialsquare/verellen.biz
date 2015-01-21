@@ -6562,6 +6562,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 .footer-search {
   margin-bottom: 20px;
 }
+.footer-search .search-form {
+  margin-right: -10px;
+}
 .footer-bottom {
   padding-top: 15px;
   height: 50px;

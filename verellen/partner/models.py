@@ -40,4 +40,4 @@ class Partner(models.Model):
     group = models.ForeignKey(PartnerGroup, blank=False, null=False)
 
     def __unicode__(self):
-        return '{0} ({1})'.format(self.user.username, self.group)
+        return '{0} ({1})'.format(self.name, self.user.username)

@@ -8,7 +8,7 @@
 <div class="row">
     {% if products %}
             {% for product in products %}
-            <div class="col-sm-3 col-xs-6 product-thumbnail">
+            <div class="col-xs-3 product-thumbnail">
                 <a href="{% url 'product.detail' product.id %}" >
                     <div class="hover">
                         <div class="name">{{ product.name }}</div>

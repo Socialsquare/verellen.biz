@@ -16,7 +16,7 @@
 
         <div class="row">
             {% for product in matches %}
-            <div class="col-sm-3 col-xs-6 product-thumbnail">
+            <div class="col-xs-3 product-thumbnail">
                 <a href="{% url 'partner.product_detail' product.id %}" >
 
                     {% thumbnail product.get_main_image "360x300" crop="center" as thumb %}

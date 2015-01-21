@@ -6681,6 +6681,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   font-size: 14px;
   text-align: center;
 }
+.partner-products .product-detail-thumbnail {
+  margin: 0 0 10px 10px;
+}
 .partner-downloads .download-caption {
   font-size: 20px;
 }

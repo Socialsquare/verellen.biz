@@ -13,8 +13,19 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-10">
-        {{ product.name }}
+    <div class="col-xs-4">
+        <h3>{{ product.name }}</h3>
+        <a href="{{ product.tearsheet.url }}" class="btn btn-default"><span class="glyphicon glyphicon-download"></span> Download tearsheet</a>
+    </div>
+
+    <div class="col-xs-8">
+        {% for image in product.image_set.all %}
+            {% thumbnail image.image_file "240x240" crop="center" as thumb %}
+                <a class="pull-right product-detail-thumbnail" href="{{ image.image_file.url }}">
+                    <img src="{{ thumb.url }}" class="img-responsive">
+                </a>
+            {% endthumbnail %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

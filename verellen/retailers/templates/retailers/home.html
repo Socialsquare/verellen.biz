@@ -21,7 +21,13 @@
                 {% for retailer in matches %}
                 <li>
                     <h5>{{ retailer.partner.name }}</h5>
-                    <p>{{ retailer.address }}</p>
+                    <p>
+                        {{ retailer.address }}
+                        <br>
+                        {{ retailer.city }},{% if retailer.state %} {{ retailer.state }}{% endif %} {{ retailer.zip_code }}, {{ retailer.country }}
+                    </p>
+
+                    <p><i class="glyphicon glyphicon-earphone"></i> {{ retailer.phone }}<br>{{ retailer.website }}</p>
                 </li>
                 {% endfor %}
             </ul>

@@ -11,9 +11,9 @@ from sorl.thumbnail import get_thumbnail
 def list(request, category_slug=None):
     category = Category.objects.filter(slug = category_slug).first()
     if category:
-        products = Product.objects.filter(category = category)
+        products = Product.objects.filter(category = category, featured = True)
     else:
-        products = Product.objects.all()
+        products = Product.objects.filter(featured = True)
 
     return render(request, 'products/list.html', { 'products': products, 'category': category })
 

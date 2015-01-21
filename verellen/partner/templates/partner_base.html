@@ -67,12 +67,28 @@
                             <div class="marker"></div>
                         </li>
 
-                        <li class="{% current 'partner.account' %}">
-                            <a href="{% url 'partner.account' %}" class="menu-item">
+                      <li class="dropdown {% current 'product.account' %}">
+                            <a href="{% url 'partner.account' %}" class="menu-item dropdown-toggle disabled" data-toggle="dropdown" data-hover="dropdown">
                                 Account
                             </a>
                             <div class="marker"></div>
+
+                            <div class="dropdown-menu category-menu">
+
+                                <div class="category-item">
+                                    <a href="{% url 'partner.logout' %}">Log out</a>
+                                </div>
+
+                            </div>
                         </li>
+
+
+                        <!-- <li class="{% current 'partner.account' %}"> -->
+                        <!--     <a href="{% url 'partner.account' %}" class="menu-item"> -->
+                        <!--         Log out -->
+                        <!--     </a> -->
+                        <!--     <div class="marker"></div> -->
+                        <!-- </li> -->
                     </ul>
                 </div>
             </div>

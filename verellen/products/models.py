@@ -26,8 +26,10 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length = 200)
-    description = HTMLField()
-    dimensions = HTMLField()
+    tearsheet = models.FileField(upload_to="product_tear_sheets", default="no_image.png")
+    featured = models.BooleanField(default=False)
+    description = HTMLField(blank=True, default="")
+    dimensions = HTMLField(blank=True, default="")
     main_image = models.ForeignKey('Image', related_name='+', blank=True, null=True)
     category = models.ForeignKey(Category)
 

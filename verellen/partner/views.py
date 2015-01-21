@@ -5,8 +5,8 @@ from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
 
-from partner.models import TearSheet, PriceList, SalesTool, Partner
-from products.models import Category
+from partner.models import PriceList, SalesTool, Partner
+from products.models import Product, Category
 
 def do_login(request):
     return render(request, 'partner/login.html')
@@ -72,15 +72,15 @@ def product_category(request, category_slug):
     if not category:
         raise Http404
 
-    products = TearSheet.objects.filter(category = category)
+    products = Product.objects.filter(category = category)
 
     return render(request, 'partner/product_category.html', { 'products': products })
 
 @login_required(login_url='/partner/login/')
 def product_detail(request, product_id):
     try:
-        product = TearSheet.objects.get(pk = product_id)
-    except TearSheet.DoesNotExist:
+        product = Product.objects.get(pk = product_id)
+    except Product.DoesNotExist:
         raise Http404
 
     return render(request, 'partner/product_detail.html', { 'product': product })
@@ -91,7 +91,7 @@ def search(request):
         raise Http404()
 
     query = request.GET['query']
-    matches = TearSheet.objects.filter(
+    matches = Product.objects.filter(
         Q(name__contains=query)
         | Q(category__name__contains=query))
 

@@ -26,10 +26,10 @@ class Retailer(models.Model):
     def save(self, *args, **kwargs):
         location = "%s, %s, %s, %s" % (self.address, self.city, self.state, self.zip_code)
 
-        #if not self.lat or not self.lng:
-        latlng = self.geocode(location)
-        self.lat = latlng[0]
-        self.lng = latlng[1]
+        if not self.lat or not self.lng:
+            latlng = self.geocode(location)
+            self.lat = latlng[0]
+            self.lng = latlng[1]
 
         super(Retailer, self).save(*args, **kwargs)
 

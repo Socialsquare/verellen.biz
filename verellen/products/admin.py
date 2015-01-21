@@ -13,11 +13,11 @@ class ProductInline(admin.TabularInline):
     model = Product
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = [ 'name', 'category', 'description', 'dimensions', 'main_image' ]
+    fields = [ 'name', 'featured', 'tearsheet', 'category', 'description', 'dimensions', 'main_image' ]
     inlines = [ ImageInline ]
 
-    list_display = [ 'admin_thumbnail', 'name', 'category', 'number_of_images', 'main_image' ]
-    list_editable = [ 'category' ]
+    list_display = [ 'name', 'featured', 'category', 'tearsheet', 'number_of_images', 'main_image', 'admin_thumbnail' ]
+    list_editable = [ 'category', 'featured' ]
 
     form = ProductAdminForm
 

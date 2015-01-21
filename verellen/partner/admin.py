@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from partner.models import Partner, PartnerGroup, TearSheet, PriceList, SalesTool
+from partner.models import Partner, PartnerGroup, PriceList, SalesTool
 
 class UserInline(admin.TabularInline):
     model = User
@@ -30,9 +30,9 @@ class PriceListAdmin(admin.ModelAdmin):
     fields = [ 'name', 'file', 'partner_group' ]
     list_display = [ 'name', 'partner_group' ]
 
-class TearSheetAdmin(admin.ModelAdmin):
-    fields = [ 'category', 'name', 'file', 'image_file' ]
-    list_display = [ 'name', 'category' ]
+# class TearSheetAdmin(admin.ModelAdmin):
+#     fields = [ 'category', 'name', 'file', 'image_file' ]
+#     list_display = [ 'name', 'category' ]
 
 class SalesToolAdmin(admin.ModelAdmin):
     fields = [ 'name', 'file' ]
@@ -44,6 +44,6 @@ admin.site.register(User, UserAdmin)
 
 admin.site.register(PartnerGroup, PartnerGroupAdmin)
 
-admin.site.register(TearSheet, TearSheetAdmin)
+# admin.site.register(TearSheet, TearSheetAdmin)
 admin.site.register(PriceList, PriceListAdmin)
 admin.site.register(SalesTool, SalesToolAdmin)

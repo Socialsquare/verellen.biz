@@ -23,17 +23,21 @@
 
 <div class="row">
     <div class="col-xs-6">
-        <h2>Partner log in</h2>
         <form class="form" role="form" action="{% url 'partner.login_form' %}" method="post">
             {% csrf_token %}
+            <legend>Partner log in</legend>
 
-            <label for="customerNumber" class="sr-only">Customer number</label>
-            <input type="text" id="customerNumber" class="form-control" placeholder="Customer number" required="" autofocus="" name="customer_number">
+            <div class="form-group">
+                <label for="customerNumber">Customer number</label>
+                <input type="text" id="customerNumber" class="form-control" placeholder="Customer number" required="" autofocus="" name="customer_number">
+            </div>
 
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+            </div>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-default" type="submit">Sign in</button>
         </form>
     </div>
 

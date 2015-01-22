@@ -19,7 +19,7 @@ class UserAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ('list_display_partner',)
 
     def list_display_partner(self, user):
-        if user.partner:
+        if user.partner and user.partner.group:
             return user.partner.group.name
         else:
             return None

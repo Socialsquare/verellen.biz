@@ -20,23 +20,34 @@
     </div>
 {% endif %}
 
-Edit your account details
 
+        <a class="btn btn-default pull-right"
+           type="submit"
+           href="{% url 'partner.logout' %}">Log out</a>
 <div class="row">
     <div class="col-xs-4">
+
         <form class="form" role="form" action="{% url 'partner.account_update' %}" method="post">
             {% csrf_token %}
 
-            <label for="currentPassword" class="sr-only">Current password</label>
-            <input type="text" id="currentPassword" class="form-control" placeholder="Current password" required="" autofocus="" name="current_pass">
+            <legend>Edit account details</legend>
 
-            <label for="newPassword" class="sr-only">New password</label>
-            <input type="text" id="newPassword" class="form-control" placeholder="New password" required="" autofocus="" name="new_pass">
+            <div class="form-group">
+                <label for="currentPassword" >Current password</label>
+                <input type="text" id="currentPassword" class="form-control" placeholder="Current password" required="" autofocus="" name="current_pass">
+            </div>
 
-            <label for="newPasswordConfirm" class="sr-only">Confirm new password</label>
-            <input type="password" id="newPasswordConfirm" class="form-control" placeholder="Confirm new password" required="" name="new_pass_confirm">
+            <div class="form-group">
+                <label for="newPassword">New password</label>
+                <input type="text" id="newPassword" class="form-control" placeholder="New password" required="" autofocus="" name="new_pass">
+            </div>
 
-            <button class="btn btn-primary btn-block" type="submit">Update</button>
+            <div class="form-group">
+                <label for="newPasswordConfirm">Confirm new password</label>
+                <input type="password" id="newPasswordConfirm" class="form-control" placeholder="Confirm new password" required="" name="new_pass_confirm">
+            </div>
+
+            <button class="btn btn-default" type="submit">Update</button>
         </form>
     </div>
 </div>

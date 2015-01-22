@@ -6669,6 +6669,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   margin-bottom: 30px;
 }
 .partner-products .product-thumbnail {
+  height: 205px;
   margin-bottom: 30px;
 }
 .partner-products .product-thumbnail img {

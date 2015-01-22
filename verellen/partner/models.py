@@ -33,7 +33,7 @@ class PriceList(Download):
 class Partner(models.Model):
     user = models.OneToOneField(User)
     name = models.CharField(max_length=255)
-    group = models.ForeignKey(PartnerGroup, blank=False, null=False)
+    group = models.ForeignKey(PartnerGroup, blank=True, null=True, default=None)
 
     def __unicode__(self):
         return '{0} ({1})'.format(self.name, self.user.username)

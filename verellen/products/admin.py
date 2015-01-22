@@ -16,11 +16,28 @@ class ProductInline(admin.TabularInline):
     model = Product
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = [ 'name', 'featured', 'tearsheet', 'category', 'description', 'dimensions' ]
+    fields = [
+        'name',
+        'featured',
+        'tearsheet',
+        'category',
+        'description',
+        'dimensions',
+    ]
+
     inlines = [ ImageInline ]
 
-    list_display = [ 'name', 'featured', 'category', 'number_of_images', 'admin_thumbnail' ]
+    list_display = [
+        'name',
+        'featured',
+        'category',
+        'number_of_images',
+        'admin_thumbnail',
+    ]
+
     list_editable = [ 'featured' ]
+
+    search_fields = [ 'name' ]
 
     form = ProductAdminForm
 
@@ -28,6 +45,8 @@ class CategoryAdmin(admin.ModelAdmin):
     fields = [ 'name', 'image' ]
     list_display = [ 'name', 'slug', 'order', 'image']
     list_editable = ['order']
+
+    search_fields = [ 'name' ]
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)

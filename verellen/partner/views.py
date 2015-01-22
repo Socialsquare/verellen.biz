@@ -32,17 +32,6 @@ def login_form(request):
 
     return render(request, 'partner/login.html')
 
-@login_required(login_url='/partner/login/')
-def home(request):
-    return render(request, 'partner/home.html')
-
-@login_required(login_url='/partner/login/')
-def sales_tools(request):
-    files = SalesTool.objects.all()
-    return render(request, 'partner/sales_tools.html', {
-        'files': files
-    })
-
 def get_partner(user):
     p = Partner.objects.filter(user=user)
 
@@ -50,6 +39,25 @@ def get_partner(user):
         return p.first()
 
     return None
+
+@login_required(login_url='/partner/login/')
+def home(request):
+    try:
+        partner = get_partner(request.user)
+        name = partner.name
+    except:
+        name = request.user.username
+
+    return render(request, 'partner/home.html', {
+        'name': name
+    })
+
+@login_required(login_url='/partner/login/')
+def sales_tools(request):
+    files = SalesTool.objects.all()
+    return render(request, 'partner/sales_tools.html', {
+        'files': files
+    })
 
 @login_required(login_url='/partner/login/')
 def price_lists(request):

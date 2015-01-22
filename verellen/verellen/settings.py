@@ -17,10 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_ID = 1
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&pb13g0lcs(i$=&6928+ey_z#v4#@dz@4i8l2#5kx%gf@dt*#u'
 
 ALLOWED_HOSTS = []
@@ -69,7 +65,6 @@ WSGI_APPLICATION = 'verellen.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -91,7 +86,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -110,19 +104,10 @@ GRAPPELLI_ADMIN_TITLE = "Verellen administration"
 GRAPPELLI_SWITCH_USER = True
 GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-#STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# Static/media
 
 STATIC_URL = '/static/'
-
 MEDIA_URL = '/media/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    '/home/simon/dev/bitb/verellen/app/verellen/verellen/static',
-)
 
 # TinyMCE config
 TINYMCE_DEFAULT_CONFIG = {
@@ -136,22 +121,6 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # sorl thumnail config
 THUMBNAIL_PREFIX = 'thumbnail_cache/'
-
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     # 'filters': {
-#     #     'require_debug_false': {
-#     #         '()': 'django.utils.log.RequireDebugFalse'
-#     #         }
-#     #     },
-#     'loggers': {
-#         'django.request': {
-#             'handlers': ['console'],
-#             'level': 'DEBUG',
-#         },
-#     }
-# }
 
 # make message tag play along with bootstrap
 MESSAGE_TAGS = {

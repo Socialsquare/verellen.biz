@@ -124,16 +124,26 @@ def account_update(request):
     new_pass = request.POST['new_pass']
     new_pass_confirm = request.POST['new_pass_confirm']
 
-    if new_pass != new_pass_confirm:
-        messages.add_message(request, messages.ERROR, 'New passwords do not match')
-        return redirect('/partner/account')
+    is_changing_password = current_pass or new_pass or new_pass_confirm
 
-    if authenticate(username=request.user.username, password=current_pass) is not None:
-        messages.add_message(request, messages.SUCCESS, 'Password changed successfully')
-        request.user.set_password(new_pass)
+    email = request.POST['email']
+
+    password_change_failed = False
+
+    if is_changing_password:
+        if new_pass != new_pass_confirm:
+            messages.add_message(request, messages.ERROR, 'New passwords do not match')
+            password_change_failed = True
+
+        if authenticate(username=request.user.username, password=current_pass) is not None:
+            request.user.set_password(new_pass)
+        else:
+            messages.add_message(request, messages.ERROR, 'Incorrect current password')
+            password_change_failed = True
+
+    if not password_change_failed:
+        messages.add_message(request, messages.SUCCESS, 'Account information updated')
+        request.user.email = email
         request.user.save()
-    else:
-        messages.add_message(request, messages.ERROR, 'Incorrect current password')
-        print("The username and password were incorrect.")
 
     return redirect('/partner/account')

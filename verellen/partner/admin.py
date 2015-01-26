@@ -8,7 +8,7 @@ class UserInline(admin.TabularInline):
     model = User
 
 class PartnerGroupAdmin(admin.ModelAdmin):
-    fields = [ 'name', 'email' ]
+    fields = [ 'name' ]
 
 class PartnerInline(admin.TabularInline):
     model = Partner

@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'partner.middleware.UserExpiryDateMiddleware',
 )
 
 ROOT_URLCONF = 'verellen.urls'

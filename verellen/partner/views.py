@@ -4,9 +4,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
+from django.utils import timezone
+from datetime import datetime
 
 from partner.models import PriceList, SalesTool, Partner
 from products.models import Product, Category
+
+import utils
 
 def do_login(request):
     return render(request, 'partner/login.html')
@@ -19,31 +23,29 @@ def login_form(request):
     username = request.POST['customer_number']
     password = request.POST['password']
 
+    # shorthand
+    def fail_with_err(msg):
+        messages.add_message(request, messages.ERROR, msg)
+        return render(request, 'partner/login.html')
+
     user = authenticate(username=username, password=password)
+    if user is None:
+        return fail_with_err('Invalid login, please check your credentials')
 
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            return redirect('/partner/home/')
-        else:
-            messages.add_message(request, messages.ERROR, 'Your account is inactive, please contact Verellen for help')
-    else:
-        messages.add_message(request, messages.ERROR, 'Invalid login, please check your credentials')
+    if utils.user_is_expired(user):
+        return fail_with_err('Your account has expired, please contact Verellen for support')
 
-    return render(request, 'partner/login.html')
+    if not user.is_active:
+        return fail_with_err('Your account is inactive, please contact Verellen for support')
 
-def get_partner(user):
-    p = Partner.objects.filter(user=user)
-
-    if p.exists():
-        return p.first()
-
-    return None
+    # all good, move along
+    login(request, user)
+    return redirect('/partner/home/')
 
 @login_required(login_url='/partner/login/')
 def home(request):
     try:
-        partner = get_partner(request.user)
+        partner = utils.get_partner(request.user)
         name = partner.name
     except:
         name = request.user.username
@@ -61,7 +63,7 @@ def sales_tools(request):
 
 @login_required(login_url='/partner/login/')
 def price_lists(request):
-    partner = get_partner(request.user)
+    partner = utils.get_partner(request.user)
     if partner:
         files = PriceList.objects.filter(
             Q(partner_group = partner.group)

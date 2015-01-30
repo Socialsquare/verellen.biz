@@ -40,6 +40,5 @@ admin.site.register(User, UserAdmin)
 
 admin.site.register(PartnerGroup, PartnerGroupAdmin)
 
-# admin.site.register(TearSheet, TearSheetAdmin)
 admin.site.register(PriceList, PriceListAdmin)
 admin.site.register(SalesTool, SalesToolAdmin)

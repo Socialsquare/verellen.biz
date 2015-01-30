@@ -29,6 +29,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category)
     featured = models.BooleanField(default=False)
     tearsheet = models.FileField(upload_to="product_tear_sheets", default="no_image.png")
+    tearsheet_metric = models.FileField(upload_to="product_tear_sheets_metric", default="", blank=True)
 
     dimensions = HTMLField(blank=True, default="")
     description = HTMLField(blank=True, default="")

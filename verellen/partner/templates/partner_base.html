@@ -65,12 +65,14 @@
                             <div class="marker"></div>
                         </li>
 
+                        {% if not hide_price %}
                         <li class="{% current 'partner.price_lists' %}">
                             <a href="{% url 'partner.price_lists' %}" class="menu-item">
                                 Price lists
                             </a>
                             <div class="marker"></div>
                         </li>
+                        {% endif %}
 
                       <li class="dropdown {% current 'product.account' %}">
                             <a href="{% url 'partner.account' %}" class="menu-item dropdown-toggle disabled" data-toggle="dropdown" data-hover="dropdown">

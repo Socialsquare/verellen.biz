@@ -19,8 +19,9 @@ class ProductAdmin(admin.ModelAdmin):
     fields = [
         'name',
         'featured',
-        'tearsheet',
         'category',
+        'tearsheet',
+        'tearsheet_metric',
         'description',
         'dimensions',
     ]

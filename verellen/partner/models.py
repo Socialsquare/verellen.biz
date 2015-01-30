@@ -32,7 +32,9 @@ class PriceList(Download):
 
 class Partner(models.Model):
     user = models.OneToOneField(User)
-    expiryDate = models.DateTimeField(null=True)
+    expiryDate = models.DateTimeField(null=True, blank=True)
+    hide_price = models.BooleanField(default=False)
+    show_metric = models.BooleanField(default=False)
     name = models.CharField(max_length=255)
     group = models.ForeignKey(PartnerGroup, blank=True, null=True, default=None)
 

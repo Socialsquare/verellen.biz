@@ -64,7 +64,10 @@ def sales_tools(request):
 @login_required(login_url='/partner/login/')
 def price_lists(request):
     partner = utils.get_partner(request.user)
-    if partner:
+    if partner and partner.group:
+        if partner.hide_price:
+            return redirect('/partner/home/')
+
         files = PriceList.objects.filter(
             Q(partner_group = partner.group)
             | Q(partner_group = None))
@@ -93,7 +96,16 @@ def product_detail(request, product_id):
     except Product.DoesNotExist:
         raise Http404
 
-    return render(request, 'partner/product_detail.html', { 'product': product })
+    partner = utils.get_partner(request.user)
+    tearsheet_url = product.tearsheet.url
+    if partner:
+        if partner.show_metric and product.tearsheet_metric:
+            tearsheet_url = product.tearsheet_metric.url
+
+    return render(request, 'partner/product_detail.html', {
+        'product': product,
+        'tearsheet_url': tearsheet_url,
+    })
 
 @login_required(login_url='/partner/login/')
 def search(request):

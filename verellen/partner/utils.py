@@ -9,7 +9,7 @@ def user_is_expired(user):
     return False
 
 def get_partner(user):
-    p = Partner.objects.filter(user=user)
+    p = Partner.objects.filter(user__id=user.id)
 
     if p.exists():
         return p.first()

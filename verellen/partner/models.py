@@ -22,7 +22,8 @@ class Download(models.Model):
         abstract = True
 
 class SalesTool(Download):
-    pass
+    is_eu_format = models.BooleanField(default=False,
+                                       verbose_name="Is EU format")
 
 class PriceList(Download):
     partner_group = models.ForeignKey(PartnerGroup, blank=True, null=True)
@@ -35,6 +36,8 @@ class Partner(models.Model):
     expiryDate = models.DateTimeField(null=True, blank=True)
     hide_price = models.BooleanField(default=False)
     show_metric = models.BooleanField(default=False)
+    show_eu_price = models.BooleanField(default=False,
+                                        verbose_name="Show EU tools")
     name = models.CharField(max_length=255)
     group = models.ForeignKey(PartnerGroup, blank=True, null=True, default=None)
 

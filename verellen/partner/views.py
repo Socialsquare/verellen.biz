@@ -57,6 +57,13 @@ def home(request):
 @login_required(login_url='/partner/login/')
 def sales_tools(request):
     files = SalesTool.objects.all()
+
+    try:
+        partner = utils.get_partner(request.user)
+        files = files.filter(is_eu_format = partner.show_eu_price)
+    except:
+        pass
+
     return render(request, 'partner/sales_tools.html', {
         'files': files
     })

@@ -31,9 +31,9 @@ class PriceListAdmin(admin.ModelAdmin):
     list_display = [ 'name', 'partner_group' ]
 
 class SalesToolAdmin(admin.ModelAdmin):
-    fields = [ 'name', 'file' ]
-    list_display = [ 'name', 'file' ]
-    list_editable = [ 'file' ]
+    fields = [ 'name', 'file', 'is_eu_format' ]
+    list_display = [ 'name', 'file', 'is_eu_format' ]
+    list_editable = [ 'file', 'is_eu_format' ]
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

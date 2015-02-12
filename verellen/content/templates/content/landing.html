@@ -1,0 +1,30 @@
+{% load staticfiles  %}
+{% load navigation %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Verellen</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{% static 'verellen/css/landing.css' %}" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript">
+            window.onmousedown = function() {
+                window.location = "{% url 'content.home' %}";
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="landing">
+            <div class="banner">
+                <img src="{% static 'verellen/images/webphoto.png' %}" alt="">
+            </div>
+        </div>
+    </body>
+</html>

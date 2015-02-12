@@ -8,6 +8,10 @@ def robots(request):
 Disallow: /"""
     return HttpResponse(txt, content_type='text/plain')
 
+def landing(request):
+    home_content = get_content_model(models.HomeContent)
+    return render(request, 'content/landing.html', { 'home_content': home_content })
+
 def home(request):
     home_content = get_content_model(models.HomeContent)
     return render(request, 'content/home.html', { 'home_content': home_content })

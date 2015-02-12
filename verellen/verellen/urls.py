@@ -11,7 +11,8 @@ from partner import views as partner_views
 from content import views as content_views
 
 urlpatterns = patterns('',
-    url(r'^$', content_views.home, name='content.home'),
+    url(r'^$', content_views.landing, name='content.landing'),
+    url(r'^home$', content_views.home, name='content.home'),
     url(r'^robots.txt/$', content_views.robots, name='content.robots'), # TODO: wat
 
     url(r'^retailers/$', retailer_views.home, name='retailer.home'),

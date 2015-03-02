@@ -92,7 +92,7 @@ def product_category(request, category_slug):
     if not category:
         raise Http404
 
-    products = Product.objects.filter(category = category)
+    products = Product.objects.filter(category = category).order_by('name')
 
     return render(request, 'partner/product_category.html', { 'products': products })
 

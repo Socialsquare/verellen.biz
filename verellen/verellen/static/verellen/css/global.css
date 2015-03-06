@@ -6502,6 +6502,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   height: 1px;
   width: 140px;
 }
+.category-item a {
+  display: block;
+}
 .footer-top {
   padding-top: 30px;
   padding-bottom: 30px;

@@ -7,8 +7,10 @@ class ProductContentAdmin(admin.ModelAdmin):
 class FooterContentAdmin(admin.ModelAdmin):
     fields = [
         'contact_header_left',
+        'contact_header_middle',
         'contact_header_right',
         'contact_body_left',
+        'contact_body_middle',
         'contact_body_right',
         'social_header',
         'social_body',

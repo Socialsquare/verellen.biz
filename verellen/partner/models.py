@@ -36,6 +36,7 @@ class Partner(models.Model):
     expiryDate = models.DateTimeField(null=True, blank=True)
     hide_price = models.BooleanField(default=False)
     show_metric = models.BooleanField(default=False)
+    show_us_version = models.BooleanField(default=True)
     show_eu_price = models.BooleanField(default=False,
                                         verbose_name="Show EU tools")
     name = models.CharField(max_length=255)

@@ -49,7 +49,9 @@
     }
 
     .login a {
-        float: right;
+        @media screen and (min-width: @screen-sm) {
+            float: right;
+        }
 
         .font-heading(14px);
 

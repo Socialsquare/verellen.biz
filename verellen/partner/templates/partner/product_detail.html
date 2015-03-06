@@ -15,7 +15,13 @@
 <div class="row">
     <div class="col-xs-4">
         <h3>{{ product.name }}</h3>
-        <a href="{{ tearsheet_url }}" class="btn btn-default"><span class="glyphicon glyphicon-download"></span> Download tearsheet</a>
+        {% if tearsheet_url %}
+        <a href="{{ tearsheet_url }}" class="btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (US)</a>
+        {% endif %}
+        
+        {% if tearsheet_metric_url %}
+        <a href="{{ tearsheet_metric_url }}" class="btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (Metric)</a>
+        {% endif %}
     </div>
 
     <div class="col-xs-8">

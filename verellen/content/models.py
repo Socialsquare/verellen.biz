@@ -13,8 +13,10 @@ class ProductContent(models.Model):
 
 class FooterContent(models.Model):
     contact_header_left = models.CharField(max_length=200)
+    contact_header_middle = models.CharField(max_length=200)
     contact_header_right = models.CharField(max_length=200)
     contact_body_left = HTMLField()
+    contact_body_middle = HTMLField()
     contact_body_right = HTMLField()
 
     social_header = models.CharField(max_length=200)

@@ -104,14 +104,18 @@ def product_detail(request, product_id):
         raise Http404
 
     partner = utils.get_partner(request.user)
-    tearsheet_url = product.tearsheet.url
+    tearsheet_url = ''
+    tearsheet_metric_url = ''
     if partner:
+        if (partner.show_us_version and product.tearsheet):
+            tearsheet_url = product.tearsheet.url
         if partner.show_metric and product.tearsheet_metric:
-            tearsheet_url = product.tearsheet_metric.url
+            tearsheet_metric_url = product.tearsheet_metric.url
 
     return render(request, 'partner/product_detail.html', {
         'product': product,
-        'tearsheet_url': tearsheet_url,
+        'tearsheet_metric_url': tearsheet_metric_url,
+        'tearsheet_url': tearsheet_url
     })
 
 @login_required(login_url='/partner/login/')

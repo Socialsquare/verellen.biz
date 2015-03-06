@@ -6547,6 +6547,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   background-position-x: 36px;
 }
 .footer-top .login a {
+  float: right;
   font-family: VerellenHeading;
   letter-spacing: 1pt;
   text-transform: uppercase;
@@ -6554,11 +6555,6 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   border-bottom: 2px solid #2e2e2e;
   padding-bottom: 10px;
   margin-bottom: 10px;
-}
-@media screen and (min-width: 768px) {
-  .footer-top .login a {
-    float: right;
-  }
 }
 .footer-top .login a:hover {
   text-decoration: none;
@@ -6660,7 +6656,6 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 }
 h1.moveout {
   text-indent: -99999px;
-  position: absolute;
 }
 .retailers .search-bar {
   margin-bottom: 40px;
@@ -6708,9 +6703,4 @@ h1.moveout {
 }
 .partner-downloads .download-caption {
   font-size: 20px;
-}
-.btn-tearsheet {
-  min-width: 215px;
-  text-align: left;
-  margin-bottom: 5px;
 }

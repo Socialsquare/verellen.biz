@@ -21,6 +21,7 @@
             <![endif]-->
     </head>
     <body>
+        <h1 class="moveout">Verellen</h1>
         <nav class="navbar navbar-verellen" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -32,7 +33,7 @@
                     </button>
 
                     <a class="navbar-brand" href="{% url 'content.home' %}">
-                        <img src="{% static 'verellen/images/logo_large.png' %}">
+                        <img src="{% static 'verellen/images/logo_large.png' %}" alt="Verellen" />
                     </a>
                 </div>
 
@@ -87,7 +88,7 @@
             <div class="row-fluid footer-top">
                 <div class="container">
                     <div class="row inner">
-                        <div class="col-xs-3 left-col">
+                        <div class="col-xs-4 col-sm-3 left-col">
                             <span class="col-header">{{ footer_content.contact_header_left }}</span>
 
                             <div class="col-header-sep"></div>
@@ -95,13 +96,19 @@
                             {{ footer_content.contact_body_left | safe }}
                         </div>
 
-                        <div class="col-xs-3 left-col">
+                        <div class="col-xs-4 col-sm-3 left-col">
+                            <span class="col-header">{{ footer_content.contact_header_middle }}</span>
+                            <div class="col-header-sep"></div>
+                            {{ footer_content.contact_body_middle | safe }}
+                        </div>
+
+                        <div class="col-xs-4 col-sm-3 left-col">
                             <span class="col-header">{{ footer_content.contact_header_right }}</span>
                             <div class="col-header-sep"></div>
                             {{ footer_content.contact_body_right | safe }}
                         </div>
 
-                        <div class="col-xs-3 left-col">
+                        <div class="col-xs-4 col-sm-2 left-col">
                             <span class="col-header">{{ footer_content.social_header }}</span>
 
                             <div class="col-header-sep"></div>
@@ -125,7 +132,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-xs-2 pull-right login">
+                        <div class="col-xs-8 col-sm-1 pull-right login">
                             {% if user.is_authenticated %}
                             <a class="font-heading" href="{% url 'partner.home' %}">
                                 {{ menu_content.partner_label }}

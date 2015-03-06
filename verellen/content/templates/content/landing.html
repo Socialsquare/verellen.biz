@@ -13,18 +13,15 @@
 
         <link href="{% static 'verellen/css/landing.css' %}" rel="stylesheet" type="text/css">
 
-        <script type="text/javascript">
-            window.onmousedown = function() {
-                window.location = "{% url 'content.home' %}";
-            }
-        </script>
     </head>
 
     <body>
+        <h1 class="moveout">Verellen</h1>
         <div class="landing">
-            <div class="banner">
-                <img src="{% static 'verellen/images/webphoto.png' %}" alt="">
-            </div>
+            <a href="{% url 'content.home' %}">
+                <div class="banner" style="background-image: url('{% static 'verellen/images/webphoto.jpg' %}')"></div>
+                <img class="logo" src="{% static 'verellen/images/logo_large_white.png' %}" alt="Verellen" />
+            </a>
         </div>
     </body>
 </html>

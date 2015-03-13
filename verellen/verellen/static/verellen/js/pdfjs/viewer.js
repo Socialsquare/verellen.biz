@@ -38,8 +38,8 @@ var PAGE_NUMBER_LOADING_INDICATOR = 'visiblePageIsLoading';
 var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
 
 PDFJS.imageResourcesPath = './images/';
-  PDFJS.workerSrc = '/static/verellen/js/pdfjs/pdf.worker.js';
-  PDFJS.cMapUrl = '/static/verellen/js/pdfjs/cmaps/';
+  PDFJS.workerSrc = 'https://verellen.s3.amazonaws.com/static/verellen/js/pdfjs/pdf.worker.js';
+  PDFJS.cMapUrl = 'https://verellen.s3.amazonaws.com/static/verellen/js/pdfjs/cmaps/';
   PDFJS.cMapPacked = true;
 
 var mozL10n = document.mozL10n || document.webL10n;

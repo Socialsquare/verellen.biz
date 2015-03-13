@@ -17,6 +17,8 @@ urlpatterns = patterns('',
 
     url(r'^retailers/$', retailer_views.home, name='retailer.home'),
 
+    url(r'(pdfjs/web/viewer\.html.*)$', 'direct_to_template'),
+
     url(r'^partner/$', partner_views.home, name='partner.home'),
     url(r'^partner/home/$', partner_views.home, name='partner.home'),
     url(r'^partner/search/$', partner_views.search, name='partner.search'),
@@ -32,6 +34,7 @@ urlpatterns = patterns('',
     url(r'^partner/sales_tools$', partner_views.sales_tools, name='partner.sales_tools'),
     url(r'^partner/account/$', partner_views.account, name='partner.account'),
     url(r'^partner/account_update/$', partner_views.account_update, name='partner.account_update'),
+    url(r'^partner/view$', partner_views.view_spreadsheet, name='partner.view_spreadsheet'),
 
     url(r'^products/$', product_views.home, name='product.home'),
     url(r'^products/(?P<category_slug>.*)$', product_views.list, name='product.list'),

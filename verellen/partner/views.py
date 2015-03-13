@@ -172,3 +172,7 @@ def account_update(request):
         request.user.save()
 
     return redirect('/partner/account')
+
+@login_required(login_url='/partner/login/')
+def view_spreadsheet(request):
+    return render(request, 'pdfjs/web/viewer.html')

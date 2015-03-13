@@ -17,10 +17,12 @@
         <h3>{{ product.name }}</h3>
         {% if tearsheet_url %}
         <a href="{{ tearsheet_url }}" class="btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (US)</a>
+        <a href="/partner/view?file={{ tearsheet_url }}" class="btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (US)</a>
         {% endif %}
         
         {% if tearsheet_metric_url %}
         <a href="{{ tearsheet_metric_url }}" class="btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (Metric)</a>
+        <a href="/partner/view?file={{ tearsheet_metric_url }}" class="btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (Metric)</a>
         {% endif %}
     </div>
 

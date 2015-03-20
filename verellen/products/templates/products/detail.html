@@ -13,10 +13,10 @@
 </div>
 
 <div class="row">
-    {% thumbnail main_image.image_file "800x502" crop="center" as thumb %}
+    {% thumbnail main_image.image_file "800" as thumb %}
         <div class="col-xs-12 col-sm-8 product-thumbnail">
             <a href="{{ image.image_file.url }}">
-                <img src="{{ thumb.url }}" class="img-responsive">
+                <div style="background-image: url('{{ thumb.url }}'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 500px; max-height: 600px; max-width: 800px; margin: 0 auto"></div>
             </a>
         </div>
     {% endthumbnail %}
@@ -31,9 +31,9 @@
                 </div>
             {% endif %}
 
-            {% thumbnail image.image_file "300x250" crop="center" as thumb %}
+            {% thumbnail image.image_file "300" as thumb %}
                 <a class="product-thumbnail" href="{{ image.image_file.url }}">
-                    <img src="{{ thumb.url }}" class="img-responsive">
+                    <div style="background-image: url('{{ thumb.url }}'); background-size: contain; background-repeat: no-repeat; background-position: center; width: 100%; height: 100%; margin-bottom: 20px; min-height: 113px; max-height: 150px; max-width: 300px; margin-left: auto; margin-right: auto;"></div>
                 </a>
             {% endthumbnail %}
         {% endfor %}
@@ -41,9 +41,9 @@
 
     <div class="col-xs-4 col-sm-2">
         {% for image in col2_images %}
-            {% thumbnail image.image_file "300x250" crop="center" as thumb %}
+            {% thumbnail image.image_file "300" as thumb %}
                 <a class="product-thumbnail" href="{{ image.image_file.url }}">
-                    <img src="{{ thumb.url }}" class="img-responsive">
+                    <div style="background-image: url('{{ thumb.url }}'); background-size: contain; background-repeat: no-repeat; background-position: center; width: 100%; height: 100%; margin-bottom: 20px; min-height: 113px; max-height: 150px; max-width: 300px; margin-left: auto; margin-right: auto;"></div>
                 </a>
             {% endthumbnail %}
         {% endfor %}

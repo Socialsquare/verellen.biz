@@ -7,7 +7,7 @@
 {% block content %}
 <div class="row">
   {% for category in categories %}
-    <div class="col-xs-3 category-thumbnail">
+    <div class="col-xs-12 col-sm-4 col-md-3 category-thumbnail">
       <a href="{% url 'product.list' category.slug %}" >
 
         {% thumbnail category.image "360x300" crop="center" as thumb %}

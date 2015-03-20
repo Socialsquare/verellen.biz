@@ -8,31 +8,49 @@
 {% block partner_content %}
 <div class="row">
 
-    <div class="col-xs-2">
-        <ul class="nav nav-pills nav-stacked">
-            {% for category in categories %}
-            <!-- class="{% current 'partner.tear_sheets' 'active' %}" -->
-            <li role="presentation" >
-                <a href="{% url 'partner.product_category' category.slug %}">{{ category.name }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+    <div class="row" id="wrapper">
+        <div id="sidebar-wrapper" class="visible-xs visible-sm">
+            <div class="close">&times;</div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    Categories
+                </li>
+                {% for category in categories %}
+                <li role="presentation" >
+                    <a href="{% url 'partner.product_category' category.slug %}">{{ category.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
-    <div class="col-xs-10">
-        <div class="row">
-            {% for category in categories %}
-            <div class="col-xs-3 product-thumbnail">
-                <a href="{% url 'partner.product_category' category.slug %}" >
+    <div id="page-content-wrapper">
+        <div class="col-md-2 hidden-xs hidden-sm">
+            <ul class="nav nav-pills nav-stacked">
+                {% for category in categories %}
+                <!-- class="{% current 'partner.tear_sheets' 'active' %}" -->
+                <li role="presentation" >
+                    <a href="{% url 'partner.product_category' category.slug %}">{{ category.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
 
-                    {% thumbnail category.image "360x300" crop="center" as thumb %}
-                    <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-responsive">
-                    {% endthumbnail %}
+        <div class="col-xs-12 col-sm-12 col-md-10">
+            <div class="row">
+                {% for category in categories %}
+                <div class="col-sm-4 col-md-3 product-thumbnail">
+                    <a href="{% url 'partner.product_category' category.slug %}" >
 
-                    <div class="name">{{ category.name }}</div>
-                </a>
+                        {% thumbnail category.image "360" crop="center" as thumb %}
+                        <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-responsive">
+                        {% endthumbnail %}
+
+                        <div class="name">{{ category.name }}</div>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>

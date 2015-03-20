@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-sm-4">
         <form class="form search-bar" role="form" action="{% url 'retailer.home' %}" method="get">
             {% csrf_token %}
             <div class="input-group">
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="col-xs-8">
+    <div class="col-xs-12 col-sm-8">
         <div class="pull-right" id="map" style="height: 400px; width: 100%;"></div>
     </div>
 </div>

@@ -8,7 +8,7 @@
 <div class="row">
     {% if products %}
             {% for product in products %}
-            <div class="col-xs-3 product-thumbnail">
+            <div class="col-xs-12 col-sm-4 col-md-3 product-thumbnail">
                 <a href="{% url 'product.detail' product.id %}" >
 
                     {% thumbnail product.get_main_image.image_file "360" as thumb %}

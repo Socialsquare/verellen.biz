@@ -22,7 +22,7 @@
 {% endif %}
 
 <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
         <form class="form" role="form" action="{% url 'partner.login_form' %}" method="post">
             {% csrf_token %}
             <legend>Partner log in</legend>
@@ -41,7 +41,7 @@
         </form>
     </div>
 
-    <div class="col-xs-6 medium-body-type">
+    <div class="col-xs-12 col-sm-6 medium-body-type">
         <img class="img-responsive" src={% static 'verellen/images/fireplace_cropped.jpeg' %}>
     </div>
 </div>

@@ -42,7 +42,7 @@ def syncS3(version = US_DIRECTORY):
 
     directory = 'media/media\\product_tear_sheets'
     if (version == EU_DIRECTORY):
-        directory = 'media/media\\product_tear_sheets'
+        directory = 'media/media\\product_tear_sheets_metric'
 
     save_keys(s3_keys, directory, version)
  
@@ -51,7 +51,6 @@ def save_keys(keys, directory, version):
         key_string = str(key.key)
         parent_folder = "\\".join(key_string.split("/")[0:2])
         parent_folder = os.path.join(FILE_ROOT, parent_folder)
-
         if directory == parent_folder:
             key_path = os.path.join(parent_folder, key_string.split("/")[-1])
             local_dir_path = os.path.join(LOCAL_DIRECTORY, version)

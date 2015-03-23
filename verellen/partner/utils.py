@@ -122,7 +122,7 @@ def generateZipCategoriesResponse(version, products, category_slug):
         zf.close()
     wrapper = FileWrapper(temp)
     response = HttpResponse(wrapper, content_type='application/zip')
-    response['Content-Disposition'] = 'attachment; filename=' + category_slug + '_tear_sheets_' + version.upper() + '.zip'
+    response['Content-Disposition'] = 'attachment; filename=' + category_slug + '_tear_sheets_' + version == 'us' ? version : 'metric' + '.zip'
     response['Content-Length'] = temp.tell()
     temp.seek(0)
     return response

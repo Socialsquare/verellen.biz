@@ -98,7 +98,7 @@ def product_category(request, category_slug):
     return render(request, 'partner/product_category.html', { 
         'products': products,
         'show_us': partner.show_us_version,
-        'show_eu': partner.show_metric,
+        'show_metric': partner.show_metric,
         'category_slug': category_slug
     })
 
@@ -145,7 +145,7 @@ def product_category_list(request):
     return render(request, 'partner/product_category_list.html', {
         'categories': Category.objects.all(),
         'show_us': partner.show_us_version,
-        'show_eu': partner.show_metric
+        'show_metric': partner.show_metric
     })
 
 @login_required(login_url='/partner/login/')
@@ -161,7 +161,7 @@ def download_products_us(request):
 @login_required(login_url='/partner/login/')
 def download_products_eu(request):
     partner = utils.get_partner(request.user)
-    if not partner.show_eu_version:
+    if not partner.show_metric:
         raise Http404()
 
     utils.syncS3('eu')
@@ -184,7 +184,7 @@ def download_categories_us(request, category_slug):
 def download_categories_eu(request, category_slug):
     partner = utils.get_partner(request.user)
     category = Category.objects.filter(slug = category_slug).first()
-    if not category or not partner.show_eu_version:
+    if not category or not partner.show_metric:
         raise Http404
 
     products = Product.objects.filter(category = category).order_by('name')

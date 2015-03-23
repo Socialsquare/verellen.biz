@@ -20,6 +20,16 @@
                     <a href="{% url 'partner.product_category' category.slug %}">{{ category.name }}</a>
                 </li>
                 {% endfor %}
+                {% if show_us %}
+                <li>
+                    <a title="Download all US tear sheets" href="/partner/download/us"><span class="glyphicon glyphicon-download"></span> Tear sheets (US)</a>
+                </li>
+                {% endif %}
+                {% if show_metric %}
+                <li>
+                    <a title="Download all EU tear sheets" href="/partner/download/eu"><span class="glyphicon glyphicon-download"></span> Tear sheets (Metric)</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

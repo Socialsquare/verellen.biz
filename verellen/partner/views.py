@@ -88,13 +88,19 @@ def price_lists(request):
 
 @login_required(login_url='/partner/login/')
 def product_category(request, category_slug):
+    partner = utils.get_partner(request.user)
     category = Category.objects.filter(slug = category_slug).first()
     if not category:
         raise Http404
 
     products = Product.objects.filter(category = category).order_by('name')
 
-    return render(request, 'partner/product_category.html', { 'products': products })
+    return render(request, 'partner/product_category.html', { 
+        'products': products,
+        'show_us': partner.show_us_version,
+        'show_eu': partner.show_metric,
+        'category_slug': category_slug
+    })
 
 @login_required(login_url='/partner/login/')
 def product_detail(request, product_id):
@@ -135,9 +141,57 @@ def search(request):
 
 @login_required(login_url='/partner/login/')
 def product_category_list(request):
+    partner = utils.get_partner(request.user)
     return render(request, 'partner/product_category_list.html', {
-        'categories': Category.objects.all()
+        'categories': Category.objects.all(),
+        'show_us': partner.show_us_version,
+        'show_eu': partner.show_metric
     })
+
+@login_required(login_url='/partner/login/')
+def download_products_us(request):
+    partner = utils.get_partner(request.user)
+    if not partner.show_us_version:
+        raise Http404()
+
+    utils.syncS3('us')
+
+    return utils.generateZipResponse('us')
+
+@login_required(login_url='/partner/login/')
+def download_products_eu(request):
+    partner = utils.get_partner(request.user)
+    if not partner.show_eu_version:
+        raise Http404()
+
+    utils.syncS3('eu')
+
+    return utils.generateZipResponse('eu')
+
+@login_required(login_url='/partner/login/')
+def download_categories_us(request, category_slug):
+    category = Category.objects.filter(slug = category_slug).first()
+    partner = utils.get_partner(request.user)
+    if not category or not partner.show_us_version:
+        raise Http404()
+
+    products = Product.objects.filter(category = category).order_by('name')
+    utils.syncS3('us')
+
+    return utils.generateZipCategoriesResponse('us', products, category_slug)
+
+@login_required(login_url='/partner/login/')
+def download_categories_eu(request, category_slug):
+    partner = utils.get_partner(request.user)
+    category = Category.objects.filter(slug = category_slug).first()
+    if not category or not partner.show_eu_version:
+        raise Http404
+
+    products = Product.objects.filter(category = category).order_by('name')
+    utils.syncS3('eu')
+
+    return utils.generateZipCategoriesResponse('eu', products, category_slug)
+
 
 @login_required(login_url='/partner/login/')
 def account(request):

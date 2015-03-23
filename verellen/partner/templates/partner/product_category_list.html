@@ -26,6 +26,20 @@
 
     <div id="page-content-wrapper">
         <div class="col-md-2 hidden-xs hidden-sm">
+            Download all tear sheets:
+            <ul class="nav nav-pills nav-stacked">
+                {% if show_us %}
+                <li>
+                    <a title="Download all US tear sheets" href="/partner/download/us"><span class="glyphicon glyphicon-download"></span> Tear sheets (US)</a>
+                </li>
+                {% endif %}
+                {% if show_metric %}
+                <li>
+                    <a title="Download all EU tear sheets" href="/partner/download/eu"><span class="glyphicon glyphicon-download"></span> Tear sheets (Metric)</a>
+                </li>
+                {% endif %}
+            </ul>
+            <hr>
             <ul class="nav nav-pills nav-stacked">
                 {% for category in categories %}
                 <!-- class="{% current 'partner.tear_sheets' 'active' %}" -->

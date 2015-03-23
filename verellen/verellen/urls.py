@@ -30,6 +30,12 @@ urlpatterns = patterns('',
     url(r'^partner/products/(?P<category_slug>.*)$', partner_views.product_category, name='partner.product_category'),
     url(r'^partner/product/(?P<product_id>.*)$', partner_views.product_detail, name='partner.product_detail'),
 
+    url(r'^partner/download/us$', partner_views.download_products_us, name='partner.download_products_us'),
+    url(r'^partner/download/eu$', partner_views.download_products_eu, name='partner.download_products_eu'),
+    
+    url(r'^partner/download/us/(?P<category_slug>.*)$', partner_views.download_categories_us, name='partner.download_categories_us'),
+    url(r'^partner/download/eu/(?P<category_slug>.*)$', partner_views.download_categories_eu, name='partner.download_categories_eu'),
+
     url(r'^partner/price_lists$', partner_views.price_lists, name='partner.price_lists'),
     url(r'^partner/sales_tools$', partner_views.sales_tools, name='partner.sales_tools'),
     url(r'^partner/account/$', partner_views.account, name='partner.account'),

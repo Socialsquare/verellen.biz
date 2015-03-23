@@ -107,10 +107,12 @@ def generateZipCategoriesResponse(version, products, category_slug):
     )
     try:
         for product in products:
-            if version == US_DIRECTORY:
+            if version == US_DIRECTORY and product.tearsheet:
                 f = product.tearsheet.url.split('/')[-1]
-            else:
+            elif product.tearsheet_metric:
                 f = product.tearsheet_metric.url.split('/')[-1]
+            else:
+                continue
 
             local_path = os.path.join(LOCAL_DIRECTORY, version, f)
             if os.path.exists(local_path):

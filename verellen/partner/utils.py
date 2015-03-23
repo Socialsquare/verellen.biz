@@ -92,7 +92,11 @@ def generateZipResponse(version):
         zf.close()
     wrapper = FileWrapper(temp)
     response = HttpResponse(wrapper, content_type='application/zip')
-    response['Content-Disposition'] = 'attachment; filename=Tear_sheets_' + version.upper() + '.zip'
+    v = version
+    if version == EU_DIRECTORY:
+        v = 'metric'
+
+    response['Content-Disposition'] = 'attachment; filename=Tear_sheets_' + v + '.zip'
     response['Content-Length'] = temp.tell()
     temp.seek(0)
     return response

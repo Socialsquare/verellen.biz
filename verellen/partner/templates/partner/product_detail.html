@@ -8,7 +8,7 @@
 {% block partner_content %}
 <div class="row">
     <div class="col-xs-12 col-md-4">
-        <h3>{{ product.name }}</h3>
+        <h2>{{ product.name }}</h2>
         {% if tearsheet_url %}
         <a href="{{ tearsheet_url }}" class="col-sm-5 btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (US)</a>
         <a href="/partner/view?file={{ tearsheet_url }}" class="col-sm-5 col-sm-offset-1 col-md-offset-0 pull-sm-right btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (US)</a>
@@ -25,7 +25,7 @@
             {% thumbnail image.image_file "240" as thumb %}
                 <a class="pull-lg-right pull-md-right pull-sm-left pull-xs-left product-detail-thumbnail" href="{{ image.image_file.url }}">
                     <!-- <img src="{{ thumb.url }}" class="img-responsive"> -->
-                    <div style="background-image: url('{{ thumb.url }}'); background-size: contain; background-repeat: no-repeat; background-position: center; width: 240px; height: 240px; margin: 0 auto"></div>
+                    <div class="text-indent" style="background-image: url('{{ thumb.url }}'); background-size: contain; background-repeat: no-repeat; background-position: center; width: 240px; height: 240px; margin: 0 auto">{{ product.name }}</div>
                 </a>
             {% endthumbnail %}
         {% endfor %}

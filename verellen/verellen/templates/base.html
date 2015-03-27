@@ -8,8 +8,10 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta name="keywords" content="Distinctive details, Elegant lines, Authentic materials, Forgivable fabrics, Tailor-made covers, Timeless sophistication">
 
         <link href="{% static 'verellen/css/global.css' %}" rel="stylesheet" type="text/css">
         <!--[if gte IE 9]>
@@ -21,7 +23,6 @@
             <![endif]-->
     </head>
     <body>
-        <h1 class="moveout">Verellen</h1>
         <nav class="navbar navbar-verellen" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -32,9 +33,11 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="{% url 'content.home' %}">
-                        <img src="{% static 'verellen/images/logo_large.png' %}" alt="Verellen" />
-                    </a>
+                    <h1>
+                        <a class="navbar-brand" href="{% url 'content.home' %}">
+                            <img src="{% static 'verellen/images/logo_large.png' %}" alt="Verellen" />
+                        </a>
+                    </h1>
                 </div>
 
                 <div class="collapse navbar-collapse" id="verellen-main-nav">

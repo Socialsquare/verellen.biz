@@ -99,7 +99,7 @@ def product_category(request, category_slug):
         'products': products,
         'show_us': partner.show_us_version,
         'show_metric': partner.show_metric,
-        'category_slug': category_slug
+        'category': category
     })
 
 @login_required(login_url='/partner/login/')

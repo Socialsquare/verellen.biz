@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import models
 def robots(request):
     txt = """User-agent: *
-Disallow: /"""
+Disallow: """
     return HttpResponse(txt, content_type='text/plain')
 
 def landing(request):

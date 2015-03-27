@@ -19,7 +19,7 @@ def home(request):
             s = s.replace(',', '').strip()
             if len(s) > 2 and not s.isdigit():
                 array.append(s)
-        print array
+
         if array and len(array) > 1:
             regex = '^.*(%s).*$' % '|'.join(array)
 

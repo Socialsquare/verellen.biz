@@ -6848,7 +6848,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
 }
 .moveout {
   text-indent: -99999px;
-  position: absolute;
+  display: none;
 }
 .retailers .search-bar {
   margin-bottom: 40px;

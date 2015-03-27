@@ -13,8 +13,16 @@ def home(request):
         showing_all = False
         query = request.GET['query']
         split = query.split(',')
-        regex = '^.*(%s).*$' % '|'.join(split)
-        matches = Retailer.objects.filter(Q(partner__name__contains=query)
+        array = []
+        for s in split:
+            s = s.strip()
+            if len(s) > 2:
+                array.append(s)
+
+        if array:
+            regex = '^.*(%s).*$' % '|'.join(array)
+
+            matches = Retailer.objects.filter(Q(partner__name__contains=query)
                                           | Q(address__contains=query)
                                           | Q(city__contains=query)
                                           | Q(phone__contains=query)
@@ -26,6 +34,14 @@ def home(request):
                                           | Q(phone__iregex=regex)
                                           | Q(state__iregex=regex)
                                           | Q(zip_code__iregex=regex)
+                                          )
+        else:
+            matches = Retailer.objects.filter(Q(partner__name__contains=query)
+                                          | Q(address__contains=query)
+                                          | Q(city__contains=query)
+                                          | Q(phone__contains=query)
+                                          | Q(state__contains=query)
+                                          | Q(zip_code__contains=query)
                                           )
 
     return render(request, 'retailers/home.html', {

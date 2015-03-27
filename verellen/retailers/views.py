@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
+import re
 
 from retailers.models import Retailer
 
@@ -12,14 +13,14 @@ def home(request):
     if 'query' in request.GET.keys():
         showing_all = False
         query = request.GET['query']
-        split = query.split(',')
+        split = re.findall(r'[,\w]+', query)
         array = []
         for s in split:
-            s = s.strip()
-            if len(s) > 2:
+            s = s.replace(',', '').strip()
+            if len(s) > 2 and not s.isdigit():
                 array.append(s)
-
-        if array:
+        print array
+        if array and len(array) > 1:
             regex = '^.*(%s).*$' % '|'.join(array)
 
             matches = Retailer.objects.filter(Q(partner__name__contains=query)

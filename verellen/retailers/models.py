@@ -34,12 +34,11 @@ class Retailer(models.Model):
         self.lng = latlng[1]
 
         localities = get_localities(self.lat, self.lng)
-        print localities
+
         [localities.append(i) for i in get_localities(self.lat + 0.1, self.lng + 0.1) if i not in localities and self.address and self.city and self.state]
         [localities.append(i) for i in get_localities(self.lat - 0.1, self.lng + 0.1) if i not in localities and self.address and self.city and self.state]
         [localities.append(i) for i in get_localities(self.lat + 0.1, self.lng - 0.1) if i not in localities and self.address and self.city and self.state]
         [localities.append(i) for i in get_localities(self.lat - 0.1, self.lng - 0.1) if i not in localities and self.address and self.city and self.state]
-        print localities
         if len(localities) > 0:
             self.localities = ' '.join([str(x) for x in localities])
 
@@ -67,7 +66,6 @@ class Retailer(models.Model):
 
 def get_localities(lat, lng):
     request = "https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false" % (lat, lng)
-    print request
     data = urllib.urlopen(request).read()
     dataj = json.loads(data)
     localities = []

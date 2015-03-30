@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'retailer_base.html' %}
+{% load static %}
 
 {% block title %}Retailers{% endblock %}
 {% block namespace %} retailers {% endblock %}
 
-{% block content %}
+{% block retailer_content %}
 <h2 class="moveout">Retailers</h2>
 <div class="row">
     <div class="col-xs-12 col-sm-4">
@@ -36,7 +37,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-8">
-        <div class="pull-right" id="map" style="height: 400px; width: 100%;"></div>
+        <div class="pull-right retailer-map" id="map"></div>
     </div>
 </div>
 {% endblock %}
@@ -44,6 +45,30 @@
 {% block scripts %}
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 <script type="text/javascript">
+    $(function() {
+        var retailer_map_height = $('.retailer-map').height();
+        var result_box_height   = $('.result-box').height();
+
+        var retailer_map_top = $('.retailer-map').offset().top;
+        var result_box_top   = $('.result-box').offset().top;
+        var offset_bottom    = 50;
+
+        function resize() {
+            if ($(window).width() > 767) {
+                $('.retailer-map').height($(window).height() - retailer_map_top - offset_bottom);
+                $('.result-box').height($(window).height() - result_box_top - offset_bottom);
+            } else {
+                $('.retailer-map').retailer_map_height();
+                $('.result-box').result_box_height();
+            }
+        }
+        resize();
+
+        $( window ).resize(function() {
+            resize();
+        });
+    });
+
     var locations = [
       {% for retailer in retailers %}
          ['{% spaceless %}{% include "retailers/infobox.html" with retailer=retailer %}{% endspaceless %}', '{{ retailer.lat }}', '{{ retailer.lng }}'],

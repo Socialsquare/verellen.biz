@@ -6864,6 +6864,10 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   list-style: none;
   margin-bottom: 30px;
 }
+.retailer-map {
+  height: 400px;
+  width: 100%;
+}
 .partner-products .product-thumbnail {
   margin-bottom: 40px;
 }

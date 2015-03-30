@@ -13,14 +13,14 @@ def home(request):
     if 'query' in request.GET.keys():
         showing_all = False
         query = request.GET['query']
-        split = re.findall(r'[,\w]+', query)
+        split = query.split(',')
         array = []
         for s in split:
             s = s.replace(',', '').strip()
             if len(s) > 2 and not s.isdigit():
                 array.append(s)
 
-        if array and len(array) > 1:
+        if len(array) > 0:
             regex = '^.*(%s).*$' % '|'.join(array)
 
             matches = Retailer.objects.filter(Q(partner__name__contains=query)
@@ -44,6 +44,24 @@ def home(request):
                                           | Q(state__contains=query)
                                           | Q(zip_code__contains=query)
                                           )
+
+    # If it is the case there are no matches we try to do a more greedy search by splitting the query even more
+    if len(matches) < 1:
+        split = re.findall(r'[,\w]+', query)
+        array = []
+        for s in split:
+            s = s.replace(',', '').strip()
+            if len(s) > 2 and not s.isdigit():
+                array.append(s)
+        if array and len(array) > 0:
+            regex = '^.*(%s).*$' % '|'.join(array)
+            matches = Retailer.objects.filter(Q(partner__name__iregex=regex)
+                                      | Q(address__iregex=regex)
+                                      | Q(city__iregex=regex)
+                                      | Q(phone__iregex=regex)
+                                      | Q(state__iregex=regex)
+                                      | Q(zip_code__iregex=regex)
+                                      )
 
     return render(request, 'retailers/home.html', {
         'matches': matches,

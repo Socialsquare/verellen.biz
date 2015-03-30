@@ -66,6 +66,7 @@ def home(request):
                                       | Q(zip_code__iregex=regex)
                                       | Q(localities__iregex=regex)
                                       )
+    matches = matches.order_by('partner__name')
     return render(request, 'retailers/home.html', {
         'matches': matches,
         'retailers': matches,

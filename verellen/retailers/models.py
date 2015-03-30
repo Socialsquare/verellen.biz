@@ -20,6 +20,8 @@ class Retailer(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
 
+    localities = models.CharField(max_length = 200, blank=True, default="")
+
     def __unicode__(self):
         return self.partner.name
 
@@ -30,6 +32,19 @@ class Retailer(models.Model):
         latlng = self.geocode(location)
         self.lat = latlng[0]
         self.lng = latlng[1]
+
+        request = "https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false" % (self.lat, self.lng)
+        data = urllib.urlopen(request).read()
+        dataj = json.loads(data)
+        localities = []
+        if dataj['status'] == 'OK':
+            for r in dataj['results']:
+                if 'postcode_localities' in r:
+                    localities = r['postcode_localities']
+                    break
+
+        if len(localities) > 0:
+            self.localities = ' '.join([str(x) for x in localities])
 
         super(Retailer, self).save(*args, **kwargs)
 

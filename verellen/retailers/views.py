@@ -23,26 +23,29 @@ def home(request):
         if len(array) > 0:
             regex = '^.*(%s).*$' % '|'.join(array)
 
-            matches = Retailer.objects.filter(Q(partner__name__contains=query)
-                                          | Q(address__contains=query)
-                                          | Q(city__contains=query)
-                                          | Q(phone__contains=query)
-                                          | Q(state__contains=query)
-                                          | Q(zip_code__contains=query)
+            matches = Retailer.objects.filter(Q(partner__name__icontains=query)
+                                          | Q(address__icontains=query)
+                                          | Q(city__icontains=query)
+                                          | Q(phone__icontains=query)
+                                          | Q(state__icontains=query)
+                                          | Q(zip_code__icontains=query)
+                                          | Q(localities__icontains=query)
                                           | Q(partner__name__iregex=regex)
                                           | Q(address__iregex=regex)
                                           | Q(city__iregex=regex)
                                           | Q(phone__iregex=regex)
                                           | Q(state__iregex=regex)
                                           | Q(zip_code__iregex=regex)
+                                          | Q(localities__iregex=regex)
                                           )
         else:
-            matches = Retailer.objects.filter(Q(partner__name__contains=query)
-                                          | Q(address__contains=query)
-                                          | Q(city__contains=query)
-                                          | Q(phone__contains=query)
-                                          | Q(state__contains=query)
-                                          | Q(zip_code__contains=query)
+            matches = Retailer.objects.filter(Q(partner__name__icontains=query)
+                                          | Q(address__icontains=query)
+                                          | Q(city__icontains=query)
+                                          | Q(phone__icontains=query)
+                                          | Q(state__icontains=query)
+                                          | Q(zip_code__icontains=query)
+                                          | Q(localities__icontains=query)
                                           )
 
     # If it is the case there are no matches we try to do a more greedy search by splitting the query even more
@@ -61,8 +64,8 @@ def home(request):
                                       | Q(phone__iregex=regex)
                                       | Q(state__iregex=regex)
                                       | Q(zip_code__iregex=regex)
+                                      | Q(localities__iregex=regex)
                                       )
-
     return render(request, 'retailers/home.html', {
         'matches': matches,
         'retailers': matches,

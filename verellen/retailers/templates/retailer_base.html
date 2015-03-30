@@ -100,51 +100,10 @@
                 </div>
             </div>
         </nav>
-        <div class="row-fluid content gradient {% block namespace %}{% endblock %}">
-            <div class="container">
+        <div class="container">
+            <div class="row content gradient {% block namespace %}{% endblock %}">
                 <div class="col-xs-12">
-                    {% if products %}
-                    <div class="row back-nav">
-                        <div class="col-xs-12">
-                            <a href="{% url 'partner.product_category_list' %}">Back to categories</a>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% if product %}
-                    <div class="row back-nav">
-                        <div class="col-xs-12">
-                            <a href="{% url 'partner.product_category' product.category.slug %}">Back to {{ product.category.name }}</a>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% if products or categories %}
-                    <button class="btn btn-default btn-side visible-xs visible-sm" id="menu-toggle">
-                        <i class="glyphicon glyphicon-menu-hamburger"></i> 
-                        {% if products %}Products{% else %}Categories{% endif %}
-                    </button>
-                    {% endif %}
-                    <form class="form form-inline search-form visible-xs visible-sm"
-                          role="form"
-                          action="{% url 'partner.search' %}"
-                          method="get">
-
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <input id="query"
-                                   class="form-control"
-                                   type="text"
-                                   name="query"
-                                   placeholder="Search products">
-
-                        </div>
-
-                        <button type="submit" class="btn btn-default hidden-xs">
-                            <i class="glyphicon glyphicon-search"></i> Search
-                        </button>
-                    </form>
                     {% block retailer_content %}{% endblock %}
-
-
                 </div>
             </div>
         </div>

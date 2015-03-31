@@ -15,8 +15,12 @@ def home(request):
         query = request.GET['query']
         if len(query) == 2:
             matches = Retailer.objects.filter(Q(state__icontains=query))
+        else:
+            matchObj = re.match(r'(.{2}),?\s+(USA|Canada)', query, flags=re.IGNORECASE)
+            if matchObj:
+                matches = Retailer.objects.filter(Q(state__icontains=matchObj.group(1)) & Q(country__icontains=matchObj.group(2)))
 
-        if len(query) != 2 or (len(query) == 2 and len(matches) == 0):
+        if len(matches) == len(all) or len(matches) == 0:
             split = query.split(',')
             array = []
             for s in split:

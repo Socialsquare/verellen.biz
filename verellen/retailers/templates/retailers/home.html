@@ -40,6 +40,28 @@
         <div class="pull-right retailer-map" id="map"></div>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-sm-offset-6 col-md-offset-6 boutiques">
+        <h2>Verellen Boutiques</h2>
+        <h3>Featuring Verellen Upholstery, Lighting, Case Goods and Accessories</h3>
+        <div>
+            <ul class="results list-unstyled">
+                {% for retailer in boutiques %}
+                <li>
+                    <h5>{{ retailer.partner.name }}</h5>
+                    <p>
+                        {{ retailer.address }}
+                        <br>
+                        {{ retailer.city }},{% if retailer.state %} {{ retailer.state }}{% endif %} {{ retailer.zip_code }}, {{ retailer.country }}
+                    </p>
+
+                    <p><i class="glyphicon glyphicon-earphone"></i> {{ retailer.phone }}<br>{{ retailer.website }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -71,7 +93,7 @@
 
     var locations = [
       {% for retailer in retailers %}
-         ['{% spaceless %}{% include "retailers/infobox.html" with retailer=retailer %}{% endspaceless %}', '{{ retailer.lat }}', '{{ retailer.lng }}'],
+         ['{% spaceless %}{% include "retailers/infobox.html" with retailer=retailer %}{% endspaceless %}', '{{ retailer.lat }}', '{{ retailer.lng }}', {% if retailer.partner.is_boutique %}true{% else %}false{% endif %}],
       {% endfor %}
     ];
 
@@ -85,12 +107,21 @@
 
     var marker, i;
     var bounds = new google.maps.LatLngBounds();
+    var icon = "{% static 'verellen/images/home_logo.png' %}"
 
     for (i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
+      if (locations[i][3]) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map,
+            icon: icon
+          });
+      } else { 
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+      }
       bounds.extend(marker.getPosition());
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {

@@ -10,6 +10,8 @@ def home(request):
     showing_all = True
     query = ""
 
+    boutiques = Retailer.objects.filter(partner__is_boutique=True)
+
     if 'query' in request.GET.keys():
         showing_all = False
         query = request.GET['query']
@@ -81,5 +83,6 @@ def home(request):
         'matches': matches,
         'retailers': matches,
         'search_query': query,
-        'showing_all': showing_all
+        'showing_all': showing_all,
+        'boutiques': boutiques
     })

@@ -41,6 +41,7 @@ class Partner(models.Model):
                                         verbose_name="Show EU tools")
     name = models.CharField(max_length=255)
     group = models.ForeignKey(PartnerGroup, blank=True, null=True, default=None)
+    is_boutique = models.BooleanField(default=False)
 
     def __unicode__(self):
         return '{0} ({1})'.format(self.name, self.user.username)

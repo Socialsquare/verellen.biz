@@ -6868,6 +6868,9 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   height: 400px;
   width: 100%;
 }
+.boutiques {
+  margin-top: 50px;
+}
 .boutiques h2 {
   font-size: 22px;
   text-transform: none;

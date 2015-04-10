@@ -21,6 +21,9 @@
                 }
             </style>
             <![endif]-->
+        {% if GOOGLE_ANALYTICS_PROPERTY_ID %}
+            {% include "ga.html" %}
+        {% endif %}
     </head>
     <body>
         <nav class="navbar navbar-verellen" role="navigation">

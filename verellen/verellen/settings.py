@@ -83,7 +83,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
 
-    'content.context_preprocessor.content'
+    'content.context_preprocessor.content',
+    'content.context_preprocessor.google_analytics'
 )
 
 # Internationalization

@@ -43,6 +43,7 @@ class HomeContent(models.Model):
 class CarouselImage(models.Model):
     image_file = thumbnail.ImageField(upload_to='carousel')
     title = models.CharField(max_length=200, blank=True, null=True)
+    product = models.ForeignKey(Product, blank=True, null=True)
     home_content = models.ForeignKey(HomeContent)
 
 class MenuContent(models.Model):

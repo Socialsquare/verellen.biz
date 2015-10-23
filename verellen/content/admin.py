@@ -31,7 +31,7 @@ class AboutContentAdmin(admin.ModelAdmin):
 
 class CarouselImageInline(admin.TabularInline):
     model = CarouselImage
-    fields = [ 'image_file', 'title' ]
+    fields = [ 'image_file', 'title', 'product' ]
 
 class HomeContentAdmin(admin.ModelAdmin):
     fields = [ 'title', ]

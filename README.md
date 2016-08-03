@@ -32,6 +32,6 @@ You can now sign into the Django admin interface by going to `/admin`.
 
 #### Run command
 
-`cd` into the project root dir and run
+`cd` into the project root dir and run  
 `. venv/bin/activate && ./manage.py runserver`
 

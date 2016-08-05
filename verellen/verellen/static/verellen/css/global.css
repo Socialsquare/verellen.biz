@@ -1090,7 +1090,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: black;
+  color: #000000;
   text-decoration: none;
 }
 a:hover,
@@ -3278,7 +3278,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: black;
+  color: #000000;
   font-weight: normal;
   border-radius: 0;
 }
@@ -3875,7 +3875,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: black;
+  border-color: #000000;
 }
 .nav .nav-divider {
   height: 1px;
@@ -4592,7 +4592,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: black;
+  color: #000000;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   margin-left: -1px;
@@ -4807,7 +4807,7 @@ a.badge:focus {
 }
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: black;
+  color: #000000;
   background-color: #ffffff;
 }
 .nav-pills > li > a > .badge {
@@ -4871,7 +4871,7 @@ a.list-group-item.active > .badge,
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: black;
+  border-color: #000000;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -6671,7 +6671,7 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   background-color: #38474d;
 }
 .navbar-verellen .dropdown-menu.category-menu .category-item:hover a {
-  color: white;
+  color: #ffffff;
 }
 .navbar-verellen .dropdown-menu.category-menu .sep {
   border-bottom: 1px solid #999;
@@ -7029,6 +7029,64 @@ fieldset[disabled] .navbar-verellen .btn-link:focus {
   .btn-side {
     display: inline-block !important;
   }
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #2e2e2e;
+  cursor: pointer;
+}
+h1.moveout {
+  text-indent: -99999px;
+  position: absolute;
+}
+.text-indent {
+  text-indent: -99999px;
+}
+.landing {
+  width: 100%;
+  height: 100%;
+}
+.landing .banner {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}
+.landing .logo {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}
+.modal-content.optin {
+  width: 450px;
+  padding: 15px 15px 0 15px;
+  background-color: rgba(255, 245, 235, 0.7);
+}
+.modal-content.optin .modal-header .logo-text {
+  font-weight: bold;
+}
+.modal-content.optin .modal-header,
+.modal-content.optin .modal-footer {
+  border: 0;
+}
+.modal-content.optin .modal-footer {
+  padding-top: 0;
+}
+.modal-content.optin .form-control {
+  color: #999;
+}
+.modal-content.optin .radio {
+  margin: 5px;
+}
+.modal-content.optin .radio input[type="radio"] {
+  margin: 2px 0 0;
+  margin-left: -20px;
 }
 @media (max-width: 767px) {
   .pull-xs-left {

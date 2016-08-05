@@ -15,13 +15,13 @@ You need to have these installed on your development machine and on the server
 
 #### Command line
 
-`cd` into the project root dir
-`virtualenv env` *initialise python 3 virtual environment*
-`. env/bin/activate` *start the virtual environment*
-`pip install -r requirements.txt` *install required python modules*
-`./manage.py syncdb` *initialise the database and create superuser*
-`./manage.py migrate` *migrate products, retailers, partner and content*
-`./manage.py runserver` *start the app*
+`cd` into the project root dir  
+`virtualenv env` *initialise python 3 virtual environment*  
+`. env/bin/activate` *start the virtual environment*  
+`pip install -r requirements.txt` *install required python modules*  
+`./verellen/manage.py syncdb` *initialise the database and create superuser*  
+`./verellen/manage.py migrate` *migrate products, retailers, partner and content*  
+`./verellen/manage.py runserver` *start the app*
 
 You can now sign into the Django admin interface by going to `/admin`.
 

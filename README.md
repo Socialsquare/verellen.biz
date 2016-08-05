@@ -11,6 +11,7 @@ The product catalog and website of http://verellen.biz/
 You need to have these installed on your development machine and on the server
 - [python](https://www.python.org)
 - [sqlite](https://www.sqlite.org/)
+- [less](http://lesscss.org/)
 - [virtualenv](https://virtualenv.pypa.io/en/stable/)
 
 #### Command line

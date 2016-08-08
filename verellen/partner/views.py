@@ -60,6 +60,8 @@ def sales_tools(request):
 
     try:
         partner = utils.get_partner(request.user)
+        if partner and partner.hide_sales_tools:
+            return redirect('/partner/home/')
         files = files.filter(is_eu_format = partner.show_eu_price)
     except:
         pass
@@ -95,7 +97,7 @@ def product_category(request, category_slug):
 
     products = Product.objects.filter(category = category).order_by('name')
 
-    return render(request, 'partner/product_category.html', { 
+    return render(request, 'partner/product_category.html', {
         'products': products,
         'show_us': partner.show_us_version,
         'show_metric': partner.show_metric,

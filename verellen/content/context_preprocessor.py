@@ -10,14 +10,17 @@ def content(request):
 
     partner = get_partner(request.user)
     hide_price = False
+    hide_sales_tools = False
     if partner:
         hide_price = partner.hide_price
+        hide_sales_tools = partner.hide_sales_tools
 
     return {
         'footer_content': get_content_model(models.FooterContent),
         'menu_content': get_content_model(models.MenuContent),
         'product_categories': product_categories,
         'hide_price': hide_price,
+        'hide_sales_tools': hide_sales_tools,
     }
 
 def google_analytics(request):

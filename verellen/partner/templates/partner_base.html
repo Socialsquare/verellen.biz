@@ -61,12 +61,14 @@
                                 {% endfor %}
                             </div>
                         </li>
+                        {% if not hide_sales_tools %}
                         <li class="{% current 'partner.sales_tools' %}">
                             <a href="{% url 'partner.sales_tools' %}" class="menu-item">
                                 Sales tools
                             </a>
                             <div class="marker"></div>
                         </li>
+                        {% endif %}
 
                         {% if not hide_price %}
                         <li class="{% current 'partner.price_lists' %}">
@@ -122,7 +124,7 @@
                     {% endif %}
                     {% if products or categories %}
                     <button class="btn btn-default btn-side visible-xs visible-sm" id="menu-toggle">
-                        <i class="glyphicon glyphicon-menu-hamburger"></i> 
+                        <i class="glyphicon glyphicon-menu-hamburger"></i>
                         {% if products %}Products{% else %}Categories{% endif %}
                     </button>
                     {% endif %}

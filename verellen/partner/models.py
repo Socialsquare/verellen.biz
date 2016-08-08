@@ -35,10 +35,12 @@ class Partner(models.Model):
     user = models.OneToOneField(User)
     expiryDate = models.DateTimeField(null=True, blank=True)
     hide_price = models.BooleanField(default=False)
+    hide_sales_tools = models.BooleanField(default=False)
     show_metric = models.BooleanField(default=False)
     show_us_version = models.BooleanField(default=True)
     show_eu_price = models.BooleanField(default=False,
                                         verbose_name="Show EU tools")
+    show_metric = models.BooleanField(default=False)
     name = models.CharField(max_length=255)
     group = models.ForeignKey(PartnerGroup, blank=True, null=True, default=None)
     is_boutique = models.BooleanField(default=False)

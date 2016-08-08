@@ -56,24 +56,41 @@ h1.moveout {
         }
     }
 
-    .modal-header, .modal-footer {
+    .modal-header {
         border: 0;
     }
 
-    .modal-footer {
-      padding-top: 0;
-    }
+    .modal-body {
+      position: relative;
 
-    .form-control {
-      color: #999;
-    }
+      .alert {
+        padding: 10px;
+      }
 
-    .radio {
-      margin: 5px;
+      .form-control {
+        color: #999;
+      }
 
-      input[type="radio"] {
-        margin: 2px 0 0;
-        margin-left: -20px;
+      .radio {
+        margin: 5px;
+
+        input[type="radio"] {
+          margin: 2px 0 0;
+          margin-left: -20px;
+        }
+      }
+
+      button[type="submit"] {
+        margin-top: 10px;
+      }
+
+      .success {
+        display: none;
+      }
+
+      label.error {
+        color: #590000;
+        font-size: 13px;
       }
     }
 }

@@ -7071,22 +7071,34 @@ h1.moveout {
 .modal-content.optin .modal-header .logo-text {
   font-weight: bold;
 }
-.modal-content.optin .modal-header,
-.modal-content.optin .modal-footer {
+.modal-content.optin .modal-header {
   border: 0;
 }
-.modal-content.optin .modal-footer {
-  padding-top: 0;
+.modal-content.optin .modal-body {
+  position: relative;
 }
-.modal-content.optin .form-control {
+.modal-content.optin .modal-body .alert {
+  padding: 10px;
+}
+.modal-content.optin .modal-body .form-control {
   color: #999;
 }
-.modal-content.optin .radio {
+.modal-content.optin .modal-body .radio {
   margin: 5px;
 }
-.modal-content.optin .radio input[type="radio"] {
+.modal-content.optin .modal-body .radio input[type="radio"] {
   margin: 2px 0 0;
   margin-left: -20px;
+}
+.modal-content.optin .modal-body button[type="submit"] {
+  margin-top: 10px;
+}
+.modal-content.optin .modal-body .success {
+  display: none;
+}
+.modal-content.optin .modal-body label.error {
+  color: #590000;
+  font-size: 13px;
 }
 @media (max-width: 767px) {
   .pull-xs-left {

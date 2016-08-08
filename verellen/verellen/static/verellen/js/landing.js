@@ -1,41 +1,55 @@
 $(document).ready( function () {
     // Display opt-in modal after delay
-    var hideOptin = Cookies.get('hideOptin');
-    if(!hideOptin){
+    var hide = Cookies.get('hideOptin');
+    if(!hide){
         setTimeout(function() {
             $('#optinModal').modal();
         }, 500);
     }
 
-    var $form = $('#mc-embedded-subscribe-form');
-
-    if ( $form.length > 0 ) {
-        $('form button[type="submit"]').bind('click', function ( event ) {
-            if ( event ) event.preventDefault();
-            register($form);
-        });
-    }
     $('.modal-header button[type="button"]').bind('click', function ( event ) {
         if (event) event.preventDefault();
-        Cookies.set('hideOptin', 'true', { expires: 7 });
+        hideOptin(1);
+    });
+
+    $("#mc-embedded-subscribe-form").validate({
+        submitHandler: function(form) {
+            register();
+        }
     });
 });
 
-function register($form) {
+function hideOptin(duration) {
+    Cookies.set('hideOptin', 'true', { expires: duration });
+}
+
+function displayHelp(msg) {
+    var helpBlock = $('.modal-body .help-block');
+    helpBlock.html(msg);
+    helpBlock.show();
+}
+
+function register() {
+    var $form = $('#mc-embedded-subscribe-form');
     $.ajax({
         type: $form.attr('method'),
         url: $form.attr('action'),
         data: $form.serialize(),
         cache       : false,
-        dataType    : 'json',
+        dataType    : 'jsonp',
+        jsonp       : 'c',
         contentType: "application/json; charset=utf-8",
-        error       : function(err) { alert("Could not connect to the registration server. Please try again later."); },
+        error       : function(err) { displayHelp(err); },
         success     : function(data) {
             if (data.result != "success") {
-                // Something went wrong, do something to notify the user. maybe alert(data.msg);
-                alert(data.msg);
+                displayHelp(data.msg);
             } else {
-                alert(data.msg);
+                $('#mc-embedded-subscribe-form').hide();
+                $('.modal-body .success').fadeIn();
+                setTimeout(function() {
+                    $('#optinModal').hide();
+                    hideOptin(30);
+                }, 10000);
             }
         }
     });

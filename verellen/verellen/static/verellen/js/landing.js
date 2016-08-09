@@ -9,7 +9,7 @@ $(document).ready( function () {
 
     $('.modal-header button[type="button"]').bind('click', function ( event ) {
         if (event) event.preventDefault();
-        hideOptin(1);
+        hideOptin(7);
     });
 
     $("#mc-embedded-subscribe-form").validate({
@@ -24,7 +24,7 @@ function hideOptin(duration) {
 }
 
 function displayHelp(msg) {
-    var helpBlock = $('.modal-body .help-block');
+    var helpBlock = $('.modal-body .errors');
     helpBlock.html(msg);
     helpBlock.show();
 }

@@ -7063,19 +7063,26 @@ h1.moveout {
   right: 30px;
   bottom: 30px;
 }
+@media screen and (min-width: 768px) {
+  #optinModal .modal-dialog {
+    max-width: 450px;
+  }
+}
 .modal-content.optin {
-  width: 450px;
   padding: 15px 15px 0 15px;
   background-color: rgba(255, 245, 235, 0.7);
-}
-.modal-content.optin .modal-header .logo-text {
-  font-weight: bold;
 }
 .modal-content.optin .modal-header {
   border: 0;
 }
+.modal-content.optin .modal-header .logo-text {
+  font-weight: bold;
+}
 .modal-content.optin .modal-body {
   position: relative;
+}
+.modal-content.optin .modal-body form {
+  display: none;
 }
 .modal-content.optin .modal-body .alert {
   padding: 10px;
@@ -7093,8 +7100,12 @@ h1.moveout {
 .modal-content.optin .modal-body button[type="submit"] {
   margin-top: 10px;
 }
-.modal-content.optin .modal-body .success {
+.modal-content.optin .modal-body .errors {
   display: none;
+  margin: 15px 0;
+  padding: 15px;
+  background: #f2dede;
+  color: #a94442;
 }
 .modal-content.optin .modal-body label.error {
   color: #590000;

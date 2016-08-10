@@ -7081,9 +7081,6 @@ h1.moveout {
 .modal-content.optin .modal-body {
   position: relative;
 }
-.modal-content.optin .modal-body form {
-  display: none;
-}
 .modal-content.optin .modal-body .alert {
   padding: 10px;
 }
@@ -7099,6 +7096,9 @@ h1.moveout {
 }
 .modal-content.optin .modal-body button[type="submit"] {
   margin-top: 10px;
+}
+.modal-content.optin .modal-body .success {
+  display: none;
 }
 .modal-content.optin .modal-body .errors {
   display: none;

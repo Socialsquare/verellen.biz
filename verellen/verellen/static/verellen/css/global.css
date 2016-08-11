@@ -7075,6 +7075,10 @@ h1.moveout {
 .modal-content.optin .modal-header {
   border: 0;
 }
+.modal-content.optin .modal-header img {
+  width: 100%;
+  max-width: 385px;
+}
 .modal-content.optin .modal-header .logo-text {
   font-weight: bold;
 }

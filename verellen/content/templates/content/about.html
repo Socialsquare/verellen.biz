@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %} {{ about_content.header }} {% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    {{ about_content.header }}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
 
 {% block content %}
     {{ about_content.body | safe }}
-{% endblock content %}
+{% endblock %}

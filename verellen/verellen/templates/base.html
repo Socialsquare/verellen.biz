@@ -1,17 +1,39 @@
 {% load staticfiles  %}
 {% load navigation %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Verellen - {% block title %}{% endblock %}</title>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <!-- Search engines -->
+        <title>Verellen - {% block title %}{% endblock %}</title>
         <meta name="description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
         <meta name="keywords" content="Distinctive details, Elegant lines, Authentic materials, Forgivable fabrics, Tailor-made covers, Timeless sophistication">
+
+        <!-- Google Plus -->
+        <meta itemprop="name" content="Verellen - {% block title_google %}{% endblock %}">
+        <meta itemprop="description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta itemprop="image" content="{% block image_google %}{% static 'verellen/images/webphoto.jpg' %}{% endblock %}">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Verellen - {% block title_twitter %}{% endblock %}">
+        <meta name="twitter:description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta name="twitter:image:src" content="{% block image_twitter %}{% static 'verellen/images/webphoto.jpg' %}{% endblock %}">
+
+        <!-- Open Graph General (Facebook & Pinterest) -->
+        <meta property="og:url" content="http://verellen.biz">
+        <meta property="og:title" content="Verellen - {% block title_opengraph %}{% endblock %}">
+        <meta property="og:description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta property="og:site_name" content="Verellen">
+        <meta property="og:image" content="{% block image_opengraph %}{% static 'verellen/images/webphoto.jpg' %}{% endblock %}">
+        <meta property="og:type" content="{% block type_opengraph %}website{% endblock %}">
+        <meta property="og:locale" content="en_US">
 
         <link href="{% static 'verellen/css/global.css' %}" rel="stylesheet" type="text/css">
         <!--[if gte IE 9]>
@@ -38,7 +60,7 @@
 
                     <h1>
                         <a class="navbar-brand" href="{% url 'content.home' %}">
-                            <img src="{% static 'verellen/images/logo_large.png' %}" alt="Verellen" />
+                            <img class="navbar-logo" src="{% static 'verellen/images/logo_large.svg' %}" alt="Verellen" />
                         </a>
                     </h1>
                 </div>
@@ -93,7 +115,7 @@
         <footer class="footer">
             <div class="row-fluid footer-top">
                 <div class="container">
-                    <div class="row inner">
+                    <div class="row row-eq-height">
                         <div class="col-xs-6 col-sm-3 left-col">
                             <h3 class="col-header">{{ footer_content.contact_header_left }}</h3>
 
@@ -114,60 +136,61 @@
                             {{ footer_content.contact_body_right | safe }}
                         </div>
 
-                        <div class="col-xs-6 col-sm-2 left-col">
+                        <div class="col-xs-6 col-sm-3 left-col">
                             <h3 class="col-header">{{ footer_content.social_header }}</h3>
 
                             <div class="col-header-sep"></div>
 
                             <ul class="media-links">
                                 <li>
-                                    <a href="https://www.facebook.com/verellenfurniture" title="Verellen Facebook">
-                                        <div class="social social-facebook"></div>
+                                    <a href="https://www.facebook.com/verellenfurniture" title="Verellen on Facebook">
+                                        <svg class="social-icon facebook" viewBox="0 0 800 800"><path d="M445 643h-90V419h-75v-87h75v-64q0-55 32-86 30-29 80-29 28 0 67 3v78h-47q-42 0-42 38v60h86l-11 87h-75v224z"/></svg>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="http://instagram.com/verellenfurniture" title="Verellen Instagram">
-                                        <div class="social social-instagram"></div>
+                                    <a href="https://www.instagram.com/verellenfurniture" title="Verellen on Instagram">
+                                        <svg class="social-icon instagram" viewBox="0 0 800 800"><path d="M150 400c0-119 0-166 42-208s88-42 208-42 166 0 208 42 42 89 42 208 0 166-42 208-88 42-208 42-166 0-208-42-42-89-42-208zm455 0c0-114 0-148-29-176-29-29-62-29-176-29s-148 0-176 29c-29 29-29 62-29 176s0 148 29 176c29 29 62 29 176 29s148 0 176-29c29-29 29-62 29-176zM400 272a128 128 0 1 1 0 256 128 128 0 0 1 0-256zm0 211c46 0 83-37 83-83s-37-83-83-83-83 37-83 83 37 83 83 83zm163-216c0 16-13 30-30 30-16 0-30-14-30-30 0-17 14-30 30-30 17 0 30 13 30 30z"/></svg>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="http://pinterest.com/verellenbiz" title="Verellen Pinterest">
-                                        <div class="social social-pinterest"></div>
+                                    <a href="https://pinterest.com/verellenbiz" title="Verellen on Pinterest">
+                                        <svg class="social-icon pinterest" viewBox="0 0 800 800"><path d="M287 681c-9-3-15-77-6-115l38-163s-9-20-9-49c0-46 26-80 59-80 28 0 42 21 42 46 0 28-19 71-28 110-8 33 17 59 49 59 58 0 104-61 104-150 0-79-57-134-138-134-94 0-148 69-148 142 0 28 9.7 57.4 23 74 4 5 5 6 2 17l-8 31s-2 9.5-14 3c-41-22.3-63-78-63-126 0-104 75-199 217-199 114 0 203 81 203 190 0 113-72 205-171 205-55 0-75-38-75-38l-21 78c-11 41-47 102-56 99z"/></svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/channel/UCzmPZgEKsQpO95CvTLqRvnQ" title="Verellen YouTube Channel">
+                                        <svg class="social-icon pinterest" viewBox="0 0 800 800"><path d="M400 224c144 0 201 2 224 25 17 17 26 52.125 26 151s-9 134-26 151c-23 23-80 25-224 25s-201-2-224-25c-17-17-26-52.125-26-151s9-134 26-151c23-23 80-25 224-25zm-52 100v141l135-70z"/></svg>
                                     </a>
                                 </li>
                             </ul>
-                        </div>
 
-                        <div class="col-xs-8 col-sm-1 pull-right login">
-                            {% if user.is_authenticated %}
-                            <h3><a class="font-heading" href="{% url 'partner.home' %}"></h3>
-                                {{ menu_content.partner_label }}
-                            </a>
-                            {% else %}
-                            <a class="font-heading" href="{% url 'partner.login' %}">
-                                {{ menu_content.login_label }}
-                            </a>
-                            {% endif %}
+                            <div class="login">
+                                {% if user.is_authenticated %}
+                                <h3><a class="font-heading" href="{% url 'partner.home' %}"></h3>
+                                    {{ menu_content.partner_label }}
+                                </a>
+                                {% else %}
+                                <a class="font-heading" href="{% url 'partner.login' %}">
+                                    {{ menu_content.login_label }}
+                                </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row-fluid footer-bottom">
-                <div class="container">
-                    <div class="row inner">
-                        <div class="col-xs-12">
-                            &copy; {% now "Y" %} Verellen, Inc. All rights reserved.
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-bottom container-fluid text-center">
+                &copy; {% now "Y" %} Verellen, Inc. All rights reserved.
             </div>
         </footer>
 
+        {% compress js %}
         <script src="{% static 'verellen/js/jquery-1.11.1.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'verellen/js/bootstrap-3.3.0.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'verellen/js/bootstrap-hover-dropdown.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'verellen/js/global.js' %}" type="text/javascript"></script>
+        {% endcompress %}
 
         {% block scripts %}{% endblock %}
     </body>

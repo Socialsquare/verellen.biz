@@ -1,7 +1,16 @@
 {% extends 'retailer_base.html' %}
 {% load static %}
 
-{% block title %}Retailers{% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    Retailers
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
 {% block namespace %} retailers {% endblock %}
 
 {% block retailer_content %}
@@ -116,7 +125,7 @@
             map: map,
             icon: icon
           });
-      } else { 
+      } else {
           marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
             map: map

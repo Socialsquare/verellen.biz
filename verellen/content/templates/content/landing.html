@@ -4,15 +4,35 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Verellen</title>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <!-- Search engines -->
+        <title>Verellen</title>
         <meta name="description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
         <meta name="keywords" content="Distinctive details, Elegant lines, Authentic materials, Forgivable fabrics, Tailor-made covers, Timeless sophistication">
+
+        <!-- Google Plus -->
+        <meta itemprop="name" content="Verellen">
+        <meta itemprop="description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta itemprop="image" content="{% static 'verellen/images/webphoto.jpg' %}">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Verellen">
+        <meta name="twitter:description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta name="twitter:image:src" content="{% static 'verellen/images/webphoto.jpg' %}">
+
+        <!-- Open Graph General (Facebook & Pinterest) -->
+        <meta property="og:url" content="http://verellen.biz">
+        <meta property="og:title" content="Verellen">
+        <meta property="og:description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
+        <meta property="og:site_name" content="Verellen">
+        <meta property="og:image" content="{% static 'verellen/images/webphoto.jpg' %}">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="en_US">
 
         <link href="{% static 'verellen/css/global.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'verellen/css/landing.css' %}" rel="stylesheet" type="text/css">
@@ -21,12 +41,12 @@
         {% endif %}
     </head>
 
-    <body>
+    <body class="landing-page">
         <h1 class="moveout">Verellen</h1>
         <div class="landing">
             <a href="{% url 'content.home' %}">
                 <div class="banner text-indent" style="background-image: url('{% static 'verellen/images/webphoto.jpg' %}')">Verellen webphoto</div>
-                <img class="logo" src="{% static 'verellen/images/logo_large_white.png' %}" alt="Verellen" />
+                <img class="logo" src="{% static 'verellen/images/logo_large_white.svg' %}" alt="Verellen" />
             </a>
         </div>
 
@@ -36,7 +56,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <div class="text-center">
-                            <img src="{% static 'verellen/images/logo_large_black.png' %}" alt="Verellen" />
+                            <img class="logo-big" src="{% static 'verellen/images/logo_large_black.svg' %}" alt="Verellen" />
                             <div class="logo-text">Inspiration for a life well-lived.</div>
                         </div>
                     </div>
@@ -50,7 +70,6 @@
 
                             <div class="form-group">
                                 <input autofocus="autofocus" type="email" value="" name="EMAIL" class="form-control email" id="mce-EMAIL" placeholder="EMAIL" required>
-
                             </div>
 
                             <div class="form-group">
@@ -362,7 +381,6 @@
 
                     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='MMERGE2';ftypes[2]='dropdown';fnames[5]='MMERGE5';ftypes[5]='zip';fnames[4]='MMERGE4';ftypes[4]='radio';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
                     <!--End mc_embed_signup-->
-
                 </div>
             </div>
         </div>

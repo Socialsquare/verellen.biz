@@ -1,18 +1,21 @@
+// out: global.css, sourcemap: false, compress: true
+
 // Common vars
 @verellen-dark: #2E2E2E;
 @verellen-content-bg: #FFF;
+@verellen-gray: #6a777f;
 
 // Imports - order is crucial!
-@import "fonts.less";
-@import "bootstrap-3.3.0/less/bootstrap.less";
-@import "common.less";
-@import "navigation.less";
-@import "footer.less";
-@import "products.less";
-@import "home.less";
-@import "retailers.less";
-@import "partner.less";
-//@import "landing.less";
+@import "fonts";
+@import "bootstrap-3.3.0/less/bootstrap";
+@import "common";
+@import "navigation";
+@import "footer";
+@import "products";
+@import "home";
+@import "retailers";
+@import "partner";
+// @import "landing";
 
 @media (max-width: @screen-xs-max) {
     .pull-xs-left {
@@ -47,5 +50,30 @@
     }
     .pull-lg-right {
         float: right;
+    }
+}
+
+// Used for the footer to get waffle grid
+.row-eq-height {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+    .col-xs-6 {
+        position: relative;
+        -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+                flex-shrink: 0;
+        &:last-child {
+            margin-right: -1px; // Safari bug fix
+        }
+        @media (max-width: @screen-xs-max) {
+            &:nth-child(even) {
+                margin-right: -1px; // Safari bug fix
+            }
+        }
     }
 }

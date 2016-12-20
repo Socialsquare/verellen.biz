@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 
-{% block title %} {{product.name}} {% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    {{product.name}}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
+
+{% block image_google %}
+{% block image_twitter %}
+{% block image_opengraph %}
+    {% thumbnail main_image.image_file "800" as thumb %}
+        {{ thumb.url }}
+    {% endthumbnail %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
+
+{% block type_opengraph %}product{% endblock %}
+
 {% block namespace %} product-detail {% endblock %}
 
 {% block content %}

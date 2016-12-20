@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Retailers{% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    Retailers
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
 <h2 class="moveout">Partner log in</h2>
 {% block content %}
 

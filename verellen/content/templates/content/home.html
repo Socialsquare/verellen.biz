@@ -2,7 +2,16 @@
 {% load thumbnail %}
 {% load static %}
 
-{% block title %} {{ home_content.title }} {% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    {{ home_content.title }}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
 {% block namespace %}home{% endblock %}
 
 {% block content %}

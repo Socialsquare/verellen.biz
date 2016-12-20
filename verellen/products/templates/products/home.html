@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 
-{% block title %}Products{% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    Products
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
 {% block namespace %}products-home{% endblock %}
 
 {% block content %}

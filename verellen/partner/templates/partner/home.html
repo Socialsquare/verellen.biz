@@ -1,7 +1,16 @@
 {% extends 'partner_base.html' %}
 {% load static %}
 
-{% block title %}Partners{% endblock %}
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    Partners
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
 <h2 class="moveout">Partner</h2>
 {% block partner_content %}
 <div class="row">

@@ -1,12 +1,26 @@
+// main: global.less
+
 @navbar-item-spacing: 80px;
+@logo-aspect: 672/264;
+@logo-size: 6rem;
 
 .navbar-verellen {
     .navbar-default();
 
     border: none;
 
+    h1 {
+        margin-top: 0;
+    }
+
     .navbar-brand {
-        padding: 25px 15px;
+        padding: 25px 10px;
+        height: auto;
+    }
+
+    .navbar-logo {
+        height: @logo-size;
+        width: @logo-size * @logo-aspect;
     }
 
     ul.navbar-nav li {
@@ -43,18 +57,18 @@
     .dropdown-menu.category-menu {
         @drop-color: #38474d;
 
-        right: -15px;
+        background-color: #FFF;
+        border-bottom: 1px solid @drop-color;
+        border-left: 1px solid @drop-color;
+        border-right: 1px solid @drop-color;
+        border-top: none;
         padding-left: 10px;
+        right: -15px;
+        margin-top: -30px;
 
         .border-left-radius(0);
         .border-right-radius(0);
 
-        border-top: none;
-        border-left: 1px solid @drop-color;
-        border-right: 1px solid @drop-color;
-        border-bottom: 1px solid @drop-color;
-
-        background-color: #FFF;
 
         .category-item {
             .font-heading(14px);
@@ -75,6 +89,10 @@
             height: 1px;
             width: 140px;
         }
+    }
+
+    .navbar-right {
+        margin-top: 7px;
     }
 }
 .category-item a {

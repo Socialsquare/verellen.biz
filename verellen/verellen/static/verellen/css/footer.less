@@ -1,3 +1,5 @@
+// main: global.less
+
 @footer-top-height: 220px;
 @footer-bottom-height: 50px;
 @footer-full-height: (@footer-top-height + @footer-bottom-height);
@@ -5,12 +7,7 @@
 .footer-top {
     padding-top: 30px;
     padding-bottom: 30px;
-
     min-height: @footer-top-height;
-
-    .left-col {
-        min-height: 200px;
-    }
 
     .col-header {
         .font-heading(14px);
@@ -31,37 +28,39 @@
         li {
             list-style: none;
             display: inline;
-            margin-right: 5px;
         }
 
-        .social {
-            width: 18px;
-            height: 18px;
-            overflow: hidden;
-
-            background-image: url(../images/media.png);
+        .social-icon {
+            font-size: 4rem; // change the size here
+            width: 1em;
+            height: 1em;
+            margin: -.2em -.15em;
+            fill: @verellen-gray;
             display: inline-block;
 
-            &.social-instagram { background-position-x: 0px; }
-            &.social-facebook { background-position-x: 18px; }
-            &.social-pinterest { background-position-x: 36px; }
+            &.facebook {
+                margin-left: -.3em;
+            }
+            &.instagram {
+                margin-right: -.1em;
+            }
         }
     }
 
-    .login a {
-        @media screen and (min-width: @screen-sm) {
-            float: right;
-        }
+    .login {
+        position: absolute;
+        margin: 30px 0 10px;
+        bottom: 10px;
+        right: 10px;
 
-        .font-heading(14px);
+        a {
+            border-bottom: 2px solid @verellen-dark;
+            padding-bottom: 10px;
+            .font-heading(14px);
 
-        border-bottom: 2px solid @verellen-dark;
-
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-
-        &:hover {
-            text-decoration: none;
+            &:hover {
+                text-decoration: none;
+            }
         }
     }
 }
@@ -72,19 +71,15 @@
 }
 
 .footer-bottom {
-    padding-top: ((@footer-bottom-height - @line-height-computed) / 2);
-
-    height: @footer-bottom-height;
-
-    color: white;
     background-color: #38474d;
-
-    .inner { text-align: center }
+    color: white;
+    height: @footer-bottom-height;
+    padding-top: ((@footer-bottom-height - @line-height-computed) / 2);
 }
 
 .footer {
-    position: absolute;
     bottom: 0;
-    width: 100%;
     clear: both;
+    position: absolute;
+    width: 100%;
 }

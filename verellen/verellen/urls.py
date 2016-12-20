@@ -1,23 +1,24 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 
 from django.contrib import admin
 admin.autodiscover()
+from django.views.generic import TemplateView
 
 from products import views as product_views
 from retailers import views as retailer_views
 from partner import views as partner_views
 from content import views as content_views
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', content_views.landing, name='content.landing'),
     url(r'^home$', content_views.home, name='content.home'),
     url(r'^robots.txt/$', content_views.robots, name='content.robots'), # TODO: wat
 
     url(r'^retailers/$', retailer_views.home, name='retailer.home'),
 
-    url(r'(pdfjs/web/viewer\.html.*)$', 'direct_to_template'),
+    url(r'(pdfjs/web/viewer\.html.*)$', TemplateView.as_view(template_name='pdfjs/web/viewer.html')),
 
     url(r'^partner/$', partner_views.home, name='partner.home'),
     url(r'^partner/home/$', partner_views.home, name='partner.home'),
@@ -32,7 +33,7 @@ urlpatterns = patterns('',
 
     url(r'^partner/download/us$', partner_views.download_products_us, name='partner.download_products_us'),
     url(r'^partner/download/eu$', partner_views.download_products_eu, name='partner.download_products_eu'),
-    
+
     url(r'^partner/download/us/(?P<category_slug>.*)$', partner_views.download_categories_us, name='partner.download_categories_us'),
     url(r'^partner/download/eu/(?P<category_slug>.*)$', partner_views.download_categories_eu, name='partner.download_categories_eu'),
 
@@ -53,4 +54,4 @@ urlpatterns = patterns('',
     # administration
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
-)
+]

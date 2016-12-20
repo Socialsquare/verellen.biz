@@ -5,7 +5,7 @@ import StringIO
 import hashlib
 from django.conf import settings
 from django.http import HttpResponse
-from django.core.servers.basehttp import FileWrapper
+from wsgiref.util import FileWrapper
 import zipfile, tempfile, os
 
 def user_is_expired(user):
@@ -22,7 +22,7 @@ def get_partner(user):
         return p.first()
 
     return None
- 
+
 try:
     from boto.s3.connection import S3Connection
     from boto.s3.key import Key
@@ -33,7 +33,7 @@ except ImportError:
 FILE_ROOT = 'media'
 LOCAL_DIRECTORY = '../media/'
 US_DIRECTORY = 'us'
-EU_DIRECTORY = 'eu' 
+EU_DIRECTORY = 'eu'
 
 def syncS3(version = US_DIRECTORY):
     connection = S3Connection(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
@@ -45,7 +45,7 @@ def syncS3(version = US_DIRECTORY):
         directory = 'media/media\\product_tear_sheets_metric'
 
     save_keys(s3_keys, directory, version)
- 
+
 def save_keys(keys, directory, version):
     for key in keys:
         key_string = str(key.key)
@@ -79,7 +79,7 @@ def generateZipResponse(version):
     temp = tempfile.TemporaryFile()
     zf = zipfile.ZipFile(temp,
         mode='w',
-        compression=zipfile.ZIP_DEFLATED, 
+        compression=zipfile.ZIP_DEFLATED,
     )
     try:
         local_dir_path = os.path.join(LOCAL_DIRECTORY, version)
@@ -106,7 +106,7 @@ def generateZipCategoriesResponse(version, products, category_slug):
     temp = tempfile.TemporaryFile()
     zf = zipfile.ZipFile(temp,
         mode='w',
-        compression=zipfile.ZIP_DEFLATED, 
+        compression=zipfile.ZIP_DEFLATED,
     )
     try:
         for product in products:

@@ -9,4 +9,5 @@ class ProductAdminForm(forms.ModelForm):
         self.fields['main_image'].queryset = Image.objects.filter(product=self.instance)
 
     class Meta:
+        exclude = []
         model = Product

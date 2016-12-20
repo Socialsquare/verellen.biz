@@ -12,6 +12,8 @@ import logging
 import os
 from django.contrib import messages
 
+DEBUG = False
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -21,11 +23,9 @@ SECRET_KEY = '&pb13g0lcs(i$=&6928+ey_z#v4#@dz@4i8l2#5kx%gf@dt*#u'
 
 ALLOWED_HOSTS = []
 
-# Application definition
+HTML_MINIFY = True
 
-TEMPLATE_DIRS = (
-     os.path.join(os.path.dirname(__file__), 'templates'),
-)
+# Application definition
 
 INSTALLED_APPS = (
     'grappelli.dashboard',
@@ -38,10 +38,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'south',
     'tinymce',
     'storages',
     'sorl.thumbnail',
+    'compressor',
 
     'verellen',
     'products',
@@ -51,6 +51,9 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.gzip.GZipMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,18 +77,30 @@ DATABASES = {
     }
 }
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.request',
-    'django.contrib.messages.context_processors.messages',
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(os.path.dirname(__file__), 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.request',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
 
-    'content.context_preprocessor.content',
-    'content.context_preprocessor.google_analytics'
-)
+                'content.context_preprocessor.content',
+                'content.context_preprocessor.google_analytics'
+            ],
+        },
+    },
+]
 
 # Internationalization
 
@@ -107,9 +122,9 @@ GRAPPELLI_SWITCH_USER = True
 GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 
 # Static/media
-
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
 # TinyMCE config
 TINYMCE_DEFAULT_CONFIG = {

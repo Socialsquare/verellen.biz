@@ -17,7 +17,7 @@ You need to have these installed on your development machine and on the server
 #### Command line
 
 `cd` into the project root dir  
-`virtualenv env` *initialise python 3 virtual environment*  
+`virtualenv env` *initialise python 2.7 virtual environment*  
 `. env/bin/activate` *start the virtual environment*  
 `pip install -r requirements.txt` *install required python modules*  
 `./verellen/manage.py syncdb` *initialise the database and create superuser*  
@@ -35,4 +35,3 @@ You can now sign into the Django admin interface by going to `/admin`.
 
 `cd` into the project root dir and run
 `. env/bin/activate && ./manage.py runserver`
-

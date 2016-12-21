@@ -17,7 +17,7 @@
 {% block image_google %}
 {% block image_twitter %}
 {% block image_opengraph %}
-    {% thumbnail main_image.image_file "800" as thumb %}
+    {% thumbnail product.get_main_image "800" as thumb %}
         {{ thumb.url }}
     {% endthumbnail %}
 {% endblock %}

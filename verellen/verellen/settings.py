@@ -126,12 +126,17 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
 # TinyMCE config
 TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_buttons1' : 'bold, italic, underline, fontsizeselect, justifyleft, justifycenter, justifyright, bullist, link, unlink, undo, redo, code',
     'theme_advanced_buttons2' : '',
     'theme_advanced_buttons3' : '',
-
     'theme': 'advanced',
     'width': 700
 }

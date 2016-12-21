@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'compressor',
 
     'verellen',
-    'products',
     'retailers',
     'partner',
     'content',

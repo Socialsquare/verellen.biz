@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="{% url 'content.home' %}">
                         <img class="navbar-logo" src="{% static 'verellen/images/logo_large.svg' %}" alt="Verellen" />
                     </a>
                 </div>
@@ -61,14 +61,12 @@
                                 {% endfor %}
                             </div>
                         </li>
-                        {% if not hide_sales_tools %}
                         <li class="{% current 'partner.sales_tools' %}">
                             <a href="{% url 'partner.sales_tools' %}" class="menu-item">
-                                Sales tools
+                                {{ menu_content.resources_label }}
                             </a>
                             <div class="marker"></div>
                         </li>
-                        {% endif %}
 
                         {% if not hide_price %}
                         <li class="{% current 'partner.price_lists' %}">

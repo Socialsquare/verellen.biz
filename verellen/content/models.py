@@ -52,6 +52,7 @@ class MenuContent(models.Model):
     retailers_label = models.CharField(max_length=200)
     partner_label = models.CharField(max_length=200)
     login_label = models.CharField(max_length=200)
+    resources_label = models.CharField(max_length=200)
 
     def __unicode__(self):
         return 'Menu content'

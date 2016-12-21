@@ -95,6 +95,13 @@
                             <div class="marker"></div>
                         </li>
 
+                        <li class="{% current 'partner.sales_tools' %}">
+                            <a href="{% url 'partner.sales_tools' %}" class="menu-item">
+                                {{ menu_content.resources_label }}
+                            </a>
+                            <div class="marker"></div>
+                        </li>
+
                         <li class="{% current 'retailer.home' %}">
                             <a href="{% url 'retailer.home' %}" class="menu-item">
                                 {{ menu_content.retailers_label }}

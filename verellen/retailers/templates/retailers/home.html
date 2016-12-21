@@ -18,7 +18,6 @@
 <div class="row">
     <div class="col-xs-12 col-sm-4">
         <form class="form search-bar" role="form" action="{% url 'retailer.home' %}" method="get">
-            {% csrf_token %}
             <div class="input-group">
                 <input type="text" class="form-control" name="query" id="query"
                        placeholder="Address, city, name, etc." value="{{ search_query }}">

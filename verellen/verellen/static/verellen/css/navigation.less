@@ -1,8 +1,10 @@
 // main: global.less
 
-@navbar-item-spacing: 80px;
+@navbar-item-spacing: 70px;
+@navbar-marker-width: 20px;
 @logo-aspect: 672/264;
 @logo-size: 6rem;
+@dropdown-item-padding-horizontal: 12px;
 
 .navbar-verellen {
     .navbar-default();
@@ -30,9 +32,8 @@
 
             bottom: 30px;
             left: 50%;
-            margin-left: 30px;
-
-            width: 20px;
+            margin-left: (@navbar-item-spacing - @navbar-marker-width) / 2;
+            width: @navbar-marker-width;
             height: 10px;
 
             border-bottom: 2px solid @verellen-dark;
@@ -49,6 +50,10 @@
             padding-left: @navbar-item-spacing;
             padding-right: 0;
 
+            @media (max-width: @screen-md) {
+                padding-left: 10px;
+            }
+
             .font-heading();
             font-size: 16px;
         }
@@ -62,32 +67,40 @@
         border-left: 1px solid @drop-color;
         border-right: 1px solid @drop-color;
         border-top: none;
-        padding-left: 10px;
-        right: -15px;
-        margin-top: -30px;
+        padding: 2px 0;
+        right: auto;
+        left: @navbar-item-spacing - @dropdown-item-padding-horizontal;
+        margin-top: -32px;
+
+        @media (max-width: @screen-md) {
+            margin-top: 0;
+            margin-bottom: 20px;
+            border: none;
+        }
 
         .border-left-radius(0);
         .border-right-radius(0);
 
-
         .category-item {
             .font-heading(14px);
+            margin: -1px 0;
+            a {
+                color: @drop-color;
+                padding: 10px @dropdown-item-padding-horizontal !important; // because fuck bootstrap 3
 
-            padding: 5px 5px 5px 10px;
-            margin-left: -10px;
-
-            color: @drop-color;
-
-            &:hover {
-                background-color: @drop-color;
-                a { color: white }
+                &:hover,
+                &:focus {
+                    color: white !important; // because fuck bootstrap 3
+                    background-color: @drop-color !important; // because fuck bootstrap 3
+                    text-decoration: none;
+                }
             }
         }
 
         .sep {
-            border-bottom: 1px solid #999;
+            border-bottom: 1px solid fade(@drop-color, 30%);
             height: 1px;
-            width: 140px;
+            margin: 0 @dropdown-item-padding-horizontal;
         }
     }
 

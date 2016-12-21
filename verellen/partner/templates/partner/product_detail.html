@@ -1,4 +1,4 @@
-{% extends 'partner_base.html' %}
+{% extends 'base.html' %}
 {% load thumbnail %}
 {% load navigation %}
 
@@ -8,24 +8,34 @@
 {% block title_google %}
 {% block title_twitter %}
 {% block title_opengraph %}
-    Partners - products
+    {{ product.name }}
 {% endblock %}
 {% endblock %}
 {% endblock %}
 {% endblock %}
 
-{% block partner_content %}
+{% block image_google %}
+{% block image_twitter %}
+{% block image_opengraph %}
+    {% thumbnail main_image.image_file "800" as thumb %}
+        {{ thumb.url }}
+    {% endthumbnail %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
+{% block content %}
 <div class="row">
     <div class="col-xs-12 col-md-4">
         <h2>{{ product.name }}</h2>
         {% if tearsheet_url %}
         <a href="{{ tearsheet_url }}" class="col-sm-5 btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (US)</a>
-        <a href="/partner/view?file={{ tearsheet_url }}" class="col-sm-5 col-sm-offset-1 col-md-offset-0 pull-sm-right btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (US)</a>
+        <a href="/view?file={{ tearsheet_url }}" class="col-sm-5 col-sm-offset-1 col-md-offset-0 pull-sm-right btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (US)</a>
         {% endif %}
 
         {% if tearsheet_metric_url %}
         <a href="{{ tearsheet_metric_url }}" class="col-sm-5 btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-download"></span> Download tearsheet (Metric)</a>
-        <a href="/partner/view?file={{ tearsheet_metric_url }}" class="col-sm-5 col-sm-offset-1 col-md-offset-0 pull-sm-right btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (Metric)</a>
+        <a href="/view?file={{ tearsheet_metric_url }}" class="col-sm-5 col-sm-offset-1 col-md-offset-0 pull-sm-right btn btn-default btn-tearsheet"><span class="glyphicon glyphicon-align-left"></span> View tearsheet (Metric)</a>
         {% endif %}
     </div>
 

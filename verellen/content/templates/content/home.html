@@ -30,9 +30,9 @@
             {% thumbnail img.image_file "1140x600" crop="center" as slide_image %}
                 <div class="item {% if forloop.first %}active{% endif %}">
                     {% if img.product != None %}
-                    <a href="{% url 'product.detail' img.product_id %}">
+                    <a href="{% url 'partner.product_detail' img.product_id %}">
                     {% else %}
-                    <a href="{% url 'product.home' %}">
+                    <a href="{% url 'partner.product_category_list' %}">
                     {% endif %}
                         <img src="{{ slide_image.url }}" alt="{{ img.name }}">
                     </a>

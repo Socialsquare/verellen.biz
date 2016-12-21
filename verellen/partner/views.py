@@ -54,9 +54,8 @@ def home(request):
         'name': name
     })
 
-@login_required(login_url='/partner/login/')
 def sales_tools(request):
-    files = SalesTool.objects.all()
+    files = SalesTool.objects.all().order_by('name')
 
     try:
         partner = utils.get_partner(request.user)
@@ -88,23 +87,25 @@ def price_lists(request):
         'files': files
     })
 
-@login_required(login_url='/partner/login/')
 def product_category(request, category_slug):
     partner = utils.get_partner(request.user)
     category = Category.objects.filter(slug = category_slug).first()
     if not category:
         raise Http404
-
     products = Product.objects.filter(category = category).order_by('name')
+    show_us = True
+    show_metric = True
+    if partner:
+        show_us = partner.show_us_version
+        show_metric = partner.show_metric
 
     return render(request, 'partner/product_category.html', {
         'products': products,
-        'show_us': partner.show_us_version,
-        'show_metric': partner.show_metric,
+        'show_us': show_us,
+        'show_metric': show_metric,
         'category': category
     })
 
-@login_required(login_url='/partner/login/')
 def product_detail(request, product_id):
     try:
         product = Product.objects.get(pk = product_id)
@@ -115,9 +116,14 @@ def product_detail(request, product_id):
     tearsheet_url = ''
     tearsheet_metric_url = ''
     if partner:
-        if (partner.show_us_version and product.tearsheet):
+        if partner.show_us_version and product.tearsheet:
             tearsheet_url = product.tearsheet.url
         if partner.show_metric and product.tearsheet_metric:
+            tearsheet_metric_url = product.tearsheet_metric.url
+    else:
+        if product.tearsheet:
+            tearsheet_url = product.tearsheet.url
+        if product.tearsheet_metric:
             tearsheet_metric_url = product.tearsheet_metric.url
 
     return render(request, 'partner/product_detail.html', {
@@ -126,7 +132,6 @@ def product_detail(request, product_id):
         'tearsheet_url': tearsheet_url
     })
 
-@login_required(login_url='/partner/login/')
 def search(request):
     if not 'query' in request.GET.keys():
         raise Http404()
@@ -141,57 +146,41 @@ def search(request):
         'search_query': query
     })
 
-@login_required(login_url='/partner/login/')
 def product_category_list(request):
     partner = utils.get_partner(request.user)
+    show_us = True
+    show_metric = True
+    if partner:
+        show_us = partner.show_us_version
+        show_metric = partner.show_metric
     return render(request, 'partner/product_category_list.html', {
         'categories': Category.objects.all(),
-        'show_us': partner.show_us_version,
-        'show_metric': partner.show_metric
+        'show_us': show_us,
+        'show_metric': show_metric
     })
 
-@login_required(login_url='/partner/login/')
 def download_products_us(request):
-    partner = utils.get_partner(request.user)
-    if not partner.show_us_version:
-        raise Http404()
-
     utils.syncS3('us')
-
     return utils.generateZipResponse('us')
 
-@login_required(login_url='/partner/login/')
 def download_products_eu(request):
-    partner = utils.get_partner(request.user)
-    if not partner.show_metric:
-        raise Http404()
-
     utils.syncS3('eu')
-
     return utils.generateZipResponse('eu')
 
-@login_required(login_url='/partner/login/')
 def download_categories_us(request, category_slug):
     category = Category.objects.filter(slug = category_slug).first()
-    partner = utils.get_partner(request.user)
-    if not category or not partner.show_us_version:
+    if not category:
         raise Http404()
-
     products = Product.objects.filter(category = category).order_by('name')
     utils.syncS3('us')
-
     return utils.generateZipCategoriesResponse('us', products, category_slug)
 
-@login_required(login_url='/partner/login/')
 def download_categories_eu(request, category_slug):
-    partner = utils.get_partner(request.user)
     category = Category.objects.filter(slug = category_slug).first()
-    if not category or not partner.show_metric:
+    if not category:
         raise Http404
-
     products = Product.objects.filter(category = category).order_by('name')
     utils.syncS3('eu')
-
     return utils.generateZipCategoriesResponse('eu', products, category_slug)
 
 
@@ -204,18 +193,14 @@ def account_update(request):
     current_pass = request.POST['current_pass']
     new_pass = request.POST['new_pass']
     new_pass_confirm = request.POST['new_pass_confirm']
-
     is_changing_password = current_pass or new_pass or new_pass_confirm
-
     email = request.POST['email']
-
     password_change_failed = False
 
     if is_changing_password:
         if new_pass != new_pass_confirm:
             messages.add_message(request, messages.ERROR, 'New passwords do not match')
             password_change_failed = True
-
         if authenticate(username=request.user.username, password=current_pass) is not None:
             request.user.set_password(new_pass)
         else:
@@ -229,6 +214,5 @@ def account_update(request):
 
     return redirect('/partner/account')
 
-@login_required(login_url='/partner/login/')
 def view_spreadsheet(request):
     return render(request, 'pdfjs/web/viewer.html')

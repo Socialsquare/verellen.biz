@@ -27,6 +27,17 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+// TODO: Custom stuff that could be moved to seperate files
 .download-item td {
   vertical-align: middle !important; // because fuck bootstrap
+}
+
+.btn-default {
+  color: inherit;
+}
+
+.carousel {
+  @media (max-width: @screen-md) {
+    margin-top: 10px; // because of the search bar is there now
+  }
 }

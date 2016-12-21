@@ -4,7 +4,7 @@ import os
 import StringIO
 import hashlib
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseServerError
 from wsgiref.util import FileWrapper
 import zipfile, tempfile, os
 
@@ -76,39 +76,39 @@ def save_keys(keys, directory, version):
                     # print "file changed, overwrote: %s" % local_path
 
 def generateZipResponse(version):
-    temp = tempfile.TemporaryFile()
-    zf = zipfile.ZipFile(temp,
-        mode='w',
-        compression=zipfile.ZIP_DEFLATED,
-    )
     try:
+        temp = tempfile.TemporaryFile()
+        zf = zipfile.ZipFile(temp,
+            mode='w',
+            compression=zipfile.ZIP_DEFLATED,
+        )
         local_dir_path = os.path.join(LOCAL_DIRECTORY, version)
         for f in os.listdir(local_dir_path):
             if f.endswith(".pdf"):
                 pdf = open(local_dir_path + '/' + f, 'r')
                 zf.writestr(f, pdf.read())
                 pdf.close()
-    finally:
         zf.close()
-    wrapper = FileWrapper(temp)
-    response = HttpResponse(wrapper, content_type='application/zip')
-    v = version
-    if version == EU_DIRECTORY:
-        v = 'metric'
-
-    response['Content-Disposition'] = 'attachment; filename=Tear_sheets_' + v + '.zip'
-    response['Content-Length'] = temp.tell()
-    temp.seek(0)
-    return response
-
+        size = temp.tell()
+        temp.seek(0)
+        wrapper = FileWrapper(temp)
+        response = HttpResponse(wrapper, content_type='application/zip')
+        v = version
+        if version == EU_DIRECTORY:
+            v = 'metric'
+        response['Content-Disposition'] = 'attachment; filename=Tear_sheets_' + v + '.zip'
+        response['Content-Length'] = size
+        return response
+    except Exception as err:
+        return HttpResponseServerError(err)
 
 def generateZipCategoriesResponse(version, products, category_slug):
-    temp = tempfile.TemporaryFile()
-    zf = zipfile.ZipFile(temp,
-        mode='w',
-        compression=zipfile.ZIP_DEFLATED,
-    )
     try:
+        temp = tempfile.TemporaryFile()
+        zf = zipfile.ZipFile(temp,
+            mode='w',
+            compression=zipfile.ZIP_DEFLATED,
+        )
         for product in products:
             if version == US_DIRECTORY and product.tearsheet:
                 f = product.tearsheet.url.split('/')[-1]
@@ -122,15 +122,16 @@ def generateZipCategoriesResponse(version, products, category_slug):
                 pdf = open(local_path, 'r')
                 zf.writestr(f, pdf.read())
                 pdf.close()
-    finally:
         zf.close()
-    wrapper = FileWrapper(temp)
-    response = HttpResponse(wrapper, content_type='application/zip')
-    v = version
-    if version == EU_DIRECTORY:
-        v = 'metric'
-
-    response['Content-Disposition'] = 'attachment; filename=' + category_slug + '_tear_sheets_' + v + '.zip'
-    response['Content-Length'] = temp.tell()
-    temp.seek(0)
-    return response
+        size = temp.tell()
+        temp.seek(0)
+        wrapper = FileWrapper(temp)
+        response = HttpResponse(wrapper, content_type='application/zip')
+        v = version
+        if version == EU_DIRECTORY:
+            v = 'metric'
+        response['Content-Disposition'] = 'attachment; filename="' + category_slug + '_tear_sheets_' + v + '.zip"'
+        response['Content-Length'] = size
+        return response
+    except Exception as err:
+        return HttpResponseServerError(err)

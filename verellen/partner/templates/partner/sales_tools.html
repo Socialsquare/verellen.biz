@@ -1,10 +1,10 @@
-{% extends 'partner_base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
 {% block title_google %}
 {% block title_twitter %}
 {% block title_opengraph %}
-    Partners - downloads
+    {{ menu_content.resources_label }}
 {% endblock %}
 {% endblock %}
 {% endblock %}
@@ -12,8 +12,8 @@
 
 {% block namespace %}partner-downloads{% endblock %}
 
-{% block partner_content %}
-<h2 class="moveout">Sales tools</h2>
+{% block content %}
+<h2 class="moveout">{{ menu_content.resources_label }}</h2>
 <p class="download-caption">These documents provide tools for reselling Verellen furniture</p>
 
 <div class="panel panel-default">
@@ -37,6 +37,4 @@
         </tbody>
     </table>
 </div>
-
-
 {% endblock %}

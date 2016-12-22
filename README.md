@@ -9,7 +9,7 @@ The product catalog and website of http://verellen.biz/
 
 ssh into the VM, git pull and restart gunicorn, in a one-liner
 
-`ssh ec2-user@verellen.biz "git -C ~/verellen/ pull && ~/start_gunicorn.sh"`
+`ssh ec2-user@verellen.biz "~/pull_collect_and_restart.sh"`
 
 ## Setup
 

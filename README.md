@@ -5,6 +5,12 @@ verellen.biz
 
 The product catalog and website of http://verellen.biz/
 
+## Deploying changes
+
+ssh into the VM, git pull and restart gunicorn, in a one-liner
+
+`ssh ec2-user@verellen.biz "git -C ~/verellen/ pull && ~/start_gunicorn.sh"`
+
 ## Setup
 
 #### Requirements

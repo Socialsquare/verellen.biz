@@ -2,7 +2,7 @@
 
 @verellen-dark: #2E2E2E;
 @logo-aspect: 672/264;
-@logo-size: 6rem;
+@logo-size: 2rem;
 
 body,
 html {
@@ -46,8 +46,12 @@ h1.moveout {
     bottom: 30px;
     position: absolute;
     right: 30px;
-    height: @logo-size;
-    width: @logo-size * @logo-aspect;
+    // Fallback for older browsers
+    height: 2 * @logo-size;
+    width: 2 * @logo-size * @logo-aspect;
+    // Dynamic resize
+    height: ~"calc(@{logo-size} + 3vw + 3vh)";
+    width: ~"calc(@{logo-size} * @{logo-aspect} + (3vw + 3vh) * @{logo-aspect})";
   }
 }
 @media screen and (min-width: 768px) {

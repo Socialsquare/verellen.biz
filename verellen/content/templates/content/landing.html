@@ -26,7 +26,7 @@
         <meta name="twitter:image:src" content="{% static 'verellen/images/webphoto.jpg' %}">
 
         <!-- Open Graph General (Facebook & Pinterest) -->
-        <meta property="og:url" content="http://verellen.biz">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
         <meta property="og:title" content="Verellen">
         <meta property="og:description" content="Verellen does upholstered furniture like no one else. We invite you to sit and see for yourself, and we are fairly certain it will be love at first sight.">
         <meta property="og:site_name" content="Verellen">

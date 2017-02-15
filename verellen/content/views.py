@@ -19,3 +19,7 @@ def home(request):
 def about(request):
     about_content = get_content_model(models.AboutContent)
     return render(request, 'content/about.html', { 'about_content': about_content })
+
+def contract(request):
+    contract_content = get_content_model(models.ContractContent)
+    return render(request, 'content/contract.html', { 'contract_content': contract_content })

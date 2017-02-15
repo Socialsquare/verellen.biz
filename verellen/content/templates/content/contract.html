@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% block title_google %}
+{% block title_twitter %}
+{% block title_opengraph %}
+    {{ contract_content.header }}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+{% endblock %}
+
+{% block content %}
+    {{ contract_content.body | safe }}
+{% endblock %}

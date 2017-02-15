@@ -102,6 +102,13 @@
                             <div class="marker"></div>
                         </li>
 
+                        <li class="{% current 'content.contract' %}">
+                            <a href="{% url 'content.contract' %}" class="menu-item">
+                                {{ menu_content.contract_label }}
+                            </a>
+                            <div class="marker"></div>
+                        </li>
+
                         <li class="{% current 'retailer.home' %}">
                             <a href="{% url 'retailer.home' %}" class="menu-item">
                                 {{ menu_content.retailers_label }}

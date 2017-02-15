@@ -1,5 +1,14 @@
 from django.contrib import admin
-from content.models import ProductContent, FooterContent, AboutContent, HomeContent, MenuContent, CarouselImage
+from content.models import (
+    ProductContent,
+    FooterContent,
+    AboutContent,
+    ContractContent,
+    HomeContent,
+    MenuContent,
+    CarouselImage
+)
+
 
 class ProductContentAdmin(admin.ModelAdmin):
     fields = ['product_body']
@@ -33,6 +42,11 @@ class MenuContentAdmin(admin.ModelAdmin):
 class AboutContentAdmin(admin.ModelAdmin):
     fields = ['header', 'body']
 
+
+class ContractContentAdmin(admin.ModelAdmin):
+    fields = ['header', 'body']
+
+
 class CarouselImageInline(admin.TabularInline):
     model = CarouselImage
     fields = ['image_file', 'title', 'product']
@@ -46,5 +60,6 @@ class HomeContentAdmin(admin.ModelAdmin):
 admin.site.register(ProductContent, ProductContentAdmin)
 admin.site.register(FooterContent, FooterContentAdmin)
 admin.site.register(AboutContent, AboutContentAdmin)
+admin.site.register(ContractContent, ContractContentAdmin)
 admin.site.register(HomeContent, HomeContentAdmin)
 admin.site.register(MenuContent, MenuContentAdmin)

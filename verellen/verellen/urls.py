@@ -49,6 +49,7 @@ urlpatterns = [
     # url(r'^product/(?P<product_id>\d+)$', product_views.detail, name='product.detail'),
 
     url(r'^about/$', content_views.about, name='content.about'),
+    url(r'^contract/$', content_views.contract, name='content.contract'),
 
     url(r'^tinymce/', include('tinymce.urls')),
 

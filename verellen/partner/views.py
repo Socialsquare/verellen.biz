@@ -90,7 +90,7 @@ def price_lists(request):
         files = PriceList.objects.all()
 
     return render(request, 'partner/price_lists.html', {
-        'files': files
+        'files': files.order_by('name')
     })
 
 

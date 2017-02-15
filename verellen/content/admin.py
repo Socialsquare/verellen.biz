@@ -2,7 +2,8 @@ from django.contrib import admin
 from content.models import ProductContent, FooterContent, AboutContent, HomeContent, MenuContent, CarouselImage
 
 class ProductContentAdmin(admin.ModelAdmin):
-    fields = [ 'product_body' ]
+    fields = ['product_body']
+
 
 class FooterContentAdmin(admin.ModelAdmin):
     fields = [
@@ -17,25 +18,30 @@ class FooterContentAdmin(admin.ModelAdmin):
         'newsletter_header',
     ]
 
+
 class MenuContentAdmin(admin.ModelAdmin):
     fields = [
         'products_label',
         'about_label',
+        'contract_label',
         'retailers_label',
         'partner_label',
         'login_label',
     ]
 
+
 class AboutContentAdmin(admin.ModelAdmin):
-    fields = [ 'body' ]
+    fields = ['header', 'body']
 
 class CarouselImageInline(admin.TabularInline):
     model = CarouselImage
-    fields = [ 'image_file', 'title', 'product' ]
+    fields = ['image_file', 'title', 'product']
+
 
 class HomeContentAdmin(admin.ModelAdmin):
-    fields = [ 'title', ]
-    inlines = [ CarouselImageInline, ]
+    fields = ['title', ]
+    inlines = [CarouselImageInline, ]
+
 
 admin.site.register(ProductContent, ProductContentAdmin)
 admin.site.register(FooterContent, FooterContentAdmin)

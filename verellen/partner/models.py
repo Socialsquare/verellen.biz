@@ -5,11 +5,13 @@ from sorl import thumbnail
 
 from products.models import Category
 
+
 class PartnerGroup(models.Model):
     name = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.name
+
 
 class Download(models.Model):
     name = models.CharField(max_length=255)
@@ -21,15 +23,18 @@ class Download(models.Model):
     class Meta:
         abstract = True
 
+
 class SalesTool(Download):
     is_eu_format = models.BooleanField(default=False,
                                        verbose_name="Is EU format")
+
 
 class PriceList(Download):
     partner_group = models.ForeignKey(PartnerGroup, blank=True, null=True)
 
     def __unicode__(self):
         return '{0} ({1})'.format(self.name, self.partner_group)
+
 
 class Partner(models.Model):
     user = models.OneToOneField(User)

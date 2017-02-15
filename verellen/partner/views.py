@@ -12,12 +12,15 @@ from products.models import Product, Category
 
 import utils
 
+
 def do_login(request):
     return render(request, 'partner/login.html')
+
 
 def do_logout(request):
     logout(request)
     return redirect('/partner/login/')
+
 
 def login_form(request):
     username = request.POST['customer_number']
@@ -42,6 +45,7 @@ def login_form(request):
     login(request, user)
     return redirect('/partner/home/')
 
+
 @login_required(login_url='/partner/login/')
 def home(request):
     try:
@@ -53,6 +57,7 @@ def home(request):
     return render(request, 'partner/home.html', {
         'name': name
     })
+
 
 def sales_tools(request):
     files = SalesTool.objects.all().order_by('name')
@@ -68,6 +73,7 @@ def sales_tools(request):
     return render(request, 'partner/sales_tools.html', {
         'files': files
     })
+
 
 @login_required(login_url='/partner/login/')
 def price_lists(request):
@@ -87,6 +93,7 @@ def price_lists(request):
         'files': files
     })
 
+
 def product_category(request, category_slug):
     partner = utils.get_partner(request.user)
     category = Category.objects.filter(slug = category_slug).first()
@@ -105,6 +112,7 @@ def product_category(request, category_slug):
         'show_metric': show_metric,
         'category': category
     })
+
 
 def product_detail(request, product_id):
     try:
@@ -132,6 +140,7 @@ def product_detail(request, product_id):
         'tearsheet_url': tearsheet_url
     })
 
+
 def search(request):
     if not 'query' in request.GET.keys():
         raise Http404()
@@ -146,6 +155,7 @@ def search(request):
         'search_query': query
     })
 
+
 def product_category_list(request):
     partner = utils.get_partner(request.user)
     show_us = True
@@ -159,13 +169,16 @@ def product_category_list(request):
         'show_metric': show_metric
     })
 
+
 def download_products_us(request):
     utils.syncS3('us')
     return utils.generateZipResponse('us')
 
+
 def download_products_eu(request):
     utils.syncS3('eu')
     return utils.generateZipResponse('eu')
+
 
 def download_categories_us(request, category_slug):
     category = Category.objects.filter(slug = category_slug).first()
@@ -174,6 +187,7 @@ def download_categories_us(request, category_slug):
     products = Product.objects.filter(category = category).order_by('name')
     utils.syncS3('us')
     return utils.generateZipCategoriesResponse('us', products, category_slug)
+
 
 def download_categories_eu(request, category_slug):
     category = Category.objects.filter(slug = category_slug).first()
@@ -187,6 +201,7 @@ def download_categories_eu(request, category_slug):
 @login_required(login_url='/partner/login/')
 def account(request):
     return render(request, 'partner/account.html')
+
 
 @login_required(login_url='/partner/login/')
 def account_update(request):
@@ -213,6 +228,7 @@ def account_update(request):
         request.user.save()
 
     return redirect('/partner/account')
+
 
 def view_spreadsheet(request):
     return render(request, 'pdfjs/web/viewer.html')
